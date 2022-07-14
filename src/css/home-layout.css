@@ -1,0 +1,53 @@
+.home-layout > #body-container {
+    gap: 10rem;
+}
+
+.home-layout .page-title h1, h2, p {
+    margin: 0;
+    height: fit-content;
+}
+
+.home-layout .page-title h2 {
+    margin-bottom: -3rem;
+    font-size: 0.5em;
+}
+
+.home-layout .page-title h1 {
+    font-size: 1em;
+    color: #72e1ff;
+    letter-spacing: 0.6rem;
+    text-shadow: 8px 8px 0 rgba(173, 216, 230, 0.453);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .textshadowAnimation {
+        animation: textshadowTitle 3s;
+    }
+}
+
+@keyframes textshadowTitle {
+    0% {text-shadow: 0 0 0 #72e1ff;}
+    100% {text-shadow: 8px 8px 0 rgba(173, 216, 230, 0.453);}
+}
+
+.home-layout .page-title p {
+    font-size: 0.2em;
+}
+
+#play-button {
+    font-size: 0.3em;
+    font-weight: bolder;
+    width: fit-content;
+    padding: 0.5em 2em;
+    margin-top: 4em;
+    color: white;
+    background-color: #0aaad6;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.5em 0.1em lightblue;
+    align-self: center;
+}
+    
+#play-button:hover {
+    background-color: #0b9cc5;
+    box-shadow: 0 0 0.5em 0.3em lightblue;
+}
