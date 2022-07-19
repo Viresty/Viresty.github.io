@@ -29,7 +29,7 @@ class Footer extends Component {
         return (
             <div className='container' id="footer-container">
                 <div className='content' id="footer-content">
-                    <div id='general-contact'>
+                    <div id='general-footer'>
                         <p>CHUNG</p>
                         <ul>
                             {general}

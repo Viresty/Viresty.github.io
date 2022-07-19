@@ -20,7 +20,7 @@ class List extends Component {
         <div className="list-card">
           <h1 className="list-title">{this.props.title}</h1>
           <p className="list-detail">{this.props.detail}</p>
-          <ul>
+          <ul className={this.props.shortlist?'short-list':''}>
               {ListItems}
           </ul>
         </div>

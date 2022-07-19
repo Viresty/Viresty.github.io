@@ -42,20 +42,31 @@ class Header extends Component {
 
     toggleNavBar() {
       document.getElementById('NavBar-Collapsed').classList.toggle('hidden')
-      if (document.getElementById('header-container').style.backgroundColor === '') {
-        document.getElementById('header-container').style.backgroundColor = '#282c34df';
-      } else if (document.getElementById('header-container').style.backgroundColor === 'rgba(40, 44, 52, 0.875)') {
-        document.getElementById('header-container').style.backgroundColor = '';
+      if (document.getElementById('header-container').style.backgroundColor === 'rgba(0, 0, 0, 0)') {
+        document.getElementById('header-container').style.backgroundColor = '#282c34';
+      } else if (document.getElementById('header-container').style.backgroundColor === 'rgb(40, 44, 52)') {
+        if (window.scrollY < 10) document.getElementById('header-container').style.backgroundColor = '#00000000';
+        document.getElementById('MoreNavBar-Collapsed').classList.add('hidden');
       }
     }
 
     toggleMoreBar() {
-      if (document.getElementById('MoreNavBar').classList.contains('hidden')) {
-        document.getElementById('MoreNavBar').classList.remove('hidden');
-        document.getElementById('MoreNavBar').style.animation = 'openNavBar 0.3s';
+      if (document.getElementById('NavBar-Collapsed').classList.contains('hidden')) {
+        if (document.getElementById('MoreNavBar').classList.contains('hidden')) {
+          document.getElementById('MoreNavBar').classList.remove('hidden');
+          document.getElementById('MoreNavBar').style.animation = 'openNavBar 0.3s';
+        } else {
+          document.getElementById('MoreNavBar').style.animation = 'closeNavBar 0.3s';
+          setTimeout(function() {document.getElementById('MoreNavBar').classList.add('hidden')}, 250);
+        }
       } else {
-        document.getElementById('MoreNavBar').style.animation = 'closeNavBar 0.3s';
-        setTimeout(function() {document.getElementById('MoreNavBar').classList.add('hidden')}, 250);
+        if (document.getElementById('MoreNavBar-Collapsed').classList.contains('hidden')) {
+          document.getElementById('MoreNavBar-Collapsed').classList.remove('hidden');
+          document.getElementById('MoreNavBar-Collapsed').style.animation = 'openNavBar 0.3s';
+        } else {
+          document.getElementById('MoreNavBar-Collapsed').style.animation = 'closeNavBar 0.3s';
+          setTimeout(function() {document.getElementById('MoreNavBar-Collapsed').classList.add('hidden')}, 250);
+        }
       }
     }
 
@@ -77,7 +88,7 @@ class Header extends Component {
         <div className='container' id="header-container">
           <div className="content" id="header-content">
             <header className="header">
-              <a href='#/'><img src={logo} id="App-logo" alt="logo" /></a>
+              <a href='#/' id='home-link-logo'><img src={logo} id="App-logo" alt="logo" /></a>
               <div className='NavBar'>
                 <ul className='NavBarUl'>
                   {NavItems}
@@ -101,13 +112,19 @@ class Header extends Component {
             </header>
           </div>
           <div className='content closed' id='NavBar-Collapsed'>
-            <div className='blocker' onClick={this.toggleNavBar}></div>
             <ul>
               {NavItems}
               <li key='4'>
                 <button onClick={this.toggleMoreBar}>
                   XEM THÊM <i className="fa fa-caret-down" aria-hidden="true"></i>
                 </button>
+              </li>
+              <li>
+                <div id='MoreNavBar-Collapsed' className='closed'>
+                  <ul>
+                    {MoreItems}
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>

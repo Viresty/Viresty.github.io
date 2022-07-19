@@ -1,14 +1,13 @@
 import React from "react";
 
-import { addAnimationInView } from './../actions/addAnimation';
-import { reloadPage } from '../actions/page';
+import { reloadAnimation } from '../function/page';
 import {useEffect} from 'react';
   
 const Play = () => {
 
     useEffect(() => {
 
-        reloadPage();
+        reloadAnimation();
     
     }, [])
 

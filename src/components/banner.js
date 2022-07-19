@@ -15,15 +15,28 @@ class Banner extends Component {
     }
 
     closeBannerimg() {
+        document.querySelector('input[name="banner"]:checked').parentNode.parentNode.classList.remove('selected');
+        document.querySelector('input[name="banner"]:checked').checked = false;
         document.getElementById('banner-content-img').classList.add('closeImgAnimation');
         setTimeout(()=>{
             document.getElementById('banner-content-img').classList.add('hidden');
             document.getElementById('banner_home').classList.add('list-card');
         }, 510);
-        setTimeout(()=>{document.getElementById('banner-content-img').classList.remove('closeImgAnimation');}, 520);
+        setTimeout(()=>{
+            document.getElementById('banner-content-img').classList.remove('closeImgAnimation');
+            document.getElementById('banner-content-img').classList.remove('openImgAnimation');
+        }, 520);
     }
 
-    changeBannerimg(item) {
+    changeBannerimg(item, targetID) {
+        // document.querySelector('input[name="banner"]:checked').classList.add('selected');
+        document.getElementById(targetID).classList.add('selected');
+
+        let listUnchk = document.querySelectorAll('input[name="banner"]:not(:checked)');
+        listUnchk.forEach(bannerImg => {
+            bannerImg.parentNode.parentNode.classList.remove('selected');
+        })
+
         document.getElementById('banner-content-img').classList.remove('hidden');
         document.getElementById('banner_home').classList.remove('list-card');
         this.props.changeBanner(item);
@@ -34,10 +47,11 @@ class Banner extends Component {
     render() {
         
         const ListItems = this.props.ListItems.map((item, idx) => {
-            return <li key={idx}>
-                        <button onClick={() => this.changeBannerimg(item)} style={{color: 'black'}}>
+            return <li key={idx} id={'bannerImg'+idx}>
+                        <label onClick={() => {this.changeBannerimg(item, 'bannerImg'+idx)}}>
+                            <input type="radio" name="banner" />
                             <img className='banner-list-img fade-in' src= {item.url} alt={item.alt}></img>
-                        </button>
+                        </label>
                     </li>
             });
 
@@ -47,7 +61,9 @@ class Banner extends Component {
                     {ListItems}
                 </ul>
                 <div className='banner-content hidden' id='banner-content-img'>
-                    <img src= {this.props.banner.url} alt={this.props.banner.alt}></img>
+                    <img src={this.props.banner.url} alt={this.props.banner.alt}></img>
+                    <div id='img-gradient'>
+                    </div>
                     <button onClick={() => this.closeBannerimg()} className='close-btn'>
                         <i className="fa fa-times" aria-hidden="true"></i>
                     </button>

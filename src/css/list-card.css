@@ -3,7 +3,12 @@
   width: 100%;
 }
 
+.list-title {
+  font-size: calc(1.5rem + 0.5vw);
+}
+
 .list-card .list-detail {
+  font-size: calc(1rem + 0.5vw);
   margin: 1em 0;
 }
   
@@ -95,4 +100,33 @@
 /*Smart phone nhỏ*/
 @media screen and (max-width: 240px){
   
+}
+
+.short-list {
+  height: 50em;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  scrollbar-gutter: stable both-edges;
+}
+
+.short-list::-webkit-scrollbar {
+  width: 0.3em;
+  height: 0.3em;
+}
+
+.short-list::-webkit-scrollbar-track {
+  background: none;
+}
+
+.short-list::-webkit-scrollbar-thumb {
+  background: lightblue;
+  border-radius: 1em;
+}
+
+.short-list::-webkit-scrollbar-thumb:hover {
+  background: #0b9cc5;
+  border-radius: 1em;
+  width: 0.5em !important;
+  height: 0.5em !important;
 }

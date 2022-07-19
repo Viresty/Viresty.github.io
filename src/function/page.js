@@ -1,4 +1,4 @@
-import { addAnimationInView } from './../actions/addAnimation';
+import { addAnimationInView } from './animation';
 
 export const hidePopup = (entry) => {
     if (!entry.parentNode.classList.contains('hidden')) {
@@ -14,10 +14,13 @@ export const addEventListenerClass = (qS, F) => {
     })
 }
 
-export const reloadPage = () => {
+export const reloadAnimation = () => {
     window.scrollTo(0, 0);
     addAnimationInView('.fade-in', 'FadeInAnimation');
     addAnimationInView('.open-img', 'openImgAnimation');
+    document.getElementById('header-container').style.backgroundColor = '#282c34';
+    document.getElementById('header-container').classList.remove('hidden');
+    document.getElementById('footer-container').classList.remove('hidden');
 
     let items = document.querySelectorAll('.closed');
 

@@ -10,7 +10,7 @@ class Card extends Component {
 
     render() {
       return (
-          <Link to={"/item/"+this.props.CardDetail.itemId} className="card fade-in">
+          <Link to={"/card-detail/"+this.props.CardDetail.itemID} className="card fade-in">
             <img src= {this.props.CardDetail.url} alt={this.props.CardDetail.alt}></img>
           </Link>
       );

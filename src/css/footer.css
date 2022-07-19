@@ -1,15 +1,37 @@
 #footer-container {
+  background-color: #282c34;
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   width: 100%;
   z-index: 10;
-  font-size: calc(1rem + 0.1vw);
+  font-size: calc(1.2rem + 0.05vw);
   flex-direction: column;
+  border-top: 0.1rem white solid;
 }
 
 #footer-content {
   position: relative;
   flex-direction: row;
-  align-items: center;
-  height: 6em;
+  justify-content: space-around;
+  padding: 3em 0;
+  height: 17rem;
+}
+
+#footer-content p {
+  font-size: 1.2em;
+}
+
+#footer-content > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+#footer-content > * > * > * {
+  margin: 0.2em 0;
+}
+
+#footer-contact address {
+  margin: 1em 0;
 }

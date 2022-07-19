@@ -1,5 +1,10 @@
 .home-layout > #body-container {
     gap: 10rem;
+    font-size: calc(1rem + 0.1vw);
+}
+
+.home-layout .page-title {
+    margin-top: 0.5em;
 }
 
 .home-layout .page-title h1, h2, p {
@@ -8,38 +13,38 @@
 }
 
 .home-layout .page-title h2 {
-    margin-bottom: -3rem;
+    margin-bottom: -0.5em;
     font-size: 0.5em;
 }
 
 .home-layout .page-title h1 {
     font-size: 1em;
     color: #72e1ff;
-    letter-spacing: 0.6rem;
-    text-shadow: 8px 8px 0 rgba(173, 216, 230, 0.453);
+    letter-spacing: 0.1em;
+    text-shadow: 6px 6px 0 rgba(173, 216, 230, 0.453);
 }
 
 @media (prefers-reduced-motion: no-preference) {
     .textshadowAnimation {
-        animation: textshadowTitle 3s;
+        animation: textshadowTitle 2s linear;
     }
 }
 
 @keyframes textshadowTitle {
     0% {text-shadow: 0 0 0 #72e1ff;}
-    100% {text-shadow: 8px 8px 0 rgba(173, 216, 230, 0.453);}
+    100% {text-shadow: 6px 6px 0 rgba(173, 216, 230, 0.453);}
 }
 
 .home-layout .page-title p {
     font-size: 0.2em;
 }
 
-#play-button {
-    font-size: 0.3em;
+.play-button {
+    font-size: 0.25em;
     font-weight: bolder;
     width: fit-content;
     padding: 0.5em 2em;
-    margin-top: 4em;
+    margin-top: 1.5em;
     color: white;
     background-color: #0aaad6;
     border-radius: 0.5em;
@@ -47,7 +52,25 @@
     align-self: center;
 }
     
-#play-button:hover {
+.play-button:hover {
     background-color: #0b9cc5;
     box-shadow: 0 0 0.5em 0.3em lightblue;
+}
+
+.content-item {
+    display: flex;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: #0aaad6;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-item .play-button {
+    color: #0b9cc5;
+    background-color: white;
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }

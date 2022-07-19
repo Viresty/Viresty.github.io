@@ -9,7 +9,7 @@ body {
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: none;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.1em;
   font-family: 'Saira Condensed', sans-serif;
 }
 
@@ -38,24 +38,28 @@ body {
 .content-title {
   text-align: center;
   width: 80%;
-  font-size: calc(1.8em + 1vw);
+  font-size: 2em;
 }
 
 .content-detail {
   text-align: center;
   width: 70%;
-  font-size: calc(0.8em + 1vw);
-  margin-bottom: 2rem;
+  font-size: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .content-img {
   width: 100%;
-  height: 60vh;
+  height: 50vh;
 }
 
 .content-link {
-  font-size: calc(0.5rem + 1vw);
-  margin: 1rem;
+  font-size: 1.2em;
+  margin: 1em;
+}
+
+.content-notice {
+  margin-bottom: 1em;
 }
 
 /*Ipad ngang(1024 x 768)*/
@@ -196,7 +200,7 @@ button {
 }
 
 button i {
-  margin: auto 0.5rem;
+  margin: auto 0.5em;
 }
 
 .App {
@@ -212,7 +216,7 @@ button i {
 /* animation div */
 
 .fade-in {
-  transform: translateY(8rem);
+  transform: translateY(8em);
   opacity: 0;
 }
 
@@ -232,21 +236,21 @@ button i {
   .FadeInAnimation {
     transform: translateY(0);
     opacity: 1;
-    animation: FadeInMoveUp 1s ease;
+    animation: FadeInMoveUp 0.5s ease;
   }
 
   .openImgAnimation {
     transform: scale(1, 1);
     border-radius: 1em;
     opacity: 1;
-    animation: openImg 0.5s ease;
+    animation: openImg 0.4s ease;
   }
 
   .closeImgAnimation {
     transform: scale(0, 0);
     border-radius: 10em;
     opacity: 0;
-    animation: closeImg 0.5s ease;
+    animation: closeImg 0.2s ease;
   }
 }
 
@@ -279,9 +283,10 @@ button i {
 }
 
 #body-container {
-  padding: 10em 0;
+  padding-top: 10rem;
+  padding-bottom: 20rem !important;
   flex-direction: column;
-  background-color: #282c34;
+  background-color: #30343a;
 }
 
 #page-banner {
@@ -316,12 +321,33 @@ button i {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  position: sticky;
+  position: relative;
   top: 0;
-  height: 110vh;
+  height: 100vh;
   width: 100%;
   z-index: 0;
   font-size: calc(5rem + 3vw);
+}
+
+.page-title h2 {
+  margin: 0;
+  font-size: 0.8em;
+  margin-bottom: -1em;
+}
+
+.page-title h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #72e1ff;
+  text-shadow: 8px 8px 0 rgba(173, 216, 230, 0.453);
+}
+
+.page-title a {
+  font-size: 0.3em;
+}
+
+.page-title p {
+  font-size: 0.3em;
 }
 
 .blocker {
@@ -331,6 +357,34 @@ button i {
   bottom: 0;
   right: 0;
   content: ' ';
+  height: 100vh;
+  width: 100vw;
   background: rgba(0,0,0,.5);
   z-index: -1;
+}
+
+.close-btn {
+  font-size: 2em;
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  text-shadow: 0 0 0.3em #00c8ff;
+}
+
+.close-btn:hover {
+  color: rgb(255, 105, 105);
+  text-shadow: 0 0 0.5em rgb(255, 105, 105);
+}
+
+.expand-btn {
+  font-size: 2em;
+  position: absolute;
+  right: 0.3em;
+  bottom: 0.3em;
+  text-shadow: 0 0 0.3em #00c8ff;
+}
+
+.expand-btn:hover {
+  color: #00c8ff;
+  text-shadow: 0 0 0.5em #00c8ff;
 }

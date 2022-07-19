@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
 /* color
   #72e1ff
   #0aaad6
