@@ -40,33 +40,131 @@
   margin: 0 auto;
 }
 
+/* Card */
+
 .card {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   /* background-color: #39404c; */
-  width: calc((13em + 2vw)) !important;
-  height: calc((20em + 2.5vw)) !important;
+  min-width: calc((13em + 2vw)) !important;
+  min-height: calc((20em + 2.5vw)) !important;
   border-radius: 1em;
   margin: 0 auto;
 }
 
-.card img:hover {
+.cardMoreInfo {
+  position: absolute;
+  font-size: 1.28em;
+  padding: 0.5em;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.8em;
+  /* border: 0.1em solid white; */
+  text-align: center;
+  background-color: #39404c;
+  /* background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 1));  */
+  transition: all 0.3s, visibility 0.15s;
+}
+
+.cardMoreInfo h1,
+.cardMoreInfo h2,
+.cardMoreInfo p {
+  margin: auto;
+  color: white;
+}
+
+.card:hover .cardMoreInfo {
   box-shadow: 0 0 0.7em 0.2em lightblue;
 }
 
-.card img {
+.cardPreview {
   width: 90%;
   height: 90%;
+  font-size: 1em;
+}
+
+.card:hover .cardPreview {
+  width: 100%;
+  height: 100%;
+  font-size: 1.28em;
+}
+
+.cardInfo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* border: 0.1em solid white; */
+  justify-content: center;
+  border-radius: 0.5em;
+  font-size: 1em;
+}
+
+.cardImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 1.2em;
+  border-radius: 0.5em;
   transition: height 0.3s, width 0.3s;
 }
 
-.card:hover img {
-  object-fit: cover;
+.manaCost {
+  display: flex;
+  position: absolute;
+  top: -0.7em;
+  left: -0.7em;
+  height: 2.4em;
+  width: 2.4em;
+  border-radius: 50%;
+  border: 0.1em solid white;
+  background-color: lightskyblue;
+  text-align: center;
+  z-index: 1;
+}
+
+.manaCost h2 {
+  font-size: 1.2em;
+}
+
+.cardName {
+  display: flex;
+  position: absolute;
+  top: 0;
   width: 100%;
-  height: 100%;
+  height: 2em;
+  border-radius: 0.5em 0.5em 0 0;
+  align-content: center;
+  justify-content: center;
+  background-color: #00000000;
+  background-image: linear-gradient(rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0)); 
+}
+
+.cardName h1 {
+  font-size: 0.7em;
+}
+
+.cardAbiliti {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  min-height: 40%;
+  width: 100%;
+  bottom: 0;
+  padding: 0.8em;
+  border-radius: 0.5em;
+  background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 1)); 
+}
+
+.cardAbiliti p {
+  margin: 0;
+  font-size: 0.6em;
 }
 
 /*Ipad ngang(1024 x 768)*/
@@ -129,4 +227,12 @@
   border-radius: 1em;
   width: 0.5em !important;
   height: 0.5em !important;
+}
+
+.cardLink {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
 }

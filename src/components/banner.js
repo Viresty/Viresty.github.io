@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeBanner } from './../actions/banner';
 
@@ -46,11 +45,12 @@ class Banner extends Component {
 
     render() {
         
-        const ListItems = this.props.ListItems.map((item, idx) => {
+        const listCard = this.props.ListItems
+        const ListItems = Object.keys(listCard).map((key, idx) => {
             return <li key={idx} id={'bannerImg'+idx}>
-                        <label onClick={() => {this.changeBannerimg(item, 'bannerImg'+idx)}}>
+                        <label onClick={() => {this.changeBannerimg(listCard[key], 'bannerImg'+idx)}}>
                             <input type="radio" name="banner" />
-                            <img className='banner-list-img fade-in' src= {item.url} alt={item.alt}></img>
+                            <img className='banner-list-img fade-in' src= {listCard[key].url} alt={listCard[key].alt}></img>
                         </label>
                     </li>
             });

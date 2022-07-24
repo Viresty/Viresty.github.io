@@ -47,7 +47,6 @@
   font-weight: bolder;
   padding: 0.5em 1em;
   margin: auto 1em;
-  color: white;
 }
 
 #NavBar-Collapsed {
@@ -138,6 +137,65 @@
   text-align: center;
 }
 
+#userAvatar {
+  position: relative;
+}
+
+#userAvatar-img {
+  height: 4em;
+  width: 4em;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 0.5em;
+  border: 2px solid white;
+}
+
+#userAvatar-img:hover {
+  box-shadow: 0 0 0.5em 0.3em lightblue;
+}
+
+#userBar {
+  position: absolute;
+  top: 110%;
+  right: -10%;
+  background-color: white;
+  border-radius: 1em;
+}
+
+#userBar a, #userBar button {
+  color: black;
+}
+
+#userBar a:hover {
+  color: #0b9cc5;
+}
+
+#userBar button {
+  border: 1px solid black;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+}
+
+#userBar button:hover {
+  color: rgb(255, 60, 60);
+  border-color: rgb(255, 60, 60);
+}
+
+#userBar .NavBarUl {
+  flex-direction: column;
+  padding: 0.5em 0;
+  width: 11em;
+}
+
+#userBar .NavBarUl li {
+  padding: 0.5em;
+  margin: 0;
+}
+
+#userBar .NavBarUl i {
+  margin-right: 0.5em;
+}
+
 @keyframes openNavBar {
     0%   {height: 0; opacity: 0; padding: 0;}
     100% {height: fit-content; opacity: 1; padding: 1em 3em;}
@@ -146,4 +204,14 @@
 @keyframes closeNavBar {
     0%   {height: fit-content; opacity: 1; padding: 1em 3em;}
     100% {height: 0; opacity: 0; padding: 0;}
+}
+
+@keyframes openUserBar {
+  0%   {height: 0; opacity: 0; padding: 0;}
+  100% {height: fit-content; opacity: 1;}
+}
+
+@keyframes closeUserBar {
+  0%   {height: fit-content; opacity: 1;}
+  100% {height: 0; opacity: 0; padding: 0;}
 }

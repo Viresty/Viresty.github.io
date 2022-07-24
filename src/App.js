@@ -3,7 +3,7 @@ import './App.css';
 import { Routes, Route}
     from 'react-router-dom';
 import { HashRouter } from 'react-router-dom';
-import {useEffect} from 'react';
+import { useEffect, useState } from 'react';
 
 import Home from './pages/home';
 import Login from './pages/login';
@@ -17,35 +17,24 @@ import Footer from './components/footer';
 import Cart from './components/cart'
   
 const App = () => {
-//   useEffect(() => {
 
-//     const handleScroll = event => {
-//         if (window.scrollY >= 10) {
-//             document.getElementById('header-container').style.backgroundColor = '#282c34';
-//         } else if (document.getElementById('NavBar-Collapsed').classList.contains('hidden')) {
-//             document.getElementById('header-container').style.backgroundColor = '';
-//         } else {
-//             document.getElementById('header-container').style.backgroundColor = '#282c34df';
-//         }
-//     };
+    const [isLogged_in, setLogin] = useState(false)
 
-//     window.addEventListener('scroll', handleScroll);
+    useEffect (() => {
+        console.log(isLogged_in);
+    })
 
-//     return () => {
-//         window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
-
-  return (
+    return (
     // Git-hub deloy
         <HashRouter forceRefresh={true}>
-            <Header />
+            <Header isLogin={isLogged_in} />
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="login" element={<Login />} />
+                <Route exact path="login" element={<Login isLoginForm={true} setLogin={setLogin} />} />
+                <Route exact path="register" element={<Login isLoginForm={false} />} />
                 <Route path="library" element={<Library />} />
                 <Route path="card-detail/:itemID" element={<CardDetail />}/>
-                <Route path="play" element={<Play />} />
+                <Route path="play" element={<Play isLogin={isLogged_in} />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer />

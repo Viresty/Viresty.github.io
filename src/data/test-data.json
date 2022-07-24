@@ -1,0 +1,382 @@
+{
+    "0": {
+        "001": {
+            "url": "https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789",
+            "alt": "viresty1",
+            "itemID": "0001",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "002": {
+            "url": "https://picstatio.com/large/752673/warrior-at-lake-dark-art.jpg",
+            "alt": "viresty2",
+            "itemID": "0002",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "003": {
+            "url": "https://picstatio.com/large/b183c8/dragon-and-warrior-fantasy.jpg",
+            "alt": "viresty1",
+            "itemID": "0003",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "004": {
+            "url": "https://cdnb.artstation.com/p/assets/images/images/019/502/481/large/anato-finnstark-anato-finnstark-the-tiger-s-gate-by-anatofinnstark-dcx21ul-fullview.jpg?1563800651",
+            "alt": "viresty1",
+            "itemID": "0004",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "005": {
+            "url": "https://cdna.artstation.com/p/assets/images/images/001/676/916/large/g-host-lee-breaking-of-rock-2.jpg?1450668794",
+            "alt": "viresty1",
+            "itemID": "0005",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "006": {
+            "url": "https://cdnb.artstation.com/p/assets/images/images/027/707/981/large/m-z-.jpg?1592320233",
+            "alt": "viresty1",
+            "itemID": "0006",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "007": {
+            "url": "https://cdnb.artstation.com/p/assets/images/images/012/440/677/4k/li-hh-ssssss.jpg?1534829525",
+            "alt": "viresty1",
+            "itemID": "0007",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "008": {
+            "url": "https://cdna.artstation.com/p/assets/images/images/008/446/004/large/zezhou-chen-web.jpg?1512834759",
+            "alt": "viresty1",
+            "itemID": "0008",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "009": {
+            "url": "https://cdnb.artstation.com/p/assets/images/images/047/921/011/4k/sandra-duchiewicz-mountain-encounter-fin-by-sandra-duchiewicz-telthona.jpg?1648756410",
+            "alt": "viresty1",
+            "itemID": "0009",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "010": {
+            "url": "https://cdnb.artstation.com/p/assets/images/images/009/175/541/large/dave-greco-crypt-1.jpg?1517517146",
+            "alt": "viresty1",
+            "itemID": "0010",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "011": {
+            "url": "https://cdna.artstation.com/p/assets/images/images/002/987/276/large/yuriy-chemezov-yuriy-chemezov-themark1.jpg?1468165368",
+            "alt": "viresty1",
+            "itemID": "0011",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        },
+        "012": {
+            "url": "https://cdnb.artstation.com/p/assets/images/images/011/182/813/large/xiaoguang-sun-c.jpg?1528260890",
+            "alt": "viresty1",
+            "itemID": "0012",
+            "detail": {
+                "name": "Hắc Chiến Binh",
+                "type": "Chức Nghiệp",
+                "manaCost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "HP": {
+                        "name": "Sinh Lực",
+                        "value": 20
+                    }, 
+                    "MP": {
+                        "name": "Năng Lượng",
+                        "value": 3
+                    }, 
+                    "ATK": {
+                        "name": "Tấn Công",
+                        "value": 2
+                    },
+                    "DEF": {
+                        "name": "Phòng Thủ",
+                        "value": 2
+                    }
+                },
+                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+            }
+        }
+    }, 
+    "1": {
+        "001": {
+            "url": "https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789",
+            "alt": "viresty1",
+            "itemID": "0001",
+            "detail": {
+                "name": "Chém đơn",
+                "type": "Hành động",
+                "manaCost": 10,
+                "rank": "Thường",
+                "stat": {
+                    "ATK": 1
+                },
+                "abilities" : "Gây 1 sát thương"
+
+            }
+        }
+    }
+}

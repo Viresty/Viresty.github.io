@@ -11,11 +11,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const StoreInstance = Store();
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={StoreInstance}>
       <App />
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

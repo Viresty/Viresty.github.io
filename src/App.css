@@ -388,3 +388,22 @@ button i {
   color: #00c8ff;
   text-shadow: 0 0 0.5em #00c8ff;
 }
+
+.big-button {
+  font-size: 0.25em;
+  font-weight: bolder;
+  width: fit-content;
+  padding: 0.5em 2em;
+  margin-top: 1.5em;
+  color: white;
+  background-color: #0aaad6;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0.5em 0.1em lightblue;
+  align-self: center;
+}
+  
+.big-button:hover {
+  background-color: #0b9cc5;
+  color: white;
+  box-shadow: 0 0 0.5em 0.3em lightblue;
+}

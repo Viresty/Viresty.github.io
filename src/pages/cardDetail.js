@@ -1,20 +1,23 @@
-import List from '../components/list'
 import './../css/card-detail.css';
 
 import { reloadAnimation } from '../function/page';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { list_card} from '../test-data';
+import data from '../data/test-data.json';
 
 const CardDetail = () => {
     
     const cardID = useParams();
-    const cardTarget = list_card[cardID.itemID];
-    const cardInfo = cardTarget.detail.stat.map((item) => {
+    const cardTarget = data[cardID.itemID[0]][cardID.itemID.slice(1)];
+    if (cardTarget === undefined) {
+        window.location = "/not-found"
+    }
+    const cardStat = cardTarget.detail.stat
+    const cardInfo = Object.keys(cardStat).map((key, idx) => {
         return (
-            <li >
-                <h2>{item.name}</h2>
-                <p>{item.value}</p>
+            <li key={idx}>
+                <h2>{cardStat[key].name}</h2>
+                <p>{cardStat[key].value}</p>
             </li>)
     });
 
@@ -34,6 +37,7 @@ const CardDetail = () => {
     };
     
     useEffect(() => {
+        console.log(cardTarget);
         reloadAnimation();
     }, [])
 
@@ -44,7 +48,7 @@ const CardDetail = () => {
                     <div className='card-detail-img'>
                         <img src={cardTarget.url} alt={cardTarget.alt}></img>
                         <button className='expand-btn' onClick={() => openImg()}>
-                            <i class="fa fa-expand" aria-hidden="true"></i>
+                            <i className="fa fa-expand" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div className='expand-img hidden' id="card-full-img">

@@ -46,15 +46,10 @@ input[type="submit"]:hover {
     justify-content: center;
 }
 
-.login-form {
-    background-color: inherit;
+.login-form, .register-form {
     padding: 2em;
     border-radius: 1em;
     width: 35em;
-}
-
-.login-form .form {
-    margin-top: 2em;
 }
 
 .list-container {
@@ -76,42 +71,41 @@ input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    margin: 1em;
+    margin: 1.5em 1em;
     border-radius: 1em;
     background-color: inherit;
 }
 
 .input-container label {
     position: absolute;
-    font-size: 1.2em;
+    font-size: 0.8em;
     top: -0.7em;
-    left: 1em;
+    left: 1.5em;
     padding: 0 1em;
     color: #0aaad6;
     background-color: #30343a;
-    transform: scale(0.7);
     z-index: 1;
     transition: all 0.5s ease;
 }
 
 input[type="text"]:invalid + label,
 input[type="password"]:invalid +label {
+    font-size: 1.2em;
     outline: none;
     top: 0.85em;
     left: 2em;
     padding: 0;
     color: white;
-    transform: scale(1);
     z-index: 0;
 }
 
 input[type="text"]:focus + label,
 input[type="password"]:focus + label {
+    font-size: 0.8em;
     top: -0.7em;
-    left: 1em;
+    left: 1.5em;
     padding: 0 1em;
     color: #0aaad6;
-    transform: scale(0.7);
     z-index: 1;
 }
 
@@ -131,18 +125,18 @@ input[type="password"]:focus + label {
     height: 10em;
 }
 
-.login-form .stack {
+.form .stack {
     display: flex;
     padding: 0 1em;
     height: fit-content;
     justify-content: space-between;
 }
 
-.login-form label {
+.form label {
     cursor: pointer;
 }
 
-#hide-password-btn {
+.hide-password-btn {
     position: absolute;
     top: 1.2em;
     right: 0.5em;
@@ -155,15 +149,24 @@ input[type="password"]:focus + label {
     justify-content: center;
     text-align: center;
     margin: 1em;
-    padding: 1em;
+    padding: 2em;
     min-width: 19em;
     border-radius: 1em;
     background-color: #39404c;
+    font-size: 0.8em;
 }
 
 #fill-space img {
     border-radius: 1em;
     object-fit: cover;
+}
+
+#demo {
+    padding: 1em;
+    margin: 1em;
+    background-color: #39404c;
+    text-align: center;
+    border-radius: 0.5em;
 }
 
 /*Ipad ngang(1024 x 768)*/

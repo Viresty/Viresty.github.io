@@ -8,6 +8,7 @@ class Header extends Component {
       super(props);
       this.toggleNavBar = this.toggleNavBar.bind(this);
       this.toggleMoreBar = this.toggleMoreBar.bind(this);
+      this.toggleUserBar = this.toggleUserBar.bind(this);
       this.state = {
         NavItems: [
             {name: 'TRANG CHỦ',
@@ -70,6 +71,16 @@ class Header extends Component {
       }
     }
 
+    toggleUserBar() {
+      if (document.getElementById('userBar').classList.contains('hidden')) {
+        document.getElementById('userBar').classList.remove('hidden');
+        document.getElementById('userBar').style.animation = 'openUserBar 0.3s';
+      } else {
+        document.getElementById('userBar').style.animation = 'closeUserBar 0.3s';
+        setTimeout(function() {document.getElementById('userBar').classList.add('hidden')}, 250);
+      }
+    }
+
     render() {
       const NavItems = this.state.NavItems.map((item, idx) => {
         return (
@@ -79,6 +90,32 @@ class Header extends Component {
             </NavLink>
           </li>)
       });
+
+      const userAvatar = (
+        <div id='userAvatar'>
+          <button onClick={this.toggleUserBar}>
+            <img id='userAvatar-img' src='https://i.pinimg.com/originals/60/69/58/6069580ee995d574614e4a5915029fa3.jpg' alt='user-avatar'></img>
+          </button>
+          <div id='userBar' className='hidden'>
+            <div className='blocker' onClick={this.toggleUserBar}></div>
+            <ul className='NavBarUl'>
+                <li>
+                  <NavLink to={'/profile'}>
+                    <i class="fa fa-user" aria-hidden="true"></i>HỒ SƠ
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to='/settings'>
+                    <i class="fa fa-cogs" aria-hidden="true"></i>CÀI ĐẶT
+                  </NavLink>
+                </li>
+                <li>
+                  <button><i class="fa fa-sign-out" aria-hidden="true"></i>ĐĂNG XUẤT</button>
+                </li>
+            </ul>
+          </div>
+        </div>
+      )
 
       const MoreItems = this.state.MoreItems.map((item, idx) => {
         return <li key={idx}><NavLink id={item.id+'NavLinkItem'} to={item.link}>{item.name}</NavLink></li>
@@ -98,12 +135,12 @@ class Header extends Component {
                     </button>
                   </li>
                 </ul>
-                <a id='login-button' href='#/login'>ĐĂNG NHẬP</a>
+                {this.props.isLogin?userAvatar:<a id='login-button' href='#/login'>ĐĂNG NHẬP</a>}
                 <button id='NavBarCollapseBtn' onClick={this.toggleNavBar}>
                   <i className="fa fa-bars" aria-hidden="true"></i>
                 </button>
               </div>
-              <div id='MoreNavBar' className='closed NavBarUl'>
+              <div id='MoreNavBar' className='closed NavBar'>
                 <div className='blocker' onClick={this.toggleMoreBar}></div>
                 <ul className='NavBarUl'>
                   {MoreItems}

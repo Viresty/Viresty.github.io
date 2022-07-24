@@ -1,16 +1,11 @@
 import List from './../components/list'
 import './../css/library-layout.css';
 
-import { addAnimationInView } from './../function/animation';
 import { reloadAnimation } from '../function/page';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-import { list_of_test } from '../test-data';
-
-const img1 = {url: 'https://i.ibb.co/pyvJsZC/Viresty-DC.png',
-                itemId: '1',
-                alt: 'a'}
+import data from '../data/test-data.json';
 
 const Library = () => {
     
@@ -33,13 +28,28 @@ const Library = () => {
         <div className='container' id="body-container">
             <h1>{params.itemId}</h1>
             <div className='content'>
-                <List ListItems={list_of_test} title="Chức nghiệp" detail="Chỉ số cơ bản, khả năng và kĩ năng tất sát người chơi sẽ có khi chọn chức nghiệp."/>
+                <List ListItems={data[0]} cardPreview={true} shortlist={true}
+                    title="Chức nghiệp"
+                    detail="Chỉ số cơ bản, khả năng và kĩ năng tất sát người chơi sẽ có khi chọn chức nghiệp."/>
+                    <Link to={'/library/role-card'} className='content-link'>XEM THÊM <i className="fa fa-chevron-right" aria-hidden="true"></i></Link>
             </div>
             <div className='content'>
-                <List ListItems={list_of_test} title="Weapon Card" detail="Strong sword, steady shield, ... will support players battle with each other."/>
+                <List ListItems={data[0]} cardPreview={true} shortlist={true}
+                    title="Trang bị"
+                    detail="Thanh kiếm mạnh mẽ, tấm khiên vững chắc,... sẽ giúp bạn đối phó với bầy quái vật hùng mạnh trong hầm ngục."/>
+                    <Link to={'/library/weapon-card'} className='content-link'>XEM THÊM <i className="fa fa-chevron-right" aria-hidden="true"></i></Link>
             </div>
             <div className='content'>
-                <List ListItems={list_of_test} title="Spell Card" detail="Powerful and useful spell will change the game with judicious tactic."/>
+                <List ListItems={data[0]} cardPreview={true} shortlist={true}
+                    title="Bài phép"
+                    detail="Những phép thuật hùng mạnh sẽ thay đổi thế trận với chiến thuật khôn ngoan."/>
+                    <Link to={'/library/spell-card'} className='content-link'>XEM THÊM <i className="fa fa-chevron-right" aria-hidden="true"></i></Link>
+            </div>
+            <div className='content'>
+                <List ListItems={data[0]} cardPreview={true} shortlist={true}
+                    title="Quái vật"
+                    detail="Trong hầm ngục luôn xuất hiện các loài quái vật nguy hiểm, hãy hiểu rõ chúng trước khi bắt đầu."/>
+                    <Link to={'/library/monster'} className='content-link'>XEM THÊM <i className="fa fa-chevron-right" aria-hidden="true"></i></Link>
             </div>
         </div>
         </div>

@@ -11,9 +11,10 @@ class List extends Component {
     }
 
     render() {
-      const ListItems = this.props.ListItems.map((item, idx) => {
+      const listCard = this.props.ListItems
+      const ListItems = Object.keys(listCard).map((key, idx) => {
         return <li key={idx}>
-                  <Card CardDetail={item} />
+                  <Card CardDetail={listCard[key]} cardPreview={this.props.cardPreview} />
                 </li>
       });
       return (

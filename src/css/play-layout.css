@@ -1,0 +1,274 @@
+.play-layout #body-container {
+    background-color: #00000000;
+    height: 120vh;
+    font-size: calc(0.8rem + 0.1vw);
+    margin-top: -9em;
+}
+
+.Notification {
+    margin-top: 7em;
+    border-radius: 1em;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+}
+
+.play-layout .content {
+    position: relative;
+    height: 100%;
+    background-color: #30343a;
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627bc589-b21e-47b2-8cf2-7617185ee1ac/d4n4zuk-f6474775-f789-459c-833e-89ffd068b654.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYyN2JjNTg5LWIyMWUtNDdiMi04Y2YyLTc2MTcxODVlZTFhY1wvZDRuNHp1ay1mNjQ3NDc3NS1mNzg5LTQ1OWMtODMzZS04OWZmZDA2OGI2NTQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9XxbT2tBslr_SHGEAA4u_5QCwhppgUj6K-BiJsHo4ms");
+}
+
+#gameArea {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+}
+
+#floorProcess {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 50%;
+    height: fit-content;
+    font-size: 0.8em;
+}
+
+#floorProcess li {
+    height: fit-content;
+    margin: auto;
+}
+
+#playerInfo {
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8em;
+    height: 17em;
+}
+
+#playerMoreInfo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border-radius: 13em;
+    margin-left: 1em;
+}
+
+#playerAvatar {
+    display: flex;
+    padding: 0;
+    width: 13em;
+    border-radius: 50%;
+    margin-bottom: 0.5em;
+}
+
+#playerAvatar > img {
+    margin: auto;
+    width: 13em;
+    height: 13em;
+    object-fit: cover;
+    border: 0.2em solid #ccc;
+    border-radius: 50%;
+}
+
+#playerMoreInfo p {
+    position: absolute;
+    top: -0.4em;
+    left: 0;
+    width: 100%;
+    font-size: 1.6em;
+}
+
+#playerMaxHP {
+    position: absolute;
+    bottom: 3em;
+    width: 13em;
+    height: 1.5em;
+    background-color: #4c4c4c;
+    border: 0.05em solid white;
+    padding: 0.2em 0.5em;
+    text-align: center;
+}
+
+#playerMaxHP::before {
+    position: absolute;
+    display: block;
+    top: -0.2em;
+    left: -0.1em;
+    border-left: 0.4em solid white;
+    border-right: 0;
+    border-top: 0.2em solid white;
+    border-bottom: 0.2em solid white;
+    width: 10%;
+    height: 1.35em;
+    content: '';
+}
+
+#playerMaxHP::after {
+    position: absolute;
+    display: block;
+    top: -0.2em;
+    right: -0.1em;
+    border-right: 0.4em solid white;
+    border-left: 0;
+    border-top: 0.2em solid white;
+    border-bottom: 0.2em solid white;
+    width: 10%;
+    height: 1.35em;
+    content: '';
+}
+
+#playerHP {
+    background-color: red;
+    height: 100%;
+    border-radius: 0.2em;
+}
+
+#playerMaxMP {
+    position: absolute;
+    bottom: 1em;
+    left: 0.5em;
+    width: 12em;
+    height: 1.5em;
+    background-color: #4c4c4c;
+    border: 0.05em solid white;
+    padding: 0.2em 0.5em;
+    text-align: center;
+}
+
+#playerMaxMP::before {
+    position: absolute;
+    display: block;
+    top: -0.2em;
+    left: -0.1em;
+    border-left: 0.4em solid white;
+    border-right: 0;
+    border-top: 0.2em solid white;
+    border-bottom: 0.2em solid white;
+    width: 5%;
+    height: 1.35em;
+    content: '';
+}
+
+#playerMaxMP::after {
+    position: absolute;
+    display: block;
+    top: -0.2em;
+    right: -0.1em;
+    border-right: 0.4em solid white;
+    border-left: 0;
+    border-top: 0.2em solid white;
+    border-bottom: 0.2em solid white;
+    width: 5%;
+    height: 1.35em;
+    content: '';
+}
+
+#playerMP {
+    background-color: blue;
+    height: 100%;
+    border-radius: 0.2em;
+}
+
+/* Hand card */
+
+#cardArea {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+    width: 30em;
+}
+
+#cardArea label {
+    flex-shrink: 1;
+    display: flex;
+    margin: 0;
+    min-width: 3em;
+    width: 8em;
+    z-index: 0;
+}
+
+#cardArea label:hover {
+    width: 16em;
+    margin-right: 2em;
+    margin-left: 2em;
+    z-index: 1;
+}
+
+#cardArea label:hover .card {
+    transform: scale(1) translate(0, -10em);
+}
+
+#cardArea .card {
+    transform: scale(0.75) translate(-5em, -8em);
+}
+
+#cardArea label input[type="radio"] {
+    display: none;
+}
+
+#cardArea input[type="radio"]:checked + label > .card {
+    transform: scale(0.95) translate(0, -10em);
+}
+
+#cardArea input[type="radio"]:checked + label {
+    width: 15.5em;
+    margin-right: 2em;
+    margin-left: 1.5em;
+    z-index: 1;
+}
+
+#playerItems {
+    display: flex;
+    flex-direction: row;
+    width: 15em;
+    height: 10em;
+    margin-top: auto;
+}
+
+#playerDeck {
+    display: flex;
+    align-self: flex-end;
+    padding: 0;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+}
+
+#playerDeck > img {
+    margin: auto;
+    width: 4em;
+    height: 4em;
+    object-fit: cover;
+    border: 0.2em solid #ccc;
+    border-radius: 50%;
+    background-color: #555555;
+}
+
+#playerBag {
+    display: flex;
+    padding: 0;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+}
+
+#playerBag > img {
+    margin: auto;
+    width: 9em;
+    height: 9em;
+    object-fit: cover;
+    border: 0.2em solid #ccc;
+    border-radius: 50%;
+    background-color: #555555;
+}
