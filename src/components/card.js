@@ -28,6 +28,11 @@ class Card extends Component {
                 <div className='cardStat'>
 
                 </div>
+                <div className='cardType'>
+                  <div>
+                    <p>{this.props.CardDetail.detail.type}</p>
+                  </div>
+                </div>
               </div>
             </div>
         </div>

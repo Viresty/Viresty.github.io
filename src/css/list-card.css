@@ -48,10 +48,15 @@
   align-items: center;
   justify-content: center;
   /* background-color: #39404c; */
-  min-width: calc((13em + 2vw)) !important;
-  min-height: calc((20em + 2.5vw)) !important;
+  width: calc((13em + 2vw)) !important;
+  height: calc((20em + 2.5vw)) !important;
   border-radius: 1em;
   margin: 0 auto;
+  z-index: 0;
+}
+
+.card:hover {
+  z-index: 1;
 }
 
 .cardMoreInfo {
@@ -61,7 +66,7 @@
   width: 100%;
   height: 100%;
   border-radius: 0.8em;
-  /* border: 0.1em solid white; */
+  border: 0.1em solid white;
   text-align: center;
   background-color: #39404c;
   /* background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 1));  */
@@ -154,7 +159,7 @@
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  min-height: 40%;
+  min-height: 45%;
   width: 100%;
   bottom: 0;
   padding: 0.8em;
@@ -235,4 +240,82 @@
   height: 100%;
   width: 100%;
   z-index: 1;
+}
+
+.cardType {
+  position: absolute;
+  display: flex;
+  bottom: -0.5em;
+  width: 100%;
+  font-size: 0.6em;
+}
+
+.cardType > div {
+  display: flex;
+  margin: auto;
+  width: 11em;
+  height: 1.8em;
+  border: 0.1em solid white;
+  border-radius: 1em;
+  background-color: #555;
+}
+
+/* Stat show */
+.cardStat {
+  position: absolute;
+  right: -0.5em;
+  top: 2em;
+  max-width: 2em;
+}
+
+.cardStatContent {
+  display: flex;
+  position: relative;
+  text-align: center;
+  height: 2em;
+  width: 2em;
+  background-color: #555;
+  border-radius: 50%;
+  margin: 0.5em 0;
+  font-size: 1em;
+  z-index: 0;
+  transition: all 0.2s linear;
+}
+
+.cardStatMoreInfo {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  min-height: 100%;
+  left: 100%;
+  top: 0;
+  z-index: -1;
+  background-color: inherit;
+  border-radius: 0 0.5em 0.5em 0.5em;
+  transition: width 0.1s linear, opacity 0.1s ease-in-out;
+}
+
+.cardStatContent:hover {
+  width: 2.5em;
+  margin-left: -0.5em;
+  border-radius: 1em 0 0 1em;
+  font-size: 1.1em;
+}
+
+.cardStatContent:hover > .cardStatMoreInfo {
+  width: 9em;
+  height: fit-content;
+  padding: 0.5em;
+  opacity: 1;
+  z-index: 1;
+}
+
+.cardStatMoreInfo h1 {
+  font-size: 0.8em;
+}
+
+.cardStatMoreInfo p {
+  font-size: 0.6em;
 }
