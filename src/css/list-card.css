@@ -282,6 +282,10 @@
   transition: all 0.2s linear;
 }
 
+.cardStatContent p {
+  font-size: 0.8em;
+}
+
 .cardStatMoreInfo {
   position: absolute;
   opacity: 0;
@@ -291,10 +295,11 @@
   min-height: 100%;
   left: 100%;
   top: 0;
+  font-size: 0;
   z-index: -1;
   background-color: inherit;
   border-radius: 0 0.5em 0.5em 0.5em;
-  transition: width 0.1s linear, opacity 0.1s ease-in-out;
+  transition: all 0.1s linear;
 }
 
 .cardStatContent:hover {
@@ -309,6 +314,7 @@
   height: fit-content;
   padding: 0.5em;
   opacity: 1;
+  font-size: 1em;
   z-index: 1;
 }
 

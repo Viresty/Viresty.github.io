@@ -70,7 +70,7 @@ const Home = () => {
                 <div className='content fade-in'>
                     <h1 className='content-title'>Chiến thuật linh động</h1>
                     <p className="content-detail">Hàng trăm thẻ bài trang bị và phép thuật khiến mỗi chuyến chinh phạt đều trở nên mới mẻ và thú vị.</p>
-                    <List ListItems={data[0]} shortlist={true}/>
+                    <List ListItems={data[0]} shortlist={true} cardPreview={true} />
                     <Link to={'/library'} className='content-link'>XEM THÊM <i className="fa fa-chevron-right" aria-hidden="true"></i></Link>
                 </div>
                 <div className="content fade-in">

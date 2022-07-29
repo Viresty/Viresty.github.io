@@ -16,9 +16,10 @@ class Card extends Component {
             <div className={this.props.cardPreview?'cardPreview cardMoreInfo':'cardMoreInfo'}>
               <div className='cardInfo'>
                 <img className='cardImg' src= {this.props.CardDetail.url} alt={this.props.CardDetail.alt}></img>
-                <div className='manaCost'>
+                {this.props.CardDetail.detail.manaCost != "" &&
+                  <div className='manaCost'>
                   <h2>{this.props.CardDetail.detail.manaCost}</h2>
-                </div>
+                </div>}
                 <div className='cardName'>
                   <h1>{this.props.CardDetail.detail.name}</h1>
                 </div>

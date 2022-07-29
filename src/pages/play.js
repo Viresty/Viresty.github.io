@@ -18,64 +18,77 @@ import './../css/play-layout.css';
 import data from '../data/test-data.json'
 import deckIcon from './../img/icon/card-game.png';
 
-// Player
-const initialObjects = {
-    'player': {
-        id: 'player',
-        stat: {
-            Avatar: 'https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789',
-            Lv: 1,
-            EXP: 0,
-            NextLv: 2,
-            MaxHP: 20,
-            HP: 20,
-            MaxMP: 3,
-            MP: 3,
-            ATK: 2,
-            DEF: 1,
-            SHEILD: 1,
-            ATKSPD: 1,
-            MaxHand: 5
-        },
-        buff: [],
-        weapon: [data['1']['001']],
-        hand: [],
-        deck: [],
-        graveyard: []
-    }
+// Notification
+const createNotification = (mes) => {
+    return;
 }
 
-const optimizeObject = () => {
+// Player
+const initPlayer = (initialStatus) => {
+    // clone detail
+    var newStatus = {...initialStatus, detail: Object.assign({}, initialStatus.detail)};
+    // clone status
+    newStatus.detail.stat = Object.assign({}, initialStatus.detail.stat);
+    Object.keys(newStatus.detail.stat).map((key, idx) => {
+        // Clone stat
+        newStatus.detail.stat[key] = Object.assign({}, initialStatus.detail.stat[key]);
+        // newStatus.detail.stat[key] = powerUpByLv(initialStatus.detail.stat[key], Lv);
+    })
+    // More Info
+    newStatus.id = 'player';
+    newStatus.detail.stat['MaxHP'] = {
+        name: 'SINH LỰC TỐI ĐA',
+        value: newStatus.detail.stat['HP'].value
+    }
+    newStatus.detail.stat['MaxMP'] = {
+        name: 'NĂNG LƯỢNG TỐI ĐA',
+        value: newStatus.detail.stat['MP'].value
+    };
+    newStatus.detail.stat['EXP'] = {value: 0};
+    newStatus.detail.stat['MaxEXP'] = {value: 10};
+    newStatus.detail['Lv'] = 1;
+    newStatus.weapon = [data['1']['001']];
+    newStatus.buff = [];
+    newStatus.hand = [];
+    newStatus.deck = [];
+    newStatus.graveyrad = [];
+    // console.log(initialStatus);
+    return newStatus;
+}
 
+const initialObjects = {
+    'player': initPlayer(data['0']['001'])
 }
 // reducer
 // id: mục tiêu của hành động
-const objectListReducer = (state, action) => {
+const objectListReducer = (states, action) => {
+    const state = {...states}
     const payload = action.payload;
     switch (action.type) {
         // COMBAT
         case 'CHANGE_STAT': // id, stat, value
-            state[payload.id].stat[payload.stat] += payload.value;
+            state[payload.id].detail.stat[payload.stat].value += payload.value;
             return state;
 
         case 'SET_STAT': // id, stat, value
-            state[payload.id].stat[payload.stat] = payload.value;
+            state[payload.id].detail.stat[payload.stat].value = payload.value;
             return state;
 
         case 'DEAL_DAMAGE': // id, value
-            let damage = payload.value - state[payload.id].stat['DEF'];
+            // console.log("MONSTER0:", state[payload.id].detail.stat['DEF'].value);
+            let damage = payload.value - state[payload.id].detail.stat['DEF'].value;
             if (damage > 0) {
-                state[payload.id].stat['DEF'] = 0;
-                state[payload.id].stat['HP'] -= damage;
+                state[payload.id].detail.stat['DEF'].value = 0;
+                state[payload.id].detail.stat['HP'].value -= damage;
             } else {
-                state[payload.id].stat['DEF'] -= payload.value;
+                state[payload.id].detail.stat['DEF'].value -= payload.value;
             }
             return state;
 
         case 'HEAL_HP':
-            state[payload.id].stat['HP'] += payload.value;
-            if (state[payload.id].stat['HP'] > state[payload.id].stat['MaxHP'])
-                state[payload.id].stat['HP'] = state[payload.id].stat['MaxHP'];
+            state[payload.id].detail.stat['HP'].value += payload.value;
+            if (state[payload.id].detail.stat['HP'].value > state[payload.id].detail.stat['MaxHP'].value)
+                state[payload.id].detail.stat['HP'].value = state[payload.id].detail.stat['MaxHP'].value;
 
         // CARD
         case 'ADD_ITEMS_TO': // id, target, item
@@ -86,22 +99,35 @@ const objectListReducer = (state, action) => {
             return state;
 
         case 'DELETE_ITEM_FROM': //id, target, itemIdx
-            let newA = {...state};
             delete state[payload.id][payload.target][payload.itemIdx];
-            return newA;
+            return state;
 
         case 'DRAW_CARDS': // id, amount
-            const deck = state[payload.id]['deck'];
-            const hand = state[payload.id]['hand'];
+            var deck = state[payload.id]['deck'];
+            var hand = state[payload.id]['hand'];
             for (var i=0; i < payload.amount; i++) {
+                if (deck.length === 0) {
+                    console.log('OUT');
+                    break;
+                }
                 const itemID = Math.floor(Math.random()*deck.length);
                 const card = deck[itemID];
                 hand.push(card);
-                deck.slice(itemID, 1);
-                console.log("!");
+                deck = [...deck.slice(0, itemID),
+                        ...deck.slice(itemID + 1)]
+                console.log(i);
+                console.log(deck.length);
             }
-            console.log(state);
+            // console.log(state);
             return state;
+        
+        case 'MOVE_TO': // id, from, target
+            var resources = state['player'][payload.from];
+            var newResources = state['player'][payload.target];
+            var card = deck[payload.id];
+            newResources.push(card);
+            resources = [...resources.slice(0, payload.id),
+                        ...resources.slice(payload.id + 1)]
 
         // ROUND
         case 'CLONE_DECK':
@@ -118,12 +144,11 @@ const objectListReducer = (state, action) => {
             const values = Object.values(data["6"]);
             const monster = values[Math.floor(Math.random() * values.length)];
             const item = createMonster(payload.lv, monster)
-            return {...state, ["monster"+payload.id]: item}
+            return {...state, ["monster"+payload.actionId]: item}
 
         case 'REMOVE_MONSTER': // id
-            const newB = {...state};
             delete state[payload.id];
-            return newB;
+            return state;
         
         default:
             return state;
@@ -148,9 +173,11 @@ const createMonster = (Lv, initialStatus) => {
         newMonster.detail.stat[key] = Object.assign({}, initialStatus.detail.stat[key]);
         newMonster.detail.stat[key] = powerUpByLv(initialStatus.detail.stat[key], Lv);
     })
+    newMonster.detail.stat['MaxHP'] = Object.assign({}, newMonster.detail.stat['HP']);
+    newMonster.detail.stat['MaxMP'] = Object.assign({}, newMonster.detail.stat['MP']);
     newMonster.detail.name += " Lv. " + Lv;
-    console.log(initialStatus);
-    console.log(newMonster);
+    // console.log(initialStatus);
+    // console.log(newMonster);
     return newMonster;
 }
 
@@ -177,29 +204,35 @@ const deckReducer = (state, action) => {
     }
 }
 
-const optimizeCard = (payload, initialCard) => {
+const optimizeCard = (payload, initialCard, moreOption = {}) => {
     var newCard = {...initialCard, detail: Object.assign({}, initialCard.detail)};
-
-    switch (initialCard.typeCard) {
+    // clone status
+    newCard.detail.stat = Object.assign({}, initialCard.detail.stat);
+    Object.keys(newCard.detail.stat).map((key, idx) => {
+        // Clone stat
+        newCard.detail.stat[key] = Object.assign({}, initialCard.detail.stat[key]);
+    });
+    
+    switch (newCard.typeCard) {
         case 'Action':
-            initialCard.detail.action.map((action) => {
-                action.value = payload.stat[action.depend_on];
+            newCard.detail.action.map((action) => {
+                action.value = payload.detail.stat[action.depend_on].value;
             })
             break;
         
         default:
             break;
     }
-
+    newCard.detail['MoreOption'] = moreOption;
     // Re-render abilities describe
-    initialCard.detail.optimizeDescribeIdx.map((index, idx) => {
-        initialCard.detail.optimizeDescribe[index] = initialCard.detail.action[idx].value;
+    newCard.detail.optimizeDescribeIdx.map((index, idx) => {
+        newCard.detail.optimizeDescribe[index] = newCard.detail.action[idx].value;
     })
-    initialCard.detail.abilities = "";
-    initialCard.detail.optimizeDescribe.map((word)=>{
-        initialCard.detail.abilities += word;
+    newCard.detail.abilities = "";
+    newCard.detail.optimizeDescribe.map((word)=>{
+        newCard.detail.abilities += word;
     })
-    return initialCard;
+    return newCard;
 }
 
 // Game
@@ -218,7 +251,7 @@ const Play = (props) => {
     const [cardPreview, setCardPreview] = useState({});
 
     // Init
-    const initEvents = Lvl => {
+    const initEvents = (Lvl, round) => {
         const values = Object.values(data['8']);
         const nextEv = [];
         for (var i=0; i<3; i++) {
@@ -230,6 +263,14 @@ const Play = (props) => {
                 newEvent.action[idx] = Object.assign({}, item);
                 newEvent.action[idx].payload = Object.assign({}, item.payload);
                 newEvent.action[idx].payload = powerUpByLv(newEvent.action[idx].payload, Lvl);
+            })
+            // Re-render abilities describe
+            newEvent.optimizeDescribeIdx.map((index, idx) => {
+                newEvent.optimizeDescribe[index] = newEvent.action[idx].payload.value;
+            })
+            if (newEvent.optimizeDescribe.length != 0) newEvent.abilities = "";
+            newEvent.optimizeDescribe.map((word)=>{
+                newEvent.abilities += word;
             })
             newEvent.Lv = Lvl;
             nextEv.push(newEvent);
@@ -248,7 +289,7 @@ const Play = (props) => {
 
     // Handle Function
     const handleAction = action => {
-        console.log(action);
+        // console.log(action);
         switch (action.type) {
             case 'CREATE':
                 let cardType = action.cardID[0];
@@ -266,13 +307,10 @@ const Play = (props) => {
                 break;
             
             case 'BATTLE':
+                console.log(action);
                 handleObjects({
-                    type: action.type,
-                    payload: {
-                        id: action.id,
-                        stat: action.stat,
-                        value: action.value
-                    }
+                    type: action.payload.effect,
+                    payload: action.payload
                 });
                 break;
             
@@ -298,16 +336,20 @@ const Play = (props) => {
     }
 
     const handelTurnStart = e => {
-        for (var i=0; i < objectList[e.id].ATKSPD; i++) {
-
-        }
+        handleObjects({
+            type: 'DRAW_CARDS',
+            payload: {
+                id: 'player',
+                amount: 1
+            }
+        })
     }
 
-    const handleProcess = e => {
+    const handleProccess = e => {
         switch (e) {
             case 'OUT_COMBAT':
-                setEvents(initEvents(3));
-                break;
+                setEvents(initEvents(floor, round));
+                return;
             // ROUND
             case 'ROUND_START':
                 handleRoundStart();
@@ -321,6 +363,7 @@ const Play = (props) => {
 
             // TURN
             case 'TURN_START':
+                handelTurnStart();
                 setProccess('IN_TURN');
                 return;
 
@@ -331,6 +374,20 @@ const Play = (props) => {
             default:
                 return;
         }
+    }
+
+    const handleCombat = () => {
+        if (objectList['player'].detail.stat['HP'].value <= 0)
+            setProccess('GAME_OVER');
+        Object.keys(objectList).map((key) => {
+            if (objectList[key].detail.stat['HP'].value <= 0)
+                handleObjects({
+                    type: "REMOVE_MONSTER",
+                    payload: {id: key}
+                });
+        })
+        if (Object.keys(objectList).length <= 1 && gameProccess!='ROUND_END')
+            setProccess('ROUND_END');
     }
 
     // RENDER
@@ -382,36 +439,28 @@ const Play = (props) => {
 
                 <div id='playerInfo'>
                     <div id='playerMoreInfo'>
-                        <button id='playerAvatar' onClick={() => {
-                            console.log(events);
-                            handleObjects({
-                                type: 'ADD_MONSTER',
-                                payload: {
-                                    id: 'monster2',
-                                    item: createMonster(3, data['6']['001'])
-                                }
-                            })
-                        }}>
-                            <img src={objectList['player'].stat.Avatar}></img>
+                        <button id='playerAvatar'>
+                            <img src={objectList['player'].url} alt={objectList['player'].alt}></img>
                         </button>
-                        <div id='playerLever'><p>{objectList['player'].stat.Lv}</p></div>
-                        <div id='playerMaxHP'>
-                            <div id='playerHP' style={{width: (objectList['player'].stat.HP/objectList['player'].stat.MaxHP)*100+'%'}}></div>
-                            <p>{objectList['player'].stat.HP}/{objectList['player'].stat.MaxHP}</p>
+                        <div id='playerLever'><p>{objectList['player'].detail.Lv}</p></div>
+                        <div id='playerMaxHP' className="MaxHPBar">
+                            <div id='playerHP' className="HPBar"
+                                style={{width: (objectList['player'].detail.stat['HP'].value/objectList['player'].detail.stat['MaxHP'].value)*100+'%'}}></div>
+                            <p>{objectList['player'].detail.stat.HP.value}/{objectList['player'].detail.stat.MaxHP.value}</p>
                         </div>
                         <div id='playerMaxMP'>
-                            <div id='playerMP' style={{width: (objectList['player'].stat.MP/objectList['player'].stat.MaxMP)*100+'%'}}></div>
-                            <p>{objectList['player'].stat.MP}/{objectList['player'].stat.MaxMP}</p>
+                            <div id='playerMP' style={{width: (objectList['player'].detail.stat.MP.value/objectList['player'].detail.stat.MaxMP.value)*100+'%'}}></div>
+                            <p>{objectList['player'].detail.stat.MP.value}/{objectList['player'].detail.stat.MaxMP.value}</p>
                         </div>
                         <div id='playerMaxEXP'>
-                            <div id='playerEXP' style={{width: (objectList['player'].stat.EXP/objectList['player'].stat.NextLv)*100+'%'}}></div>
+                            <div id='playerEXP' style={{width: (objectList['player'].detail.stat.EXP.value/objectList['player'].detail.stat.MaxEXP.value)*100+'%'}}></div>
                         </div>
                         <div id='playerLv' className="hidden">
                             <p>1</p>
                         </div>
                     </div>
 
-                    {handCards}
+                    {gameProccess!='OUT_COMBAT' && gameProccess!='ROUND_END' && handCards}
 
                     <div id='playerItems'>
                         <div id='playerDeck'>
@@ -421,9 +470,10 @@ const Play = (props) => {
                             <img src="https://i.ibb.co/pxwVsx6/bag.png"></img>
                         </div>
                     </div>
+                    {gameProccess!='OUT_COMBAT' && gameProccess!='ROUND_END' &&
                     <div id='end-turn-btn'>
-                        <button className="big-button">KẾT THÚC LƯỢT</button>
-                    </div>
+                        <button className="big-button" onClick={() => setProccess('TURN_END')}>KẾT THÚC LƯỢT</button>
+                    </div>}
                 </div>
             </div>
         </div>
@@ -438,7 +488,20 @@ const Play = (props) => {
                         return (
                             <div className="handCard">
                                 <input type="radio" name="handCard" id={"handCard"+idx}></input>
-                                <label htmlFor={"handCard"+idx}>
+                                <label htmlFor={"handCard"+idx}
+                                onClick={() => {
+                                    item.detail.action.map((action) => {
+                                        handleAction({
+                                            type: action.type,
+                                            payload: {
+                                                id: 'monster0',
+                                                effect: action.effect,
+                                                value: action.value
+                                            }
+                                        })
+                                    })
+                                }}
+                                >
                                     <Card CardDetail={item} />
                                 </label>
                             </div>
@@ -458,12 +521,21 @@ const Play = (props) => {
             <div id="monsterArea">
                 {
                     Object.keys(monsterList).map((key, idx) => {
+                        const monster = monsterList[key];
+                        const stats = monster.detail.stat;
                         return (
                             <div className="Monster">
                                 <input type="radio" name="monster" id={"monster"+idx}></input>
                                 <label htmlFor={"monster"+idx}>
-                                    <MonsterCard CardDetail={monsterList[key]} />
+                                    <MonsterCard CardDetail={monster} />
                                 </label>
+                                <div className="Monster_Info">
+                                    <div className="MaxHPBar">
+                                        <div className="HPBar"
+                                            style={{width: (stats['HP'].value/stats['MaxHP'].value)*100+"%"}}></div>
+                                        <p>{stats['HP'].value}/{stats['MaxHP'].value}</p>
+                                    </div>
+                                </div>
                             </div>
                         )
                     })
@@ -494,23 +566,28 @@ const Play = (props) => {
         // console.log(objectList);
         reloadAnimation();
         // handleRoundStart();
-    }, [])
+    }, []);
     
     useEffect(() => {
-        console.log(gameProccess)
-        handleProcess(gameProccess);
-    }, [gameProccess])
+        console.log(gameProccess);
+        if (round > 10) {
+            setFloor(floor + 1);
+            setRound(1);
+        }
+        handleProccess(gameProccess);
+        resetRenderHandCard(handCards => renderHandCard(objectList['player'].hand));
+    }, [gameProccess]);
 
     useEffect(() => {
         resetRenderEvent(renderRoundEvent());
-    }, [events])
-
+    }, [events]);
+    
     // re-render khi objectList update
     useEffect(() => {
-        // console.log(objectList);
-        resetRenderMonster(renderMonster(objectList));
-        resetRenderHandCard(renderHandCard(objectList['player'].hand));
-    }, [objectList])
+        handleCombat();
+        resetRenderMonster(monsterContent => renderMonster(objectList));
+        console.log(objectList);
+    }, [objectList]);
 
     return (
         <div className="container play-layout">

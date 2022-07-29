@@ -464,7 +464,8 @@
                 "abilities" : "Gây 1 sát thương lên kẻ địch",
                 "action": [
                     {
-                        "type": "DEAL_DAMAGE",
+                        "type": "BATTLE",
+                        "effect": "DEAL_DAMAGE",
                         "depend_on": "ATK",
                         "value": 1
                     }
@@ -524,9 +525,10 @@
                         "value": 10
                     }
                 },
-                "attack": [
+                "action": [
                     {
-                        "type": "DEAL_DAMAGE",
+                        "type": "BATTLE",
+                        "effect": "DEAL_DAMAGE",
                         "depend_on": "ATK",
                         "value": 1
                     }
@@ -545,6 +547,9 @@
                     "type": "ADD_MONSTER_RANDOM"
                 }
             ],
+            "abilities": "Chiến đấu với 1 quái vật",
+            "optimizeDescribe": [],
+            "optimizeDescribeIdx": [],
             "nextProccess": "ROUND_START"
         },
         "002": {
@@ -561,6 +566,12 @@
                     } 
                 }
             ],
+            "optimizeDescribe": [
+                "Gây ", 1, " sát thương lên người chơi"
+            ],
+            "optimizeDescribeIdx": [
+                1
+            ],
             "nextProccess": "ROUND_END"
         },
         "003": {
@@ -576,6 +587,12 @@
                         "value": 5
                     }
                 }
+            ],
+            "optimizeDescribe": [
+                "Hồi ", 1, " sinh lực cho người chơi"
+            ],
+            "optimizeDescribeIdx": [
+                1
             ],
             "nextProccess": "ROUND_END"
         }

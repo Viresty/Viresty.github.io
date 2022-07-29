@@ -98,24 +98,27 @@
 }
 
 #playerMaxHP {
-    position: absolute;
     bottom: 3em;
     left: 2.5em;
     width: 12.5em;
     height: 2em;
-    background-color: #777;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.4));
-    padding: 0.2em 0.5em;
     border-radius: 0.2em;
-    text-align: center;
     clip-path: polygon(100% 0, 100% 20%, 90% 100%, 0 100%, 0 0);
 }
 
-#playerMaxHP p {
+.MaxHPBar {
     position: absolute;
+    background-color: #777;
+    background-image: linear-gradient(rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.4));
+    padding: 0.2em 0.5em;
+    text-align: center;
+}
+
+.MaxHPBar p {
+    position: absolute;
+    width: 100%;
     top: -0.2em;
     left: 0;
-    width: 100%;
     font-size: 1.5em;
 }
 
@@ -125,6 +128,12 @@
     height: 100%;
     border-radius: 0.2em;
     clip-path: polygon(100% 0, 100% 20%, 91% 100%, 0 100%, 0 0);
+}
+
+.HPBar {
+    background-color: rgb(240, 45, 45);
+    background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.6));
+    height: 100%;
 }
 
 #playerMaxMP {
@@ -219,6 +228,7 @@
 
 #cardArea .card {
     transform: scale(0.6) translate(-4.5em, -8em);
+    transition: all 0.05s linear;
 }
 
 #cardArea .handCard:hover .card {
@@ -343,6 +353,63 @@
     flex-direction: row;
     justify-content: center;
     width: 70%;
-    margin: auto;
-    margin-bottom: 1em;
+    margin: 4em auto;
+}
+
+.card .backgroundEffect {
+    position: absolute;
+    display: flex;
+    z-index: 0;
+}
+
+.backgroundEffect svg {
+    position: absolute;
+}
+
+/* Monster */
+.Monster_Info {
+    position: relative;
+    width: 100%;
+}
+
+.Monster_Info .MaxHPBar {
+    top: 1em;
+    left: -10%;
+    height: 2em;
+    width: 120%;
+    border-radius: 0.3em;
+}
+
+.Monster_Info .HPBar {
+    border-radius: 0.2em;
+}
+
+/* Event */
+.eventCard path {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 1.2;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+}
+
+.eventCard:hover path {
+    animation: animate-chosing 1s linear forwards;
+}
+
+@keyframes animate-chosing {
+    0% {
+        stroke-width: 0;
+        stroke-dashoffset: 300;
+        stroke: rgba(255, 255, 255, 0);
+    }
+    50% {
+        stroke-width: 1.2;
+        stroke-dashoffset: 0;
+        stroke: white;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        stroke: #0aaad6;
+    }
 }
