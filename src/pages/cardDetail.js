@@ -1,6 +1,5 @@
 import './../css/card-detail.css';
 
-import { reloadAnimation } from '../function/page';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import data from '../data/test-data.json';
@@ -38,7 +37,6 @@ const CardDetail = () => {
     
     useEffect(() => {
         console.log(cardTarget);
-        reloadAnimation();
     }, [])
 
     return (

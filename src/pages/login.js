@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import './../css/login.css';
 import logo from './../logo.svg';
@@ -9,6 +10,11 @@ import {useEffect} from 'react';
   
 const Login = (props) => {
 
+  const [loginInfo, setLoginInfo] = useState({
+    uname: "",
+    pass: "",
+    rpass: ""
+  });
   const [errorMessages, setErrorMessages] = useState({});
 
   // User Login info
@@ -30,28 +36,28 @@ const Login = (props) => {
     rpass: "Mật khẩu không trùng khớp"
   };
 
+  const handleChange = (e) => {
+    setLoginInfo({...loginInfo, [e.target.name]: e.target.value});
+  }
+
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
 
-    if (props.isLoginForm) {
-      var { uname, pass } = document.forms[0];
-    } else {
-      var { uname, pass, rpass } = document.forms[0];
-    }
-
     // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+    const userData = database.find((user) => user.username === loginInfo.uname);
+    console.log(loginInfo);
 
     // 
     if (props.isLoginForm) {
       // Compare user info
       if (userData) {
-        if (userData.password !== pass.value) {
+        if (userData.password !== loginInfo.pass) {
           // Invalid password
           setErrorMessages({ name: "pass", message: errors.pass });
         } else {
           props.setLogin(true);
+          localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
           window.location = '/#';
         }
       } else {
@@ -64,11 +70,11 @@ const Login = (props) => {
         // Username founded
         setErrorMessages({ name: "cname", message: errors.cname });
       } else {
-        if (pass.value !== rpass.value) {
+        if (loginInfo.pass !== loginInfo.rpass) {
           // Invalid password
           setErrorMessages({ name: "rpass", message: errors.rpass });
         } else {
-          window.location = '#/login';
+          window.location = '/#/login';
         }
       }
     }
@@ -111,14 +117,14 @@ const Login = (props) => {
               <div className="form">
                 <form onSubmit={handleSubmit}>
                   <div className="input-container">
-                    <input type="text" name="uname" required />
+                    <input type="text" name="uname" value={loginInfo.uname} onChange={handleChange} required />
                     <label>Tên đăng nhập </label>
                     {renderErrorMessage("uname")}
                   </div>
                   <div className="input-container">
-                    <input type="password" name="pass" required />
+                    <input type="password" name="pass" onChange={handleChange} required />
                     <label>Mật khẩu </label>
-                    <button type="button" className='hide-password-btn' onClick={ShowPassword}>
+                    <button type="button" className='hide-password-btn' value={loginInfo.pass} onClick={ShowPassword}>
                       <i className="fa fa-eye-slash" aria-hidden="true"></i>
                     </button>
                     {renderErrorMessage("pass")}
@@ -159,19 +165,19 @@ const Login = (props) => {
               <div className="form">
                 <form onSubmit={handleSubmit}>
                   <div className="input-container">
-                    <input type="text" name="uname" required />
+                    <input type="text" name="uname" value={loginInfo.uname} onChange={handleChange} required />
                     <label>Tên đăng nhập, email </label>
-                    {renderErrorMessage("uname")}
+                    {renderErrorMessage("cname")}
                   </div>
                   <div className="input-container">
-                    <input type="password" name="pass" value={null} required />
+                    <input type="password" name="pass" value={loginInfo.pass} onChange={handleChange}  required />
                     <label>Mật khẩu </label>
                     <button type="button" className='hide-password-btn' onClick={ShowPassword}>
                       <i className="fa fa-eye-slash" aria-hidden="true"></i>
                     </button>
                   </div>
                   <div className="input-container">
-                    <input type="password" name="rpass" value={null} required />
+                    <input type="password" name="rpass" value={loginInfo.rpass} onChange={handleChange}  required />
                     <label>Nhập lại mật khẩu </label>
                     <button type="button" className='hide-password-btn' onClick={ShowPassword}>
                       <i className="fa fa-eye-slash" aria-hidden="true"></i>
@@ -199,8 +205,6 @@ const Login = (props) => {
   useEffect(() => {
 
     reloadAnimation();
-    document.getElementById('header-container').classList.add('hidden');
-    document.getElementById('footer-container').classList.add('hidden');
 
   }, [])
 

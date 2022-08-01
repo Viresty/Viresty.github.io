@@ -96,21 +96,26 @@ class Header extends Component {
           <button onClick={this.toggleUserBar}>
             <img id='userAvatar-img' src='https://i.pinimg.com/originals/60/69/58/6069580ee995d574614e4a5915029fa3.jpg' alt='user-avatar'></img>
           </button>
-          <div id='userBar' className='hidden'>
+          <div id='userBar' className='closed'>
             <div className='blocker' onClick={this.toggleUserBar}></div>
             <ul className='NavBarUl'>
                 <li>
                   <NavLink to={'/profile'}>
-                    <i class="fa fa-user" aria-hidden="true"></i>HỒ SƠ
+                    <i className="fa fa-user" aria-hidden="true"></i>HỒ SƠ
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to='/settings'>
-                    <i class="fa fa-cogs" aria-hidden="true"></i>CÀI ĐẶT
+                    <i className="fa fa-cogs" aria-hidden="true"></i>CÀI ĐẶT
                   </NavLink>
                 </li>
                 <li>
-                  <button><i class="fa fa-sign-out" aria-hidden="true"></i>ĐĂNG XUẤT</button>
+                  <button onClick={() => {
+                    localStorage.removeItem('loginInfo');
+                    this.props.setLogin(false);
+                    window.location = '/#/login';
+                  }}>
+                    <i className="fa fa-sign-out" aria-hidden="true"></i>ĐĂNG XUẤT</button>
                 </li>
             </ul>
           </div>

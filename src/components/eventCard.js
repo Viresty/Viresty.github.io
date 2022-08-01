@@ -13,9 +13,6 @@ const EventCard = (props) => {
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="-1 -1 68 102" xmlSpace="preserve">
             <path d="M 33 0 L 66 50 L 33 100 L 0 50 L 33 0 L 35 3 Z"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            viewBox="-1 -1 68 102" xmlSpace="preserve">
             <path d="M 4 8 L 62 8 L 62 91 L 4 91 L 4 8 L 5 8 Z"/>
         </svg>
         </div>

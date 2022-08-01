@@ -293,7 +293,7 @@
   height: 0;
   padding: 0;
   min-height: 100%;
-  left: 100%;
+  left: 99%;
   top: 0;
   font-size: 0;
   z-index: -1;
@@ -310,7 +310,7 @@
 }
 
 .cardStatContent:hover > .cardStatMoreInfo {
-  width: 9em;
+  width: 10em;
   height: fit-content;
   padding: 0.5em;
   opacity: 1;

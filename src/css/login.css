@@ -114,6 +114,7 @@ input[type="password"]:focus + label {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     font-size: calc(1rem + 0.1vw);
+    z-index: 20;
 }
 
 .login-layout .content {

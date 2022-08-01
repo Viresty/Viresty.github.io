@@ -407,3 +407,15 @@ button i {
   color: white;
   box-shadow: 0 0 0.5em 0.3em lightblue;
 }
+
+.disable-btn {
+  background-color: #777;
+  color: whitesmoke;
+  box-shadow: 0 0 0.5em 0.1em #555;
+}
+
+.disable-btn:hover {
+  background-color: #777;
+  color: whitesmoke;
+  box-shadow: 0 0 0.5em 0.3em #555;
+}

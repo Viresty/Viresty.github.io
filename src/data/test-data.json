@@ -8,27 +8,37 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
                         "name": "SINH LỰC",
+                        "lvPowerUp": 2,
                         "value": 20
                     }, 
                     "MP": {
                         "name": "NĂNG LƯỢNG",
+                        "lvPowerUp": 1,
                         "value": 3
                     }, 
                     "ATK": {
                         "name": "TẤN CÔNG",
+                        "lvPowerUp": 1,
                         "value": 2
                     },
                     "DEF": {
                         "name": "PHÒNG THỦ",
+                        "lvPowerUp": 1,
                         "value": 2
                     },
+                    "ATKSPD": {
+                        "name": "TỐC ĐỘ TẤN CÔNG",
+                        "lvPowerUp": 0.3,
+                        "value": 1
+                    },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
+                        "name": "TỐC ĐỘ DI CHUYỂN",
+                        "lvPowerUp": -0.2,
                         "value": 10
                     }
                 },
@@ -43,7 +53,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -78,7 +88,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -113,7 +123,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -148,7 +158,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -183,7 +193,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -218,7 +228,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -253,7 +263,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -288,7 +298,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -323,7 +333,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -358,7 +368,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -393,7 +403,7 @@
             "detail": {
                 "name": "Hắc Chiến Binh",
                 "type": "Chức Nghiệp",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "HP": {
@@ -430,13 +440,13 @@
             "detail": {
                 "name": "Kiếm dài",
                 "type": "Trang bị",
-                "manaCost": 1,
+                "cost": 1,
                 "rank": "Thường",
-                "stat": {
+                "statChange": {
                     "ATK": 1,
-                    "ATKSPD": 1,
-                    "TGH": 3
+                    "ATKSPD": 1
                 },
+                "touch": 100,
                 "abilities" : "",
                 "action": [
                     {
@@ -444,7 +454,7 @@
                         "target": "deck",
                         "when": "ROUND_START",
                         "cardID": "2001",
-                        "amount": 3
+                        "amount": 6
                     }
                 ]
             }
@@ -459,7 +469,7 @@
             "detail": {
                 "name": "Chém đơn",
                 "type": "Hành động",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Thường",
                 "abilities" : "Gây 1 sát thương lên kẻ địch",
                 "action": [
@@ -489,9 +499,9 @@
             "itemID": "6001",
             "typeCard": "Action",
             "detail": {
-                "name": "Slime Độc",
+                "name": "Slime",
                 "type": "Quái vật",
-                "manaCost": "",
+                "cost": "",
                 "rank": "Thường",
                 "stat": {
                     "HP": {
@@ -518,9 +528,15 @@
                         "lvPowerUp": 1,
                         "value": 3
                     },
-                        "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "basic": 10,
+                    "ATKSPD": {
+                        "name": "TỐC ĐỘ TẤN CÔNG",
+                        "basic": 0.7,
+                        "lvPowerUp": 0.3,
+                        "value": 1
+                    },
+                    "SPD": {
+                        "name": "TỐC ĐỘ DI CHUYỂN",
+                        "basic": 10.2,
                         "lvPowerUp": -0.2,
                         "value": 10
                     }
@@ -540,7 +556,8 @@
     "7": {},
     "8": {
         "001": {
-            "name": "CHIẾN ĐẤU",
+            "url": "https://i.pinimg.com/564x/95/53/b1/9553b1e419703142a0163ba62bfb69bd.jpg",
+            "name": "CHIẾN ĐẤU I",
             "Lv": 1,
             "action": [
                 {
@@ -553,6 +570,83 @@
             "nextProccess": "ROUND_START"
         },
         "002": {
+            "url": "https://i.pinimg.com/564x/37/07/6a/37076aaa767ea7bbf268e2dac7d979a3.jpg",
+            "name": "CHIẾN ĐẤU II",
+            "Lv": 1,
+            "action": [
+                {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }
+            ],
+            "abilities": "Chiến đấu với 2 quái vật",
+            "optimizeDescribe": [],
+            "optimizeDescribeIdx": [],
+            "nextProccess": "ROUND_START"
+        },
+        "003": {
+            "url": "https://i.pinimg.com/564x/b2/06/6a/b2066ad48146a499bf2ef87a7fc56952.jpg",
+            "name": "CHIẾN ĐẤU III",
+            "Lv": 1,
+            "action": [
+                {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }
+            ],
+            "abilities": "Chiến đấu với 3 quái vật",
+            "optimizeDescribe": [],
+            "optimizeDescribeIdx": [],
+            "nextProccess": "ROUND_START"
+        },
+        "004": {
+            "url": "https://i.pinimg.com/564x/6c/e9/79/6ce979a98f6a27463ae35110b1c23617.jpg",
+            "name": "CHIẾN ĐẤU IV",
+            "Lv": 1,
+            "action": [
+                {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }
+            ],
+            "abilities": "Chiến đấu với 4 quái vật",
+            "optimizeDescribe": [],
+            "optimizeDescribeIdx": [],
+            "nextProccess": "ROUND_START"
+        },
+        "005": {
+            "url": "https://i.pinimg.com/564x/87/92/ef/8792ef6a71988c5f4692887473e8f749.jpg",
+            "name": "CHIẾN ĐẤU V",
+            "Lv": 1,
+            "action": [
+                {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }, {
+                    "type": "ADD_MONSTER_RANDOM"
+                }
+            ],
+            "abilities": "Chiến đấu với 5 quái vật",
+            "optimizeDescribe": [],
+            "optimizeDescribeIdx": [],
+            "nextProccess": "ROUND_START"
+        },
+        "006": {
+            "url": "https://i.pinimg.com/564x/1d/7e/ba/1d7ebac426b405c427cf8362ccb02d39.jpg",
             "name": "BẪY: BẪY GẤU",
             "Lv": 1,
             "action": [
@@ -574,7 +668,8 @@
             ],
             "nextProccess": "ROUND_END"
         },
-        "003": {
+        "007": {
+            "url": "https://i.pinimg.com/564x/6f/69/07/6f6907e80da36790cd52969dbc7822a7.jpg",
             "name": "PHÒNG HỒI SỨC",
             "Lv": 1,
             "action": [
@@ -595,8 +690,55 @@
                 1
             ],
             "nextProccess": "ROUND_END"
+        },
+        "008": {
+            "url": "https://i.pinimg.com/564x/df/7c/f2/df7cf236ae9823f2107ae89535a2e08a.jpg",
+            "name": "LỐI ĐI AN TOÀN",
+            "Lv": 1,
+            "action": [
+            ],
+            "abilities": "Đến khu vực tiếp theo.",
+            "optimizeDescribe": [],
+            "optimizeDescribeIdx": [],
+            "nextProccess": "ROUND_END"
         }
     },
+    "9": {
+        "MINIBOSS": {
+            "name": "QUÁI TRÙM PHỤ",
+            "Lv": 1,
+            "action": [
+                {
+                    "type": "ADD_MONSTER_RANDOM",
+                    "payload": {
+                        "addLv": 1
+                    }
+                }
+            ],
+            "abilities": "Chiến đấu với quái trùm phụ",
+            "optimizeDescribe": [],
+            "optimizeDescribeIdx": [],
+            "nextProccess": "ROUND_START"
+        }
+    },
+    "LEVEL": [
+        {
+            "gain": 1,
+            "max": 1
+        },
+        {
+            "gain": 1,
+            "max": 5
+        },
+        {
+            "gain": 2,
+            "max": 15
+        },
+        {
+            "gain": 3,
+            "max": 30
+        }
+    ],
     "ID_NAME": {
         "ROLE": 0,
         "WEAPON": 1,
@@ -606,7 +748,7 @@
         "BUFF": 5,
         "MONSTER": 6,
         "DEBUFF": 7,
-        "PATH": 8,
-        "EVENT": 9
+        "EVENT": 8,
+        "BOSS": 9
     }
 }

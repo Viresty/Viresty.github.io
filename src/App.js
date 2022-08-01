@@ -12,22 +12,33 @@ import Play from './pages/play';
 import CardDetail from './pages/cardDetail';
 import NotFound from './pages/not-found';
 
+import { reloadAnimation } from './function/page';
+
 import Header from './components/header';
 import Footer from './components/footer';
-import Cart from './components/cart'
   
 const App = () => {
 
-    const [isLogged_in, setLogin] = useState(false)
-
+    const [isLogged_in, setLogin] = useState(false);
+    let loginAccount = localStorage.getItem('loginInfo');
+    loginAccount = JSON.parse(loginAccount);
+    
     useEffect (() => {
+        console.log(localStorage);
+        if (loginAccount != "undefined" && loginAccount != null) {
+            setLogin(true);
+        } else {
+            console.log("!!!");
+            setLogin(false);
+        }
+        reloadAnimation();
         console.log(isLogged_in);
     })
 
     return (
     // Git-hub deloy
         <HashRouter forceRefresh={true}>
-            <Header isLogin={isLogged_in} />
+            <Header isLogin={isLogged_in} setLogin={setLogin} />
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="login" element={<Login isLoginForm={true} setLogin={setLogin} />} />
