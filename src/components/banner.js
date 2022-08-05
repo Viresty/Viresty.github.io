@@ -73,16 +73,16 @@ class Banner extends Component {
         }
     }
 
-    const mapStateToProps = (state) => {
-        const banner = state.banner;
-        return {
-            banner
-        };
+const mapStateToProps = (state) => {
+    const banner = state.banner;
+    return {
+        banner
     };
+};
 
 
-    const mapDispatchToProps = {
-        changeBanner,
-    };
+const mapDispatchToProps = {
+    changeBanner,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banner);

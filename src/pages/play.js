@@ -1,296 +1,47 @@
 import React, { useReducer, useState, useEffect } from "react";
+import { playerReducer, deckReducer, objectListReducer, cardTargetReducer } from "../reducers/playReducer";
+import { optimizeCard,
+    createMonster,
+    powerUpByLv,
+    powerUpByPoint,
+    initPlayer,
+    optimizePlayer
+} from "../function/playFuction";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquare as farFaSquare,
          faCircle as farFaCircle,
+         
         } from '@fortawesome/free-regular-svg-icons';
 import { faSquare as fasFaSquare,
         faCircle as fasFaCircle,
-        faCircleInfo, 
+        faCircleInfo,
+        faPlus, faMinus,
+        faCaretLeft, faCaretRight, 
         } from '@fortawesome/free-solid-svg-icons';
 
 import { reloadAnimation } from '../function/page';
 import Card from "../components/card";
 import MonsterCard from "../components/monsterCard";
 import EventCard from "../components/eventCard";
+import StatusBox from "../components/statusBox";
+import InitPlayerBox from "../components/initPlayerBox";
 import './../css/play-layout.css';
 
 import data from '../data/test-data.json'
 import deckIcon from './../img/icon/card-game.png';
 import cardIcon from '../img/icon/card.png';
 
-// Player
-const initPlayer = (initialStatus) => {
-    // clone detail
-    var newStatus = {...initialStatus, detail: Object.assign({}, initialStatus.detail)};
-    // clone status
-    newStatus.detail.stat = Object.assign({}, initialStatus.detail.stat);
-    Object.keys(newStatus.detail.stat).map((key, idx) => {
-        // Clone stat
-        newStatus.detail.stat[key] = Object.assign({}, initialStatus.detail.stat[key]);
-        // newStatus.detail.stat[key] = powerUpByLv(initialStatus.detail.stat[key], Lv);
-    })
-    // More Info
-    newStatus.id = 'player';
-    newStatus.detail.stat['MaxHP'] = {
-        name: 'SINH LỰC TỐI ĐA',
-        value: newStatus.detail.stat['HP'].value
-    }
-    newStatus.detail.stat['MaxMP'] = {
-        name: 'NĂNG LƯỢNG TỐI ĐA',
-        value: newStatus.detail.stat['MP'].value
-    };
-    newStatus.detail.stat['Lv'] = 1;
-    newStatus.detail.stat['EXP'] = {value: 0};
-    newStatus.detail.stat['MaxEXP'] = {value: data['LEVEL'][1]['max']};
-    newStatus.weapon = [data['1']['001']];
-    newStatus.buff = [];
-    newStatus.hand = [];
-    newStatus.deck = [];
-    newStatus.graveyard = [];
-    // console.log(initialStatus);
-    return newStatus;
-}
-
-const optimizePlayer = initialStatus => {
-    // clone detail
-    var newStatus = {...initialStatus, detail: Object.assign({}, initialStatus.detail)};
-    // clone status
-    newStatus.detail.stat = Object.assign({}, initialStatus.detail.stat);
-    Object.keys(newStatus.detail.stat).map((key, idx) => {
-        // Clone stat
-        newStatus.detail.stat[key] = Object.assign({}, initialStatus.detail.stat[key]);
-        // newStatus.detail.stat[key] = powerUpByLv(initialStatus.detail.stat[key], Lv);
-    })
-    // Handle both
-    newStatus.detail.stat['Lv'] = initialStatus.detail.stat['Lv'];
-    newStatus.detail.stat['HP'] = initialStatus.detail.stat['HP'];
-    newStatus.detail.stat['EXP'] = initialStatus.detail.stat['EXP'];
-    newStatus.detail.stat['MaxEXP'] = initialStatus.detail.stat['MaxEXP'];
-    newStatus.weapon.map((weapon) => {
-        Object.keys(weapon.statChange).map((key)=>{
-            newStatus.detail.stat[key].value += weapon.statChange[key];
-        })
-    })
-
-    return newStatus;
-}
-
 const initialObjects = {
     'player': initPlayer(data['0']['001'])
 }
-// reducer
-// id: mục tiêu của hành động
-const objectListReducer = (states, action) => {
-    const state = {...states}
-    const payload = action.payload;
-    switch (action.type) {
-        // COMBAT
-        case 'CHANGE_STAT': // id, stat, value
-            console.log(payload.value);
-            state[payload.id].detail.stat[payload.stat].value += payload.value;
-            return state;
-
-        case 'SET_STAT': // id, stat, value
-            state[payload.id].detail.stat[payload.stat].value = payload.value;
-            return state;
-
-        case 'DEAL_DAMAGE': // id, value
-            // console.log(payload);
-            let damage = payload.value - state[payload.id].detail.stat['DEF'].value;
-            if (damage > 0) {
-                state[payload.id].detail.stat['DEF'].value = 0;
-                state[payload.id].detail.stat['HP'].value -= damage;
-            } else {
-                state[payload.id].detail.stat['DEF'].value -= payload.value;
-            }
-            return state;
-
-        case 'HEAL_HP':
-            state[payload.id].detail.stat['HP'].value += payload.value;
-            if (state[payload.id].detail.stat['HP'].value > state[payload.id].detail.stat['MaxHP'].value)
-                state[payload.id].detail.stat['HP'].value = state[payload.id].detail.stat['MaxHP'].value;
-            return state;    
-
-        case 'LEVEL_UP':
-            Object.values(state[payload.id].detail.stat).map((stat) => {
-                if (stat.lvPowerUp !== undefined)
-                    stat.value += stat.lvPowerUp;
-            })
-            state[payload.id].detail.stat['Lv'] += 1;
-            state[payload.id].detail.stat['MaxHP'].value += state[payload.id].detail.stat['HP'].lvPowerUp;
-            state[payload.id].detail.stat['MaxMP'].value += state[payload.id].detail.stat['HP'].lvPowerUp;
-            const newEXP = state[payload.id].detail.stat['EXP'].value - state[payload.id].detail.stat['MaxEXP'].value;
-            state[payload.id].detail.stat['EXP'].value = newEXP;
-            state[payload.id].detail.stat['MaxEXP'].value = data['LEVEL'][state[payload.id].detail.stat['Lv']]['max'];
-            return state;
-
-        // CARD
-        case 'ADD_ITEMS_TO': // id, target, item
-            for (let i = 0; i < payload.amount; i++) {
-                // console.log(action.item)
-                state[payload.id][payload.target] = [...state[payload.id][payload.target], payload.item];
-            }
-            return state;
-
-        case 'DELETE_ITEM_FROM': //id, target, itemIdx
-            delete state[payload.id][payload.target][payload.itemIdx];
-            return state;
-
-        case 'DRAW_CARDS': // id, amount
-            var deck = state[payload.id]['deck'];
-            var hand = state[payload.id]['hand'];
-            for (let i = 0; i < payload.amount; i++) {
-                if (deck.length === 0) {
-                    console.log('OUT_OF_CARDS');
-                    break;
-                }
-                const itemID = Math.floor(Math.random()*deck.length);
-                const card = deck[itemID];
-                hand.push(card);
-                deck = [...deck.slice(0, itemID),
-                        ...deck.slice(itemID + 1)]
-            }
-            state[payload.id]['deck'] = deck;
-            return state;
-        
-        case 'MOVE_TO': // id, from, target
-            var resources = state['player'][payload.from];
-            var newResources = state['player'][payload.target];
-            var card = resources[payload.cardId];
-            newResources.push(card);
-            resources = [...resources.slice(0, payload.cardId),
-                        ...resources.slice(payload.cardId + 1)]
-            state['player'][payload.from] = resources;
-            return state;
-
-        case 'CLEAR':
-            while (state['player'][payload.target].length > 0) {
-                state['player'][payload.target].pop();
-            }
-            return state;
-
-        // ROUND
-        case 'UPDATE_DECK': // item
-            state['player'].deck = [...state['player'].deck, ...payload.item];
-            return state;
-
-        case 'OPTIMIZE_PLAYER':
-            return {...state, 'player': payload.item}
-
-        case 'ADD_MONSTER': // id, monster
-            console.log("Monster Added!");
-            return {...state, [payload.actionId]: payload.item}
-
-        case 'ADD_MONSTER_RANDOM': // actionId, lv
-            console.log("Monsters Added!");
-            const values = Object.values(data["6"]);
-            const monster = values[Math.floor(Math.random() * values.length)];
-            const lvl = payload.lv + (payload.addLv!==undefined?payload.addLv:0);
-            const item = createMonster(lvl, monster)
-            return {...state, ["monster"+payload.actionId]: item}
-
-        case 'REMOVE_MONSTER': // id
-            delete state[payload.id];
-            return state;
-        
-        default:
-            return state;
-    }
-}
-
-const powerUpByLv = (basicStat, Lv) => {
-    const newStat = Object.assign({}, basicStat);
-    if (basicStat.lvPowerUp === undefined)
-        return {...newStat};
-    return {...newStat, value: newStat.basic + (newStat.lvPowerUp * Lv)};
-}
-
-// Monster
-const createMonster = (Lv, initialStatus) => {
-    // clone detail
-    var newMonster = {...initialStatus, detail: Object.assign({}, initialStatus.detail)};
-    // clone status
-    newMonster.detail.stat = Object.assign({}, initialStatus.detail.stat);
-    Object.keys(newMonster.detail.stat).map((key, idx) => {
-        // Clone stat
-        newMonster.detail.stat[key] = Object.assign({}, initialStatus.detail.stat[key]);
-        newMonster.detail.stat[key] = powerUpByLv(initialStatus.detail.stat[key], Lv);
-    })
-    newMonster.detail.action.map((action) => {
-        action.value = newMonster.detail.stat[action.depend_on].value;
-    })
-    newMonster.detail.stat['MaxHP'] = Object.assign({}, newMonster.detail.stat['HP']);
-    newMonster.detail.stat['MaxMP'] = Object.assign({}, newMonster.detail.stat['MP']);
-    newMonster.detail.stat['Lv'] = Lv;
-    newMonster.detail.name += " Lv. " + Lv;
-    return newMonster;
-}
 
 // CardDeck
-const initialDeck = [data['2']['001']]
-
-const deckReducer = (states, action) => {
-    const state = {...states};
-    switch (action.type) {
-        case 'ADD_CARDS':
-            for (var i=0; i < action.amount; i++) {
-                // console.log(action.item)
-                state = [...state, action.item];
-            }
-            return state
-        
-        case 'DELETE_CARD':
-            return [
-                ...state.slice(0, action.id),
-                ...state.slice(action.id + 1)
-            ]
-
-        default:
-            return state;
-    }
-}
-
-const optimizeCard = (payload, initialCard, option = {}) => {
-    const moreOption = Object.assign({}, {
-        eliminate: false,
-        returnHand: false
-    }, option);
-    var newCard = {...initialCard, detail: Object.assign({}, initialCard.detail)};
-    // clone status
-    newCard.detail.stat = Object.assign({}, initialCard.detail.stat);
-    Object.keys(newCard.detail.stat).map((key, idx) => {
-        // Clone stat
-        newCard.detail.stat[key] = Object.assign({}, initialCard.detail.stat[key]);
-    });
-    
-    switch (newCard.typeCard) {
-        case 'Action':
-            newCard.detail.action.map((action) => {
-                action.value = payload.detail.stat[action.depend_on].value;
-        })
-        break;
-            
-        default:
-            break;
-        }
-
-    newCard.detail['moreOption'] = moreOption;
-
-    // Re-render abilities describe
-    newCard.detail.optimizeDescribeIdx.map((index, idx) => {
-        newCard.detail.optimizeDescribe[index] = newCard.detail.action[idx].value;
-    })
-    newCard.detail.abilities = "";
-    newCard.detail.optimizeDescribe.map((word)=>{
-        newCard.detail.abilities += word;
-    })
-    return newCard;
-}
+const initialDeck = []
 
 // Game
 const Play = (props) => {
-
+    const [player, handlePlayer] = useReducer(playerReducer, initPlayer(data['0']['001']));
     const [objectList, handleObjectList] = useReducer(objectListReducer, initialObjects);
     const [cardDeck, handleCardDeck] = useReducer(deckReducer, initialDeck);
     const [floor, setFloor] = useState(1);
@@ -298,7 +49,8 @@ const Play = (props) => {
     const [events, setEvents] = useState([]);
     const [gameProccess, setGameProccess] = useState('OUT_COMBAT');
     const [turn, setTurn] = useState(0);
-    const [targetMonster, setTargetMonster] = useState("");
+    const [cardTarget, handleCardTarget] = useReducer(cardTargetReducer, {targets: [], limit: 1})
+    const [cardChosing, setCardChosing] = useState("");
     const [timeline, setTimeline] = useState([{id: 'roundStart', value: 0}]);
     const [turnObject, setTurnObject] = useState("");
 
@@ -334,12 +86,19 @@ const Play = (props) => {
     }
     
     const initRound = event => {
+        console.log(player);
         event.action.map((action, idx) => {
             handleObjectList({
                 type: action.type,
                 payload: {...action.payload, lv: event.Lv, actionId:idx}
             });
         });
+        handleObjectList({
+            type: 'OPTIMIZE_PLAYER',
+            payload: {
+                item: player
+            }
+        })
     }
 
     // Handle Function
@@ -354,7 +113,7 @@ const Play = (props) => {
                     TL[i].value += 1;
                     continue;
                 }
-                console.log("VALUE", objects[key].detail.stat['SPD'].value);
+                // console.log("VALUE", objects[key].detail.stat['SPD'].value);
                 if (objects[key].detail.stat['SPD'].value < TL[i].value) {
                     TL.splice(i, 0, {
                         id: key,
@@ -404,8 +163,8 @@ const Play = (props) => {
                 });
                 break;
             
-            case 'BATTLE':
-                // console.log(action);
+            case 'SINGLE_ACTION':
+                console.log(action);
                 handleObjectList({
                     type: action.payload.effect,
                     payload: action.payload
@@ -418,6 +177,12 @@ const Play = (props) => {
     }
 
     const handleRoundStart = (e) => {
+        handleObjectList({
+            type: 'UPDATE_DECK',
+            payload: {
+                item: cardDeck
+            }
+        })
         objectList['player'].weapon.map((weapon) => {
             weapon.detail.action.map((action) => {
                 if (action.when === 'ROUND_START')
@@ -434,18 +199,11 @@ const Play = (props) => {
     }
 
     const handleRoundEnd = (e) => {
-        handleObjectList({
-            type: 'CLEAR',
-            payload: {
-                target: 'hand'
-            }
-        });
-        handleObjectList({
-            type: 'CLEAR',
-            payload: {
-                target: 'deck'
-            }
-        });
+        console.log("COMPLETE");
+        handlePlayer({
+            type: 'GAIN_EXP',
+            payload: {exp: objectList['player'].detail.stat['EXPGain'].value}
+        })
     }
 
     const handlePlayerTurn = e => {
@@ -454,7 +212,7 @@ const Play = (props) => {
             type: 'DRAW_CARDS',
             payload: {
                 id: 'player',
-                amount: 2
+                amount: Math.floor(objectList['player'].detail.stat['ATKSPD'].value)
             }
         });
     }
@@ -482,7 +240,8 @@ const Play = (props) => {
             handleAction({
                 type: action.type,
                 payload: {
-                    id: 'player',
+                    id: ['player'],
+                    user: turnObject,
                     effect: action.effect,
                     value: action.value
                 }
@@ -512,7 +271,9 @@ const Play = (props) => {
                         payload: {id: key}
                     });
                 });
-                setTargetMonster("");
+                handleCardTarget({
+                    type: "CLEAR_TARGET"
+                })
                 setRound(round + 1);
                 setGameProccess('OUT_COMBAT');
                 return;
@@ -523,12 +284,14 @@ const Play = (props) => {
 
             case 'TURN_END':
                 handleTurnEnd();
-                if (targetMonster !== "")
-                    document.getElementById(targetMonster).checked = false;
-                setTargetMonster("");
-                // console.log({[turnObject]: objectList[turnObject]})
+                if (cardTarget.targets.length !== 0)
+                    cardTarget.targets.forEach((target) => {
+                        document.getElementById(target).checked = false;
+                    })
+                handleCardTarget({
+                    type: "CLEAR_TARGET"
+                })
                 handleTimeline({[turnObject]: objectList[turnObject]});
-                // shift khi end turn
                 return;
 
             case 'PLAYER_TURN':
@@ -539,7 +302,6 @@ const Play = (props) => {
             case 'MONSTER_TURN':
                 handleMonsterTurn();
                 setTimeout(setGameProccess('TURN_END'), 5000);
-                // shift khi end turn
                 return;
 
             case 'GAME_OVER':
@@ -561,21 +323,20 @@ const Play = (props) => {
                     type: "CHANGE_STAT",
                     payload: {
                         id: 'player',
-                        stat: 'EXP',
+                        stat: 'EXPGain',
                         value: data['LEVEL'][objectList[key].detail.stat['Lv']]['gain']
                     }
                 });
-                if (objectList['player'].detail.stat['EXP'].value >= objectList['player'].detail.stat['MaxEXP'].value) {
-                    handleObjectList({
-                        type: "LEVEL_UP",
-                        payload: {
-                            id: 'player',
-                        }
-                    });
-                }
                 setTimeline(timeline.filter(item => item.id != key));
-                document.getElementById(targetMonster).checked = false;
-                setTargetMonster("");
+                cardTarget.targets.forEach((target) => {
+                    document.getElementById(target).checked = false;
+                })
+                handleCardTarget({
+                    type: "DELETE_TARGET",
+                    payload: {
+                        value: key
+                    }
+                })
                 handleObjectList({
                     type: "REMOVE_MONSTER",
                     payload: {id: key}
@@ -587,14 +348,16 @@ const Play = (props) => {
     }
 
     // RENDER
+    // initPlayer
+
     // notification
     const renderNotificationBox = (mes) => {
         return (
-            <div id="notificationArea" className="hidden">
+            <div id="notificationArea">
                 <div className='blocker'></div>
                 <div id="notificationBox">
                     <h1 id="notificationTitle">{mes}</h1>
-                    <div id="contentBox"></div>
+                    <h1 id="notificationDetail"></h1>
                 </div>
             </div>
         )
@@ -628,32 +391,44 @@ const Play = (props) => {
                 {
                     list.map((item, idx) => {
                         return (
-                            <div className="handCard">
+                            <div className="handCard" key={idx}
+                            onClick={(e) => {
+                                console.log(cardChosing)
+                                if (cardChosing === "handCard"+idx && cardTarget.targets.length < cardTarget.limit) {
+                                    console.log(document.getElementById("handCard"+idx).checked);
+                                    document.getElementById("handCard"+idx).checked = false;
+                                    setCardChosing("");
+                                    return;
+                                }
+                                if (cardTarget.targets.length === 0) {
+                                    setCardChosing("handCard"+idx)
+                                    return;
+                                }
+                                item.detail.action.map((action) => {
+                                    handleAction({
+                                        type: action.type,
+                                        payload: {
+                                            id: cardTarget.targets,
+                                            effect: action.effect,
+                                            value: action.value
+                                        }
+                                    })
+                                })
+                                if (item.detail.moreOption['eliminate'] != true)
+                                    handleObjectList({
+                                        type: 'MOVE_TO',
+                                        payload: {
+                                            cardId: idx,
+                                            from: 'hand',
+                                            target: 'graveyard'
+                                        }
+                                    })
+                            }}>
                                 <input type="radio" name="handCard" id={"handCard"+idx}></input>
                                 <label htmlFor={"handCard"+idx}
-                                onClick={() => {
-                                    if (targetMonster === "") return;
-                                    item.detail.action.map((action) => {
-                                        handleAction({
-                                            type: action.type,
-                                            payload: {
-                                                id: targetMonster,
-                                                effect: action.effect,
-                                                value: action.value
-                                            }
-                                        })
-                                    })
-                                    if (item.detail.moreOption['eliminate'] != true)
-                                        handleObjectList({
-                                            type: 'MOVE_TO',
-                                            payload: {
-                                                cardId: idx,
-                                                from: 'hand',
-                                                target: 'graveyard'
-                                            }
-                                        })
-                                }}
-                                >
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                }}>
                                     <Card CardDetail={item} />
                                 </label>
                             </div>
@@ -676,17 +451,29 @@ const Play = (props) => {
                         const monster = monsterList[key];
                         const stats = monster.detail.stat;
                         return (
-                            <div className="Monster"
+                            <div className="Monster" key={idx}
                             onClick={(e) => {
-                                if (targetMonster === key) {
+                                if (cardTarget.targets.length >= cardTarget.limit)
                                     document.getElementById(key).checked = false;
-                                    setTargetMonster(monsterTarget => "");
+                                if (cardTarget.targets.includes(key)) {
+                                    document.getElementById(key).checked = false;
+                                    handleCardTarget({
+                                        type: "DELETE_TARGET",
+                                        payload: {
+                                            value: key
+                                        }
+                                    })
                                 } else {
-                                    setTargetMonster(monsterTarget => key);
+                                    handleCardTarget({
+                                        type: "ADD_TARGET",
+                                        payload: {
+                                            value: key
+                                        }
+                                    })
                                 }
-                                console.log(targetMonster);
+                                console.log(cardTarget);
                             }}>
-                                <input type="radio" name="monster" id={key}></input>
+                                <input type="checkbox" name="monster" id={key}></input>
                                 <label htmlFor={key}
                                 onClick={(e) => {
                                     e.stopPropagation();
@@ -704,6 +491,13 @@ const Play = (props) => {
                                             style={{width: (stats['MP'].value/stats['MaxMP'].value)*100+"%"}}></div>
                                         <p>{stats['MP'].value}/{stats['MaxMP'].value}</p>
                                     </div>
+                                    {objectList[key].detail.stat.SHIELD.value > 0 &&
+                                    <div className="shieldBox">
+                                        <div className="shieldBar" />
+                                        <div className="shieldValue">
+                                            <p>{objectList[key].detail.stat.SHIELD.value}</p>
+                                        </div>
+                                    </div>}
                                 </div>
                             </div>
                         )
@@ -721,7 +515,7 @@ const Play = (props) => {
                 <div id="eventArea">
                     {
                         Object.keys(event).map((key, idx) => {
-                            return <EventCard CardDetail={event[key]} handle={setGameProccess} init={initRound} monsterID={idx} />
+                            return <EventCard key={idx} CardDetail={event[key]} handle={setGameProccess} init={initRound} monsterID={idx} />
                         })
                     }
                 </div>
@@ -733,7 +527,10 @@ const Play = (props) => {
     //game
     const renderGameBoard = (
         <div className="content">
-                {renderNotificationBox("GAME OVER")}
+            <div className="SFX_Area">
+                <div className="blocker"></div>
+            </div>
+            <InitPlayerBox target={objectList['player']} origin={player} proccess={gameProccess} handle={handlePlayer} />
             <div id='gameArea'>
     
     
@@ -811,11 +608,12 @@ const Play = (props) => {
 
                 <div id='playerInfo'>
                     <div id='playerMoreInfo'>
-                        <div id='playerAvatar'>
+                        <div id='playerAvatar'
+                            onClick={() => document.getElementById('playerStatus').classList.toggle('openWideUp')}>
                             <img src={objectList['player'].url} alt={objectList['player'].alt}></img>
                             <div id='playerStatus'>
-                                <div>
-                                    <p>a</p>
+                                <div className="statusBox">
+                                    <StatusBox target={objectList['player']} origin={player} proccess={gameProccess} handle={handlePlayer} />
                                 </div>
                             </div>
                         </div>
@@ -825,6 +623,12 @@ const Play = (props) => {
                                 style={{width: (objectList['player'].detail.stat['HP'].value/objectList['player'].detail.stat['MaxHP'].value)*100+'%'}}></div>
                             <p>{objectList['player'].detail.stat.HP.value}/{objectList['player'].detail.stat.MaxHP.value}</p>
                         </div>
+                        {objectList['player'].detail.stat.SHIELD.value>0 && <div id="playerShield">
+                            <div className="shieldBar" />
+                            <div className="shieldValue">
+                                <p>{objectList['player'].detail.stat.SHIELD.value}</p>
+                            </div>
+                        </div>}
                         <div id='playerMaxMP' className="MaxMPBar">
                             <div id='playerMP' className="MPBar"
                                 style={{width: (objectList['player'].detail.stat.MP.value/objectList['player'].detail.stat.MaxMP.value)*100+'%'}}></div>
@@ -848,7 +652,7 @@ const Play = (props) => {
                     </div>
                     {gameProccess!=='OUT_COMBAT' && gameProccess!=='ROUND_END' &&
                     <div id='end-turn-btn'>
-                        <p id="next-turn-cards">+2</p>
+                        <p id="next-turn-cards">+{Math.floor(objectList['player'].detail.stat['ATKSPD'].value)}</p>
                         <img src={cardIcon}></img>
                         <button className={gameProccess==='IN_TURN'?"big-button":"big-button disable-btn"}
                             onClick={() => {if (gameProccess==='IN_TURN') setGameProccess('TURN_END')}}>KẾT THÚC LƯỢT</button>
@@ -866,8 +670,22 @@ const Play = (props) => {
     }, []);
 
     useEffect(() => {
+        if (player.detail.stat['EXP'].value >= player.detail.stat['MaxEXP'].value) {
+            handlePlayer({
+                type: 'LEVEL_UP'
+            })
+        }
+        handleObjectList({
+            type: "OPTIMIZE_PLAYER",
+            payload: {
+                item: player
+            }
+        })
+    }, [player])
+
+    useEffect(() => {
         // console.log(objectList);
-        console.log(turnObject);
+        // console.log(turnObject);
         console.log(timeline);
         if (turnObject === '' || gameProccess === 'IN_TURN')
             return;
@@ -891,6 +709,7 @@ const Play = (props) => {
     useEffect(() => {
         handleCombat();
         console.log(objectList);
+        console.log(player);
     }, [objectList]);
 
     return (

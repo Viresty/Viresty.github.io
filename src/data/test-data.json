@@ -11,35 +11,54 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
-                        "lvPowerUp": 2,
-                        "value": 20
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
-                        "lvPowerUp": 1,
-                        "value": 3
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
                         "name": "TẤN CÔNG",
-                        "lvPowerUp": 1,
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
                         "name": "PHÒNG THỦ",
-                        "lvPowerUp": 1,
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "ATKSPD": {
                         "name": "TỐC ĐỘ TẤN CÔNG",
-                        "lvPowerUp": 0.3,
-                        "value": 1
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
                         "name": "TỐC ĐỘ DI CHUYỂN",
-                        "lvPowerUp": -0.2,
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "name": "SỨC MẠNH",
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -51,30 +70,59 @@
             "itemID": "0002",
             "typeCard": "Role",
             "detail": {
-                "name": "Hắc Chiến Binh",
+                "name": "Long Kỵ Sĩ",
                 "type": "Chức Nghiệp",
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
-                        "value": 20
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
+                        "basic": 16,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 16
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
-                        "value": 3
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
                         "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
                         "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "ATKSPD": {
+                        "name": "TỐC ĐỘ TẤN CÔNG",
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                    "name": "TỐC ĐỘ",
-                    "value": 10
+                        "name": "TỐC ĐỘ DI CHUYỂN",
+                        "basic": 10,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10
+                    },
+                    "STR": {
+                        "name": "SỨC MẠNH",
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -91,12 +139,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -126,12 +174,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -161,12 +209,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -196,12 +244,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -231,12 +279,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -266,12 +314,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -301,12 +349,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -336,12 +384,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -371,12 +419,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -406,12 +454,12 @@
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "value": 20
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "value": 3
                     }, 
                     "ATK": {
@@ -444,7 +492,7 @@
                 "rank": "Thường",
                 "statChange": {
                     "ATK": 1,
-                    "ATKSPD": 1
+                    "ATKSPD": 1.0
                 },
                 "touch": 100,
                 "abilities" : "",
@@ -472,16 +520,46 @@
                 "cost": "",
                 "rank": "Thường",
                 "abilities" : "Gây 1 sát thương lên kẻ địch",
+                "limit": 1,
                 "action": [
                     {
-                        "type": "BATTLE",
+                        "type": "SINGLE_ACTION",
                         "effect": "DEAL_DAMAGE",
                         "depend_on": "ATK",
+                        "basic": 1,
                         "value": 1
                     }
                 ],
                 "optimizeDescribe": [
-                    "Gây ", 1, " sát thương lên kẻ địch"
+                    "Gây ", 1, " sát thương lên kẻ địch. (Sát thương gây ra bằng ATK+1)"
+                ],
+                "optimizeDescribeIdx": [
+                    1
+                ]
+            }
+        },
+        "002": {
+            "url": "https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789",
+            "alt": "viresty1",
+            "itemID": "2002",
+            "typeCard": "Action",
+            "detail": {
+                "name": "Đỡ đòn",
+                "type": "Hành động",
+                "cost": "",
+                "rank": "Thường",
+                "abilities" : "Tăng 1 giáp",
+                "action": [
+                    {
+                        "type": "SINGLE_ACTION",
+                        "effect": "CHANGE_STAT",
+                        "depend_on": "DEF",
+                        "basic": 1,
+                        "value": 1
+                    }
+                ],
+                "optimizeDescribe": [
+                    "Tăng ", 1, " giáp. (Lượng giáp tăng lên bằng DEF+1)"
                 ],
                 "optimizeDescribeIdx": [
                     1
@@ -504,14 +582,14 @@
                 "cost": "",
                 "rank": "Thường",
                 "stat": {
-                    "HP": {
-                        "name": "SINH LỰC",
+                    "MaxHP": {
+                        "name": "SINH LỰC TỐI ĐA",
                         "basic": 3,
                         "lvPowerUp": 2,
                         "value": 5
                     }, 
-                    "MP": {
-                        "name": "NĂNG LƯỢNG",
+                    "MaxMP": {
+                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "basic": 1,
                         "lvPowerUp": 1,
                         "value": 2
@@ -532,18 +610,18 @@
                         "name": "TỐC ĐỘ TẤN CÔNG",
                         "basic": 0.7,
                         "lvPowerUp": 0.3,
-                        "value": 1
+                        "value": 1.0
                     },
                     "SPD": {
                         "name": "TỐC ĐỘ DI CHUYỂN",
                         "basic": 10.2,
                         "lvPowerUp": -0.2,
-                        "value": 10
+                        "value": 10.0
                     }
                 },
                 "action": [
                     {
-                        "type": "BATTLE",
+                        "type": "SINGLE_ACTION",
                         "effect": "DEAL_DAMAGE",
                         "depend_on": "ATK",
                         "value": 1
@@ -653,11 +731,11 @@
                 {
                     "type": "DEAL_DAMAGE",
                     "payload": {
-                        "id": "player",
+                        "id": ["player"],
                         "basic": 3,
                         "lvPowerUp": 2,
                         "value": 5
-                    } 
+                    }
                 }
             ],
             "optimizeDescribe": [
@@ -676,7 +754,7 @@
                 {
                     "type": "HEAL_HP",
                     "payload": {
-                        "id": "player",
+                        "id": ["player"],
                         "basic": 3,
                         "lvPowerUp": 2,
                         "value": 5
@@ -684,7 +762,7 @@
                 }
             ],
             "optimizeDescribe": [
-                "Hồi ", 1, " sinh lực cho người chơi"
+                "Hồi ", 1, " sinh lực TỐI ĐA cho người chơi"
             ],
             "optimizeDescribeIdx": [
                 1
@@ -739,6 +817,15 @@
             "max": 30
         }
     ],
+    "INFO": {
+        "MaxHP": "Sinh lực tối đa của người chơi. Sẽ thua nếu về 0.",
+        "MaxMP": "Năng lượng tối đa dùng để sử dụng các bài phép. Hồi đầy vào đầu lượt đấu.",
+        "ATK": "Lượng sát thương có thể gây ra.",
+        "DEF": "Lượng giáp tạo ra ở đầu trận đấu. 10 điểm phòng thủ giảm 1 sát thương nhận vào.",
+        "ATKSPD": "Số lượng lá bài có thể rút ở đầu lượt đấu.",
+        "SPD": "Thời gian đợi cho đến lượt tiếp theo.",
+        "STR": "Biểu thị khả năng sử dụng các trang bị. Lượng bài tối đa trên tay khi kết thúc lượt."
+    },
     "ID_NAME": {
         "ROLE": 0,
         "WEAPON": 1,

@@ -59,6 +59,7 @@
     flex-direction: row;
     border-radius: 50%;
     margin-left: 1em;
+    z-index: 8;
 }
 
 #playerAvatar {
@@ -76,6 +77,7 @@
     object-fit: cover;
     border: 0.2em solid #ccc;
     border-radius: 50%;
+    z-index: 3;
 }
 
 #playerLever {
@@ -84,10 +86,10 @@
     height: 4em;
     width: 4em;
     border-radius: 50%;
-    border: 0.4em solid #888;
+    border: 0.4em solid darkorange;
     background-color: #777;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.4));
-    z-index: 1;
+    background-image: radial-gradient(darkorange, rgb(0, 0, 0, 0.4));
+    z-index: 5;
     text-align: center;
 }
 
@@ -102,6 +104,7 @@
     width: 12.5em;
     height: 2em;
     border-radius: 0.2em;
+    z-index: 4;
     clip-path: polygon(100% 0, 100% 20%, 90% 100%, 0 100%, 0 0);
 }
 
@@ -145,6 +148,7 @@
     height: 1.3em;
     border-radius: 0.2em;
     text-align: center;
+    z-index: 3;
     clip-path: polygon(100% 0, 100% 15%, 90% 100%, 0 100%, 0 0);
 }
 
@@ -205,15 +209,200 @@
     clip-path: polygon(97% 0, 100% 90%, 100% 100%, 0 100%, 0 0);
 }
 
-#playerStatus {
+.shieldBar {
+    background-image: radial-gradient(transparent, aqua);
     position: absolute;
-    width: 13em;
-    margin: auto 1em;
-    padding: 1em;
+    z-index: 4;
+}
+
+.shieldValue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #555;
+    background-image: radial-gradient(transparent, rgba(0, 255, 255, 0.5), black);
+    clip-path: polygon(50% 0, 100% 20%, 100% 80%, 50% 100%, 0 80%, 0 20%);
+}
+
+.shieldValue p {
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: whitesmoke;
+}
+
+#playerShield .shieldBar {
+    bottom: 3em;
+    left: 2.5em;
+    width: 12.5em;
+    height: 2em;
+    border-radius: 0.2em;
+    clip-path: polygon(100% 0, 100% 15%, 90% 100%, 0 100%, 0 0);
+}
+
+#playerShield .shieldValue {
+    position: absolute;
+    left: 12em;
+    bottom: 2.5em;
+    height: 3em;
+    width: 3em;
+    z-index: 5;
+}
+
+#playerStatus {
+    display: flex;
+    position: absolute;
+    margin: 1em;
+    max-width: 25em;
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    font-size: 0;
+    bottom: 50%;
+    left: 50%;
+    border: 0.2em solid white;
+    transition: all 0.2s linear;
+}
+
+.openWideUp {
+    display: flex;
+    width: 25em;
+    height: 27em !important;
+    left: 0.2em !important;
+    padding: 0.5em !important;
+    font-size: 1em !important;
     background-color: #39404c;
-    border: 0.1em solid white;
+    border: 0.2em solid white;
     border-radius: 0.5em;
-    bottom: 100%;
+    bottom: 78% !important;
+    opacity: 1 !important;
+}
+
+.statusBox {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: left;
+    background-color: #222;
+    padding: 0.5em;
+    border-radius: 0.4em;
+}
+
+.statusBox .big-button {
+    padding: 0.1em 1.5em;
+    border-radius: 0.3em;
+    width: 8em;
+    color: #0b9cc5;
+    background-color: white;
+}
+
+.statusBoxItem {
+    position: relative;
+    display: grid;
+    padding: 0.2em 1em;
+    border-color: white;
+    grid-template-columns: 3fr 3fr 3fr 1fr 1fr;
+    border: 0;
+    justify-items: center;
+    align-items: center;
+}
+
+.statName {
+    opacity: 0;
+    padding: 0.1em 1em;
+    width: 8em;
+    background-color: #3caeff;
+    position: absolute;
+    left: 0;
+    bottom: 98.5%;
+    clip-path: polygon(90% 0, 100% 100%, 0 100%, 0 0);
+    z-index: -10;
+}
+
+.statName p {
+    font-size: 0.65em;
+}
+
+.statInfo {
+    display: none;
+    padding: 0.4em 1em;
+    padding-top: 0.8em;
+    width: 15em;
+    background-color: #3caeff;
+    position: absolute;
+    left: -4em;
+    top: 98.5%;
+    clip-path: polygon(0 10%, 45% 10%, 50% 0, 55% 10%, 100% 10%, 100% 100%, 0 100%);
+    z-index: -10;
+}
+
+.statInfo p {
+    font-size: 0.65em;
+}
+
+.statusBoxItem::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    border: 0 solid transparent;
+    border-color: inherit;
+    width: 0%;
+    height: 100%;
+    transition: all 0.2s linear;
+}
+
+ .statusBoxItem:not(:last-child, :first-child):hover {
+    margin-top: 0.8em;
+    z-index: 2;
+}
+
+.statusBoxItem:not(:last-child, :first-child):hover .statName {
+    opacity: 1;
+    z-index: 2;
+}
+
+
+.statusBoxItem:not(:last-child, :first-child):hover .statInfo {
+    display: block;
+}
+
+.statusBoxItem:not(:last-child, :first-child):hover::before{
+    /* background-color: #3caeff; */
+    border-width: 0.2em;
+    width: 100%;
+    height: calc(100% - 0.4em);
+    z-index: 0;
+}
+
+.statusBoxItem:not(:last-child, :first-child):hover::after{
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    height: calc(100% + 1.2em);
+    bottom: 0;
+    width: calc(100% + 0.4em);
+}
+
+.statusBoxItem:not(:last-child, :first-child):hover > p {
+    font-size: 1.3em;
+}
+
+.statusBoxItem > * {
+    z-index: 1;
+}
+
+.statusBoxItem p {
+    text-align: center;
+}
+
+.statusBoxItem button:nth-child(5):hover {
+    color: rgb(109, 255, 109);
+}
+
+.statusBoxItem button:nth-child(6):hover {
+    color: red;
 }
 
 /* Hand card */
@@ -270,7 +459,7 @@
 }
 
 #cardArea .handCard input[type="radio"] {
-    display: none;
+    display: block;
 }
 
 /* checked card */
@@ -358,7 +547,7 @@
     justify-content: center;
     top: 0.5em;
     right: 0;
-    font-size: 4em;
+    font-size: 1em;
 }
 
 #end-turn-btn .big-button {
@@ -369,13 +558,13 @@
 #next-turn-cards {
     margin-left: 1em;
     text-align: center;
-    font-size: 0.5em;
+    font-size: 2em;
     margin: auto;
 }
 
 #end-turn-btn img {
-    height: 1em;
-    width: 1em;
+    height: 3em;
+    width: 3em;
 }
 
 .contentArea {
@@ -407,6 +596,10 @@
     width: 85%;
     margin: auto;
     margin-right: 6em;
+}
+
+.Monster input {
+    display: none;
 }
 
 .Monster .card {
@@ -455,6 +648,24 @@
 .Monster_Info .MPBar {
     border-radius: 0.2em;
 }
+
+.Monster_Info .shieldBar {
+    top: -2em;
+    left: 5%;
+    height: 1.8em;
+    width: 90%;
+    border-radius: 0.3em;
+}
+
+.Monster_Info .shieldValue {
+    position: absolute;
+    left: 11.9em;
+    bottom: -0.42em;
+    height: 3em;
+    width: 3em;
+    z-index: 5;
+}
+
 
 .Monster .choseMonster {
     width: 12%;
@@ -518,15 +729,15 @@
     }
 }
 
-#monsterArea input[type="radio"]:checked + label .card {
+#monsterArea input[type="checkbox"]:checked + label .card {
     transform: scale(0.75);
 }
 
-#monsterArea input[type="radio"]:checked + label .card .cardMoreInfo {
+#monsterArea input[type="checkbox"]:checked + label .card .cardMoreInfo {
     box-shadow: 0 0 0.3em 0.2em orange;
 }
 
-#monsterArea input[type="radio"]:checked + label path {
+#monsterArea input[type="checkbox"]:checked + label path {
     animation: animate-chosing-monster infinite 2s linear;
 }
 
@@ -613,6 +824,7 @@
 
 #timelineArea .timelineItem:first-child img {
     width: 6em;
+    border: 0.3em solid white;
     box-shadow: 0 0 0.5em 0.1em lightblue;
 }
 
@@ -633,8 +845,8 @@
     border: 0.1em solid white;
 }
 
-/* Notification */
-#notificationArea {
+/* SFX */
+.SFX_Area {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -642,35 +854,128 @@
     top: 0;
     height: 100%;
     width: 100%;
+    z-index: 0;
 }
 
-#notificationArea .blocker {
+.SFX_Area .blocker {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-image: radial-gradient(transparent 60%, white);
+}
+
+/* (transparent 55%, rgba(255, 98, 98, 0.5), red); */
+
+/* Notification */
+.notificationArea {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
+}
+
+.notificationArea .blocker {
     position: absolute;
     height: 100%;
     width: 100%;
     z-index: 9;
 }
 
-#notificationBox {
-    min-width: 30%;
+.notificationBox {
+    min-width: 50%;
+    width: 90%;
     min-height: 20%;
     margin: auto;
     z-index: 10;
 }
 
-#notificationTitle {
+.notificationTitle {
     font-size: 5em;
     margin: 0;
+    margin-top: -0.5em;
     color: #3caeff;
     text-shadow: 0.1em 0.1em 0.1em #0aaad69e;
     font-weight: bolder;
 }
 
-#contentBox {
+.contentBox {
+    display: flex;
+    padding: 1.5em 12em;
+    background-color: transparent;
+    border: 0.2em solid whitesmoke;
+    border-inline-width: 0;
+    background-image: linear-gradient(
+        to left, #39404c00, #39404c, #39404c, #39404c, #39404c, #39404c, #39404c00
+    );
+    gap: 1em;
+}
+
+.contentBox .big-button {
+    margin-top: 0.5em;
+}
+
+.contentBoxColumn {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.contentBoxRow {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.contentBoxItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0.5em;
+    background-color: #222;
     padding: 1em;
-    border-radius: 1em;
-    border: 1em solid #333;
-    background-color: #555;
+}
+
+.contentBoxItem > * {
+    font-size: 1.2em;
+}
+
+#initJobBox > div {
+    box-shadow: none;
+}
+
+#initJobBox > :nth-child(2) {
+    z-index: 2;
+}
+
+#initJobBox > :first-child,
+#initJobBox > :last-child {
+    width: 0;
+    transform: scale(0.7);
+}
+
+#initJobBox > :first-child:hover {
+    width: 5em;
+    transform: scale(0.9);
+}
+
+#initJobBox > :last-child:hover {
+    width: 5em;
+    transform: scale(0.9) translate(5.5em, 0);
+}
+
+#initJobBox > :last-child > .card {
+    /* position: absolute; */
+    transform: translate(-100%, 0);
 }
 
 /*Ipad ngang(1024 x 768)*/
