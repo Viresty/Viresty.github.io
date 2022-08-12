@@ -13,9 +13,11 @@ const CardDetail = () => {
     }
     const cardStat = cardTarget.detail.stat
     const cardInfo = Object.keys(cardStat).map((key, idx) => {
+        if (cardID.itemID[0] === '6') key+='_M';
         return (
             <li key={idx}>
-                <h2>{cardStat[key].name}</h2>
+                <h2>{data['STAT_NAME'][key]}</h2>
+                <h6>{data['INFO'][key]}</h6>
                 <p>{cardStat[key].value}</p>
             </li>)
     });
@@ -43,31 +45,37 @@ const CardDetail = () => {
         <div className='container'>
             <div className='container' id="body-container">
                 <div className='content card-detail'>
-                    <div className='card-detail-img'>
-                        <img src={cardTarget.url} alt={cardTarget.alt}></img>
-                        <button className='expand-btn' onClick={() => openImg()}>
-                            <i className="fa fa-expand" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <div className='expand-img hidden' id="card-full-img">
-                        <div className='blocker'></div>
-                        <div className='content'>
-                            <img src={cardTarget.url} alt={cardTarget.alt} id='card-full-img-content'></img>                        
-                            <button className='close-btn'>
-                                <i className="fa fa-times" aria-hidden="true" onClick={() => closeImg()}></i>
+                    <div className='card-detail-info'>
+                        <div className='card-detail-img'>
+                            <img src={cardTarget.url} alt={cardTarget.alt}></img>
+                            <button className='expand-btn' onClick={() => openImg()}>
+                                <i className="fa fa-expand" aria-hidden="true"></i>
                             </button>
                         </div>
+                        <div className='expand-img hidden' id="card-full-img">
+                            <div className='blocker'></div>
+                            <div className='content'>
+                                <div className='full-img-wrapper'>
+                                    <img src={cardTarget.url} alt={cardTarget.alt} id='card-full-img-content'></img>                        
+                                </div>
+                                <button className='close-btn'>
+                                    <i className="fa fa-times" aria-hidden="true" onClick={() => closeImg()}></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div className='card-detail-content'>
+                            <h1 id='card-detail-name'><u>TÊN:</u></h1>
+                            <p>{cardTarget.detail.name}</p>
+                            <h1 id='card-detail-type'><u>LOẠI THẺ:</u></h1>
+                            <p>{cardTarget.detail.type}</p>
+                            <h1 id='card-detail-stat'><u>CHỈ SỐ:</u></h1>
+                            <ul id='card-detail-stat-table'>
+                                {cardInfo}
+                            </ul>
+                        </div>
                     </div>
-                    <div className='card-detail-content'>
-                        <h1 id='card-detail-name'><u>Tên:</u></h1>
-                        <p>{cardTarget.detail.name}</p>
-                        <h1 id='card-detail-type'><u>Loại Thẻ:</u></h1>
-                        <p>{cardTarget.detail.type}</p>
-                        <h1 id='card-detail-stat'><u>Chỉ Số:</u></h1>
-                        <ul id='card-detail-stat-table'>
-                            {cardInfo}
-                        </ul>
-                        <h1 id='card-detail-abilities'><u>Khả Năng</u></h1>
+                    <div id='card-detail-abilities'>
+                        <h1><u>THÔNG TIN</u></h1>
                         <p>{cardTarget.detail.abilities}</p>
                     </div>
                 </div>

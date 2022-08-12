@@ -3,8 +3,8 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  z-index: 10;
-  font-size: calc(1.2rem + 0.05vw);
+  z-index: 8;
+  font-size: 1.1rem;
   flex-direction: column;
   border-top: 0.1rem white solid;
 }

@@ -1,0 +1,4 @@
+điều chỉnh font-sỉze: ok
+dùng redux cho login
+điều chỉnh list card: ok
+chỉnh stat info hiện sang ngang : in proccess

@@ -22,10 +22,12 @@ import { faSquare as fasFaSquare,
 
 import { reloadAnimation } from '../function/page';
 import Card from "../components/card";
-import MonsterCard from "../components/monsterCard";
+import MonsterArea from "../components/monsterArea";
+import EventArea from "../components/eventArea";
 import EventCard from "../components/eventCard";
 import StatusBox from "../components/statusBox";
 import InitPlayerBox from "../components/initPlayerBox";
+
 import './../css/play-layout.css';
 
 import data from '../data/test-data.json'
@@ -49,7 +51,7 @@ const Play = (props) => {
     const [events, setEvents] = useState([]);
     const [gameProccess, setGameProccess] = useState('OUT_COMBAT');
     const [turn, setTurn] = useState(0);
-    const [cardTarget, handleCardTarget] = useReducer(cardTargetReducer, {targets: [], limit: 1})
+    const [cardTarget, handleCardTarget] = useReducer(cardTargetReducer, {targets: [], limit: 0})
     const [cardChosing, setCardChosing] = useState("");
     const [timeline, setTimeline] = useState([{id: 'roundStart', value: 0}]);
     const [turnObject, setTurnObject] = useState("");
@@ -65,32 +67,33 @@ const Play = (props) => {
             // Copy Event Card
             const event = values[Math.floor(Math.random() * values.length)];
             const newEvent = Object.assign({}, event);
-            newEvent.action = [...event.action];
-            newEvent.action.map((item, idx) => {
-                newEvent.action[idx] = Object.assign({}, item);
-                newEvent.action[idx].payload = Object.assign({}, item.payload);
-                newEvent.action[idx].payload = powerUpByLv(newEvent.action[idx].payload, Lvl);
+            newEvent.detail = {...event.detail};
+            newEvent.detail.action = [...event.detail.action];
+            newEvent.detail.action.map((item, idx) => {
+                newEvent.detail.action[idx] = Object.assign({}, item);
+                newEvent.detail.action[idx].payload = Object.assign({}, item.payload);
+                newEvent.detail.action[idx].payload = powerUpByLv(newEvent.detail.action[idx].payload, Lvl);
             })
             // Re-render abilities describe
-            newEvent.optimizeDescribeIdx.map((index, idx) => {
-                newEvent.optimizeDescribe[index] = newEvent.action[idx].payload.value;
+            newEvent.detail.optimizeDescribeIdx.map((index, idx) => {
+                newEvent.detail.optimizeDescribe[index] = newEvent.detail.action[idx].payload.value;
             })
-            if (newEvent.optimizeDescribe.length !== 0) newEvent.abilities = "";
-            newEvent.optimizeDescribe.map((word)=>{
-                newEvent.abilities += word;
+            if (newEvent.detail.optimizeDescribe.length !== 0) newEvent.detail.abilities = "";
+            newEvent.detail.optimizeDescribe.map((word)=>{
+                newEvent.detail.abilities += word;
             })
-            newEvent.Lv = Lvl;
+            newEvent.detail.Lv = Lvl;
             nextEv.push(newEvent);
         }
         return nextEv;
     }
     
     const initRound = event => {
-        console.log(player);
-        event.action.map((action, idx) => {
+        // console.log(player);
+        event.detail.action.map((action, idx) => {
             handleObjectList({
                 type: action.type,
-                payload: {...action.payload, lv: event.Lv, actionId:idx}
+                payload: {...action.payload, lv: event.detail.Lv, actionId:idx}
             });
         });
         handleObjectList({
@@ -177,11 +180,16 @@ const Play = (props) => {
     }
 
     const handleRoundStart = (e) => {
-        handleObjectList({
-            type: 'UPDATE_DECK',
-            payload: {
-                item: cardDeck
-            }
+        cardDeck.forEach((card) => {
+            handleObjectList({
+                type: 'ADD_ITEMS_TO',
+                payload: {
+                    id: 'player',
+                    target: 'deck',
+                    item: optimizeCard(objectList['player'], card),
+                    amount: 1
+                }
+            });
         })
         objectList['player'].weapon.map((weapon) => {
             weapon.detail.action.map((action) => {
@@ -371,7 +379,7 @@ const Play = (props) => {
                     timeline.map((item) => {
                         if (item.id === 'roundStart') return;
                         return (
-                            <div className="timelineItem" style={{top: (item.value*4.2)+8+"em"}}>
+                            <div className="timelineItem" style={{top: (item.value*4.15)+6.1+"em"}}>
                                 <img src={objectList[item.id].url} alt={item.id}></img>
                             </div>
                         )
@@ -380,6 +388,7 @@ const Play = (props) => {
                 <div id='turnShow'>
                     <p>LƯỢT {turn}</p>
                 </div>
+                <div></div>
             </div>
         );
     }
@@ -395,13 +404,24 @@ const Play = (props) => {
                             onClick={(e) => {
                                 console.log(cardChosing)
                                 if (cardChosing === "handCard"+idx && cardTarget.targets.length < cardTarget.limit) {
-                                    console.log(document.getElementById("handCard"+idx).checked);
                                     document.getElementById("handCard"+idx).checked = false;
                                     setCardChosing("");
+                                    handleCardTarget({
+                                        type: "SET_LIMIT",
+                                        payload: {
+                                            value: 0
+                                        }
+                                    })
                                     return;
                                 }
                                 if (cardTarget.targets.length === 0) {
-                                    setCardChosing("handCard"+idx)
+                                    setCardChosing("handCard"+idx);
+                                    handleCardTarget({
+                                        type: "SET_LIMIT",
+                                        payload: {
+                                            value: item.detail.limit
+                                        }
+                                    })
                                     return;
                                 }
                                 item.detail.action.map((action) => {
@@ -409,10 +429,15 @@ const Play = (props) => {
                                         type: action.type,
                                         payload: {
                                             id: cardTarget.targets,
+                                            user: 'player',
                                             effect: action.effect,
                                             value: action.value
                                         }
                                     })
+                                    setCardChosing("");
+                                    handleCardTarget({
+                                        type: "CLEAR_TARGET"
+                                    });
                                 })
                                 if (item.detail.moreOption['eliminate'] != true)
                                     handleObjectList({
@@ -439,95 +464,10 @@ const Play = (props) => {
         )
     }
 
-    // monster
-    const renderMonster = list => {
-        // console.log(list)
-        const monsterList = {...list};
-        delete monsterList['player'];
-        return (
-            <div id="monsterArea">
-                {
-                    Object.keys(monsterList).map((key, idx) => {
-                        const monster = monsterList[key];
-                        const stats = monster.detail.stat;
-                        return (
-                            <div className="Monster" key={idx}
-                            onClick={(e) => {
-                                if (cardTarget.targets.length >= cardTarget.limit)
-                                    document.getElementById(key).checked = false;
-                                if (cardTarget.targets.includes(key)) {
-                                    document.getElementById(key).checked = false;
-                                    handleCardTarget({
-                                        type: "DELETE_TARGET",
-                                        payload: {
-                                            value: key
-                                        }
-                                    })
-                                } else {
-                                    handleCardTarget({
-                                        type: "ADD_TARGET",
-                                        payload: {
-                                            value: key
-                                        }
-                                    })
-                                }
-                                console.log(cardTarget);
-                            }}>
-                                <input type="checkbox" name="monster" id={key}></input>
-                                <label htmlFor={key}
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                }}>
-                                    <MonsterCard CardDetail={monster} />
-                                </label>
-                                <div className="Monster_Info">
-                                    <div className="MaxHPBar">
-                                        <div className="HPBar"
-                                            style={{width: (stats['HP'].value/stats['MaxHP'].value)*100+"%"}}></div>
-                                        <p>{stats['HP'].value}/{stats['MaxHP'].value}</p>
-                                    </div>
-                                    <div className="MaxMPBar">
-                                        <div className="MPBar"
-                                            style={{width: (stats['MP'].value/stats['MaxMP'].value)*100+"%"}}></div>
-                                        <p>{stats['MP'].value}/{stats['MaxMP'].value}</p>
-                                    </div>
-                                    {objectList[key].detail.stat.SHIELD.value > 0 &&
-                                    <div className="shieldBox">
-                                        <div className="shieldBar" />
-                                        <div className="shieldValue">
-                                            <p>{objectList[key].detail.stat.SHIELD.value}</p>
-                                        </div>
-                                    </div>}
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        )
-    }
-
-    // round event
-    const renderRoundEvent = () => {
-        const event = {...events};
-        return (
-            <div className="contentArea">
-                <div id="eventArea">
-                    {
-                        Object.keys(event).map((key, idx) => {
-                            return <EventCard key={idx} CardDetail={event[key]} handle={setGameProccess} init={initRound} monsterID={idx} />
-                        })
-                    }
-                </div>
-                <h2>Hãy chọn lối đi tiếp theo</h2>
-            </div>
-        )
-    }
-
     //game
     const renderGameBoard = (
         <div className="content">
-            <div className="SFX_Area">
+            <div className="SFX_Area hidden">
                 <div className="blocker"></div>
             </div>
             <InitPlayerBox target={objectList['player']} origin={player} proccess={gameProccess} handle={handlePlayer} />
@@ -600,10 +540,12 @@ const Play = (props) => {
                     </li>
                 </ul>
                 
-                {gameProccess==='OUT_COMBAT' || renderTimeline()}
+                {gameProccess!=='OUT_COMBAT' && gameProccess!=='ROUND_END' && renderTimeline()}
                                 
                 <div className="contentArea">
-                    {gameProccess==='OUT_COMBAT'?renderRoundEvent():renderMonster(objectList)}
+                    {gameProccess==='OUT_COMBAT'?
+                    <EventArea events={events} setGameProccess={setGameProccess} initRound={initRound} />:
+                    <MonsterArea list={objectList} monsterChosing={cardTarget} handle={handleCardTarget} />}
                 </div>
 
                 <div id='playerInfo'>
@@ -617,7 +559,7 @@ const Play = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div id='playerLever'><p>{objectList['player'].detail.stat.Lv}</p></div>
+                        <div id='playerLevel'><p>{objectList['player'].detail.stat.Lv}</p></div>
                         <div id='playerMaxHP' className="MaxHPBar">
                             <div id='playerHP' className="HPBar"
                                 style={{width: (objectList['player'].detail.stat['HP'].value/objectList['player'].detail.stat['MaxHP'].value)*100+'%'}}></div>

@@ -1,6 +1,6 @@
 .play-layout #body-container {
     background-color: #00000000;
-    font-size: calc(0.8rem + 0.1vw);
+    font-size: 0.9rem;
     padding-top: 1em;
 }
 
@@ -14,6 +14,7 @@
 
 .play-layout .content {
     position: relative;
+    overflow: hidden;
     height: 100%;
     background-color: #30343a;
     background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627bc589-b21e-47b2-8cf2-7617185ee1ac/d4n4zuk-f6474775-f789-459c-833e-89ffd068b654.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYyN2JjNTg5LWIyMWUtNDdiMi04Y2YyLTc2MTcxODVlZTFhY1wvZDRuNHp1ay1mNjQ3NDc3NS1mNzg5LTQ1OWMtODMzZS04OWZmZDA2OGI2NTQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9XxbT2tBslr_SHGEAA4u_5QCwhppgUj6K-BiJsHo4ms");
@@ -80,7 +81,7 @@
     z-index: 3;
 }
 
-#playerLever {
+#playerLevel {
     position: absolute;
     bottom: 1em;
     height: 4em;
@@ -93,7 +94,7 @@
     text-align: center;
 }
 
-#playerLever p {
+#playerLevel p {
     font-size: 2em;
     font-weight: bold;
 }
@@ -210,7 +211,7 @@
 }
 
 .shieldBar {
-    background-image: radial-gradient(transparent, aqua);
+    background-image: radial-gradient(transparent 25%, orange, yellow);
     position: absolute;
     z-index: 4;
 }
@@ -220,8 +221,8 @@
     justify-content: center;
     align-items: center;
     background-color: #555;
-    background-image: radial-gradient(transparent, rgba(0, 255, 255, 0.5), black);
-    clip-path: polygon(50% 0, 100% 20%, 100% 80%, 50% 100%, 0 80%, 0 20%);
+    background-image: radial-gradient(transparent, orange, yellow);
+    clip-path: polygon(50% 0, 100% 10%, 95% 75%, 50% 100%, 5% 75%, 0 10%);
 }
 
 .shieldValue p {
@@ -260,13 +261,13 @@
     bottom: 50%;
     left: 50%;
     border: 0.2em solid white;
-    transition: all 0.2s linear;
+    transition: all 0.1s linear;
 }
 
 .openWideUp {
     display: flex;
-    width: 25em;
-    height: 27em !important;
+    width: 30em;
+    height: 30em !important;
     left: 0.2em !important;
     padding: 0.5em !important;
     font-size: 1em !important;
@@ -308,39 +309,6 @@
     align-items: center;
 }
 
-.statName {
-    opacity: 0;
-    padding: 0.1em 1em;
-    width: 8em;
-    background-color: #3caeff;
-    position: absolute;
-    left: 0;
-    bottom: 98.5%;
-    clip-path: polygon(90% 0, 100% 100%, 0 100%, 0 0);
-    z-index: -10;
-}
-
-.statName p {
-    font-size: 0.65em;
-}
-
-.statInfo {
-    display: none;
-    padding: 0.4em 1em;
-    padding-top: 0.8em;
-    width: 15em;
-    background-color: #3caeff;
-    position: absolute;
-    left: -4em;
-    top: 98.5%;
-    clip-path: polygon(0 10%, 45% 10%, 50% 0, 55% 10%, 100% 10%, 100% 100%, 0 100%);
-    z-index: -10;
-}
-
-.statInfo p {
-    font-size: 0.65em;
-}
-
 .statusBoxItem::before {
     position: absolute;
     top: 0;
@@ -365,7 +333,10 @@
 
 
 .statusBoxItem:not(:last-child, :first-child):hover .statInfo {
-    display: block;
+    width: 10em;
+    height: fit-content;
+    padding: 0.4em 1em;
+    border-radius: 0 0.4em 0.4em 0.4em;
 }
 
 .statusBoxItem:not(:last-child, :first-child):hover::before{
@@ -415,7 +386,7 @@
     flex-grow: 1;
     width: 30em;
     height: 0;
-    margin-right: 5em;
+    margin-right: 3em;
     margin-left: 0em;
 }
 
@@ -429,33 +400,35 @@
 
 .handCard label {
     min-width: 0;
-    width: 3em;
+    width: 4em;
 }
 
 /* Hover card */
 #cardArea .handCard:hover label {
-    width: 10.2em;
+    width: 19em;
+    margin-right: 1em;
     z-index: 1;
 }
 
 #cardArea .handCard:last-child:hover label {
-    width: 10.2em;
+    width: 4em;
     margin-right: -6em;
+    margin-left: 1em;
     z-index: 1;
 }
 
 #cardArea .card {
-    transform: scale(0.6) translate(-4.5em, -8em);
+    transform: scale(0.8) translate(-4.5em, 1em);
     transition: all 0.05s linear;
 }
 
 #cardArea .handCard:hover .card {
-    transform: scale(0.7) translate(-3em, -9em);
+    transform: scale(1) translate(-3em, -4.5em);
     margin: 0;
 }
 
 #cardArea .handCard:last-child:hover .card {
-    transform: scale(0.7) translate(-3em, -9em);
+    transform: scale(1) translate(-3em, -4.5em);
 }
 
 #cardArea .handCard input[type="radio"] {
@@ -465,34 +438,32 @@
 /* checked card */
 #cardArea .handCard:hover input[type="radio"]:checked + label .card,
 #cardArea input[type="radio"]:checked + label .card {
-    transform: scale(0.7) translate(-3em, -9.5em);
+    transform: scale(1) translate(-3em, -4.5em);
     margin: 0;
     box-shadow: 0 0 0.5em 0.1em #0aaad6;
 }
 
 #cardArea .handCard:hover input[type="radio"]:checked + label,
 #cardArea input[type="radio"]:checked + label {
-    max-width: 10.2em;
-    width: 10.2em;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-    z-index: 0;
+    max-width: 17em;
+    width: 17em;
+    z-index: 1;
 }
 
 #cardArea .handCard:last-child:hover input[type="radio"]:checked + label .card,
 #cardArea .handCard:last-child input[type="radio"]:checked + label .card {
-    transform: scale(0.7) translate(-3em, -9.5em);
+    transform: scale(1) translate(-3em, -4.5em);
     margin: 0;
     box-shadow: 0 0 0.5em 0.1em #0aaad6;
 }
 
 #cardArea .handCard:last-child:hover input[type="radio"]:checked + label,
 #cardArea .handCard:last-child input[type="radio"]:checked + label {
-    max-width: 10.2em;
-    width: 10.2em;
+    max-width: 4em;
+    width: 4em;
     margin-right: -6em;
-    margin-left: 0.3em;
-    z-index: 0;
+    margin-left: 1em;
+    z-index: 1;
 }
 
 #playerItems {
@@ -603,7 +574,7 @@
 }
 
 .Monster .card {
-    transform: scale(0.7);
+    transform: scale(0.85);
 }
 
 .Monster .card:hover .cardMoreInfo {
@@ -613,10 +584,11 @@
 .Monster_Info {
     position: relative;
     width: 100%;
+    z-index: 3;
 }
 
 .Monster_Info .MaxHPBar {
-    top: -2em;
+    top: -1em;
     left: 5%;
     height: 1.8em;
     width: 90%;
@@ -633,7 +605,7 @@
 }
 
 .Monster_Info .MaxMPBar {
-    top: -0.2em;
+    top: 0.8em;
     left: 10%;
     height: 1.5em;
     width: 80%;
@@ -650,7 +622,7 @@
 }
 
 .Monster_Info .shieldBar {
-    top: -2em;
+    top: -1em;
     left: 5%;
     height: 1.8em;
     width: 90%;
@@ -660,7 +632,7 @@
 .Monster_Info .shieldValue {
     position: absolute;
     left: 11.9em;
-    bottom: -0.42em;
+    top: -1.4em;
     height: 3em;
     width: 3em;
     z-index: 5;
@@ -730,7 +702,7 @@
 }
 
 #monsterArea input[type="checkbox"]:checked + label .card {
-    transform: scale(0.75);
+    transform: scale(0.9);
 }
 
 #monsterArea input[type="checkbox"]:checked + label .card .cardMoreInfo {
@@ -745,7 +717,7 @@
 #eventArea {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     width: 70%;
     margin: 4em auto;
 }
@@ -786,10 +758,9 @@
     padding: 0.5em;
     margin: -1em;
     height: 70%;
-    width: 7em;
+    width: 6em;
     background-color: rgba(153, 153, 153, 0.5);
     background-image: linear-gradient(to left, rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.4));
-    border-bottom-left-radius: 4em;
     position: absolute;
     overflow: hidden;
 }
@@ -815,15 +786,15 @@
 
 #timelineArea .timelineItem:first-child {
     position: absolute;
-    height: 6em;
-    width: 6em;
+    height: 5em;
+    width: 5em;
     top: 5em !important;
     display: flex;
     border-radius: 50%;
 }
 
 #timelineArea .timelineItem:first-child img {
-    width: 6em;
+    width: 5em;
     border: 0.3em solid white;
     box-shadow: 0 0 0.5em 0.1em lightblue;
 }
@@ -831,7 +802,7 @@
 #timelineArea .timelineItem {
     position: absolute;
     height: 4em;
-    width: 6em;
+    width: 5em;
     display: flex;
     justify-content: center;
     border-radius: 50%;
@@ -949,35 +920,6 @@
     font-size: 1.2em;
 }
 
-#initJobBox > div {
-    box-shadow: none;
-}
-
-#initJobBox > :nth-child(2) {
-    z-index: 2;
-}
-
-#initJobBox > :first-child,
-#initJobBox > :last-child {
-    width: 0;
-    transform: scale(0.7);
-}
-
-#initJobBox > :first-child:hover {
-    width: 5em;
-    transform: scale(0.9);
-}
-
-#initJobBox > :last-child:hover {
-    width: 5em;
-    transform: scale(0.9) translate(5.5em, 0);
-}
-
-#initJobBox > :last-child > .card {
-    /* position: absolute; */
-    transform: translate(-100%, 0);
-}
-
 /*Ipad ngang(1024 x 768)*/
 @media screen and (min-width: 1024px){
     .play-layout #body-container .content {
@@ -1013,3 +955,21 @@
 @media screen and (max-width: 240px){
 
 }
+
+.statInfo {
+    width: 0;
+    padding: 0;
+    background-color: #3caeff;
+    position: absolute;
+    left: 100%;
+    height: 100%;
+    border-radius: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: -10;
+    transition: all 0.1s linear;
+  }
+  
+  .statInfo p {
+    font-size: 0.7em;
+  }

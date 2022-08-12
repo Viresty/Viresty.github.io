@@ -1,0 +1,49 @@
+.cardPreview {
+    transform: scale(0.9);
+
+    .cardInfo {
+        justify-content: flex-end;
+    }
+
+    .cardStat-left, .cardStat-right {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+
+        .cardStatContent {
+            width: 5em;
+            padding-left: 1.1em;
+            padding-right: 1.7em;
+            height: 0.6em;
+            margin: 0.22em 0.2em;
+            border-radius: 1em;
+            text-align: start;
+
+            p {
+                margin: 0;
+                margin-top: -0.35em;
+                font-size: 0.65em;
+            }
+
+            .statIcon {
+                left: 0;
+                top: -0.22em;
+            }
+        }
+
+    }
+    
+    .cardAbiliti {
+        margin-top: -1.2em;
+        min-height: 10%;
+        position: relative;
+    }
+
+    .card:hover & {
+        transform: scale(1);
+    }
+}

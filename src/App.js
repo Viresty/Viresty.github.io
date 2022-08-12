@@ -12,10 +12,15 @@ import Play from './pages/play';
 import CardDetail from './pages/cardDetail';
 import NotFound from './pages/not-found';
 
+
 import { reloadAnimation } from './function/page';
 
 import Header from './components/header';
 import Footer from './components/footer';
+
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+AOS.init();
   
 const App = () => {
 

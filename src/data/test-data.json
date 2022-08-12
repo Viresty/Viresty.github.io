@@ -1,166 +1,198 @@
 {
     "0": {
         "001": {
-            "url": "https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789",
+            "url": "https://i.pinimg.com/564x/3c/67/79/3c67798459911cc7aa9dbc72a0b7574a.jpg",
+            "fullview-url": "",
+            "avt-url": "",
             "alt": "viresty1",
             "itemID": "0001",
             "typeCard": "Role",
             "detail": {
-                "name": "Hắc Chiến Binh",
+                "name": "SÁT THỦ",
                 "type": "Chức Nghiệp",
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "basic": 18,
-                        "point": 0,
-                        "pointPowerUp": 2,
-                        "value": 18
-                    }, 
-                    "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "basic": 2,
-                        "point": 0,
-                        "pointPowerUp": 1,
-                        "value": 2
-                    }, 
-                    "ATK": {
-                        "name": "TẤN CÔNG",
-                        "basic": 1,
-                        "point": 0,
-                        "pointPowerUp": 1,
-                        "value": 1
-                    },
-                    "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "basic": 1,
-                        "point": 0,
-                        "pointPowerUp": 1,
-                        "value": 1
-                    },
-                    "ATKSPD": {
-                        "name": "TỐC ĐỘ TẤN CÔNG",
-                        "basic": 0.7,
-                        "point": 0,
-                        "pointPowerUp": 0.3,
-                        "value": 0.7
-                    },
-                    "SPD": {
-                        "name": "TỐC ĐỘ DI CHUYỂN",
-                        "basic": 10.2,
-                        "point": 0,
-                        "pointPowerUp": -0.2,
-                        "value": 10.2
-                    },
-                    "STR": {
-                        "name": "SỨC MẠNH",
-                        "basic": 5,
-                        "point": 0,
-                        "pointPowerUp": 0.5,
-                        "value": 5
-                    }
-                },
-                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
-            }
-        },
-        "002": {
-            "url": "https://picstatio.com/large/752673/warrior-at-lake-dark-art.jpg",
-            "alt": "viresty2",
-            "itemID": "0002",
-            "typeCard": "Role",
-            "detail": {
-                "name": "Long Kỵ Sĩ",
-                "type": "Chức Nghiệp",
-                "cost": "",
-                "rank": "Hiếm",
-                "stat": {
-                    "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "basic": 16,
-                        "point": 0,
+                        "basic": 10,
+                        "point": 3,
                         "pointPowerUp": 2,
                         "value": 16
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "basic": 2,
-                        "point": 0,
+                        "basic": 0,
+                        "point": 2,
                         "pointPowerUp": 1,
                         "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
                         "basic": 1,
-                        "point": 0,
+                        "point": 3,
                         "pointPowerUp": 1,
-                        "value": 1
+                        "value": 4
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "basic": 1,
+                        "basic": 0,
                         "point": 0,
                         "pointPowerUp": 1,
-                        "value": 1
+                        "value": 0
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 3,
+                        "pointPowerUp": 0.2,
+                        "value": 0.6
                     },
                     "ATKSPD": {
-                        "name": "TỐC ĐỘ TẤN CÔNG",
-                        "basic": 0.7,
-                        "point": 0,
-                        "pointPowerUp": 0.3,
-                        "value": 0.7
+                        "basic": 0.6,
+                        "point": 2,
+                        "pointPowerUp": 0.2,
+                        "value": 1
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ DI CHUYỂN",
-                        "basic": 10,
-                        "point": 0,
+                        "basic": 10.2,
+                        "point": 2,
                         "pointPowerUp": -0.2,
-                        "value": 10
+                        "value": 9.8
                     },
                     "STR": {
-                        "name": "SỨC MẠNH",
                         "basic": 5,
                         "point": 0,
                         "pointPowerUp": 0.5,
                         "value": 5
                     }
                 },
-                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+                "abilities" : ""
             }
         },
-        "003": {
-            "url": "https://picstatio.com/large/b183c8/dragon-and-warrior-fantasy.jpg",
-            "alt": "viresty1",
-            "itemID": "0003",
+        "002": {
+            "url": "https://i.pinimg.com/564x/ec/30/76/ec30764f6f19767e8ae9e787c04c73fd.jpg",
+            "fullview-url": "",
+            "avt-url": "",
+            "alt": "viresty2",
+            "itemID": "0002",
             "typeCard": "Role",
             "detail": {
-                "name": "Hắc Chiến Binh",
+                "name": "THỢ RÈN",
                 "type": "Chức Nghiệp",
                 "cost": "",
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 10,
+                        "point": 3,
+                        "pointPowerUp": 2,
+                        "value": 16
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
+                        "basic": 0,
+                        "point": 3,
+                        "pointPowerUp": 1,
                         "value": 3
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 2,
+                        "pointPowerUp": 1,
+                        "value": 3
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 0,
+                        "point": 3,
+                        "pointPowerUp": 1,
+                        "value": 3
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.6,
+                        "point": 1,
+                        "pointPowerUp": 0.2,
+                        "value": 0.8
                     },
                     "SPD": {
-                    "name": "TỐC ĐG",
-                    "value": 10
+                        "basic": 10.2,
+                        "point": 1,
+                        "pointPowerUp": -0.2,
+                        "value": 10
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 2,
+                        "pointPowerUp": 0.5,
+                        "value": 6
                     }
                 },
-                "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
+                "abilities" : ""
+            }
+        },
+        "003": {
+            "url": "https://i.pinimg.com/564x/d9/1c/59/d91c596dd3c54db8dd935c0b4f2ac129.jpg",
+            "fullview-url": "",
+            "avt-url": "",
+            "alt": "viresty1",
+            "itemID": "0003",
+            "typeCard": "Role",
+            "detail": {
+                "name": "QUYỀN SƯ",
+                "type": "Chức Nghiệp",
+                "cost": "",
+                "rank": "Hiếm",
+                "stat": {
+                    "MaxHP": {
+                        "basic": 10,
+                        "point": 3,
+                        "pointPowerUp": 2,
+                        "value": 16
+                    }, 
+                    "MaxMP": {
+                        "basic": 0,
+                        "point": 2,
+                        "pointPowerUp": 1,
+                        "value": 2
+                    }, 
+                    "ATK": {
+                        "basic": 1,
+                        "point": 2,
+                        "pointPowerUp": 1,
+                        "value": 3
+                    },
+                    "DEF": {
+                        "basic": 0,
+                        "point": 2,
+                        "pointPowerUp": 1,
+                        "value": 2
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.6,
+                        "point": 2,
+                        "pointPowerUp": 0.2,
+                        "value": 1
+                    },
+                    "SPD": {
+                        "basic": 10.2,
+                        "point": 2,
+                        "pointPowerUp": -0.2,
+                        "value": 9.8
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 2,
+                        "pointPowerUp": 0.5,
+                        "value": 6
+                    }
+                },
+                "abilities" : ""
             }
         },
         "004": {
@@ -175,24 +207,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -210,24 +270,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -245,24 +333,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -280,24 +396,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -315,24 +459,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -350,24 +522,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -385,24 +585,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -420,24 +648,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -455,24 +711,52 @@
                 "rank": "Hiếm",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
-                        "value": 20
+                        "basic": 18,
+                        "point": 0,
+                        "pointPowerUp": 2,
+                        "value": 18
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
-                        "value": 3
+                        "basic": 2,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
-                        "value": 2
+                        "basic": 1,
+                        "point": 0,
+                        "pointPowerUp": 1,
+                        "value": 1
+                    },
+                    "PDMG": {
+                        "basic": 0,
+                        "point": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
+                    "ATKSPD": {
+                        "basic": 0.7,
+                        "point": 0,
+                        "pointPowerUp": 0.3,
+                        "value": 0.7
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ",
-                        "value": 10
+                        "basic": 10.2,
+                        "point": 0,
+                        "pointPowerUp": -0.2,
+                        "value": 10.2
+                    },
+                    "STR": {
+                        "basic": 5,
+                        "point": 0,
+                        "pointPowerUp": 0.5,
+                        "value": 5
                     }
                 },
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
@@ -481,7 +765,7 @@
     }, 
     "1": {
         "001": {
-            "url": "https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789",
+            "url": "https://i.ibb.co/xf1NQFz/Swords-Short.png",
             "alt": "viresty1",
             "itemID": "1001",
             "typeCard": "Weapon",
@@ -490,11 +774,21 @@
                 "type": "Trang bị",
                 "cost": 1,
                 "rank": "Thường",
+                "stat": {
+                    "ATK": {
+                        "value": 1
+                    },
+                    "ATKSPD": {
+                        "value": 1.0
+                    },
+                    "TOUCH": {
+                        "value": 100
+                    }
+                },
                 "statChange": {
                     "ATK": 1,
                     "ATKSPD": 1.0
                 },
-                "touch": 100,
                 "abilities" : "",
                 "action": [
                     {
@@ -523,6 +817,7 @@
                 "limit": 1,
                 "action": [
                     {
+                        
                         "type": "SINGLE_ACTION",
                         "effect": "DEAL_DAMAGE",
                         "depend_on": "ATK",
@@ -539,7 +834,7 @@
             }
         },
         "002": {
-            "url": "https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789",
+            "url": "https://i.ibb.co/xf1NQFz/Swords-Short.png",
             "alt": "viresty1",
             "itemID": "2002",
             "typeCard": "Action",
@@ -583,37 +878,36 @@
                 "rank": "Thường",
                 "stat": {
                     "MaxHP": {
-                        "name": "SINH LỰC TỐI ĐA",
                         "basic": 3,
                         "lvPowerUp": 2,
                         "value": 5
                     }, 
                     "MaxMP": {
-                        "name": "NĂNG LƯỢNG TỐI ĐA",
                         "basic": 1,
                         "lvPowerUp": 1,
                         "value": 2
                     }, 
                     "ATK": {
-                        "name": "TẤN CÔNG",
                         "basic": 0,
                         "lvPowerUp": 1,
                         "value": 1
                     },
                     "DEF": {
-                        "name": "PHÒNG THỦ",
                         "basic": 2,
                         "lvPowerUp": 1,
                         "value": 3
                     },
+                    "PDMG": {
+                        "basic": 0,
+                        "pointPowerUp": 0.2,
+                        "value": 0
+                    },
                     "ATKSPD": {
-                        "name": "TỐC ĐỘ TẤN CÔNG",
                         "basic": 0.7,
                         "lvPowerUp": 0.3,
                         "value": 1.0
                     },
                     "SPD": {
-                        "name": "TỐC ĐỘ DI CHUYỂN",
                         "basic": 10.2,
                         "lvPowerUp": -0.2,
                         "value": 10.0
@@ -635,150 +929,204 @@
     "8": {
         "001": {
             "url": "https://i.pinimg.com/564x/95/53/b1/9553b1e419703142a0163ba62bfb69bd.jpg",
-            "name": "CHIẾN ĐẤU I",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "ADD_MONSTER_RANDOM"
-                }
-            ],
-            "abilities": "Chiến đấu với 1 quái vật",
-            "optimizeDescribe": [],
-            "optimizeDescribeIdx": [],
-            "nextProccess": "ROUND_START"
+            "detail": {
+                "name": "CHẠM TRÁN QUÁI VẬT I",
+                "type": "Chiến đấu",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }
+                ],
+                "abilities": "Một con quái vật đang đi lang thang một mình. Có vẻ nó đang bị lạc khỏi đàn. Hoặc chỉ có vẻ như thế ...",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_START"
+            }
         },
         "002": {
             "url": "https://i.pinimg.com/564x/37/07/6a/37076aaa767ea7bbf268e2dac7d979a3.jpg",
-            "name": "CHIẾN ĐẤU II",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }
-            ],
-            "abilities": "Chiến đấu với 2 quái vật",
-            "optimizeDescribe": [],
-            "optimizeDescribeIdx": [],
-            "nextProccess": "ROUND_START"
+            "detail": {
+                "name": "CHẠM TRÁN QUÁI VẬT II",
+                "type": "Chiến đấu",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }
+                ],
+                "abilities": "Ở đoạn đường trước mặt có hai con quái vật đang đi tìm kiếm con mồi với cặp mắt đang quan sát xung quanh ...",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_START"
+            }
         },
         "003": {
             "url": "https://i.pinimg.com/564x/b2/06/6a/b2066ad48146a499bf2ef87a7fc56952.jpg",
-            "name": "CHIẾN ĐẤU III",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }
-            ],
-            "abilities": "Chiến đấu với 3 quái vật",
-            "optimizeDescribe": [],
-            "optimizeDescribeIdx": [],
-            "nextProccess": "ROUND_START"
+            "detail": {
+                "name": "CHẠM TRÁN QUÁI VẬT III",
+                "type": "Chiến đấu",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }
+                ],
+                "abilities": "Ba con quái vật đang tận hưởng thành quả của buổi đi săn. Cả đoạn đường chỉ còn tiếng gầm gừ của chúng vang vọng khắp nơi ...",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_START"
+            }
         },
         "004": {
             "url": "https://i.pinimg.com/564x/6c/e9/79/6ce979a98f6a27463ae35110b1c23617.jpg",
-            "name": "CHIẾN ĐẤU IV",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }
-            ],
-            "abilities": "Chiến đấu với 4 quái vật",
-            "optimizeDescribe": [],
-            "optimizeDescribeIdx": [],
-            "nextProccess": "ROUND_START"
+            "detail": {
+                "name": "CHẠM TRÁN QUÁI VẬT IV",
+                "type": "Chiến đấu",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }
+                ],
+                "abilities": "Cách không xa phía trước là bốn con quái vật đang tàn phá những đồ vật xung quanh chúng, gần đó là xác của những con quái yếu hơn ...",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_START"
+            }
         },
         "005": {
             "url": "https://i.pinimg.com/564x/87/92/ef/8792ef6a71988c5f4692887473e8f749.jpg",
-            "name": "CHIẾN ĐẤU V",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }, {
-                    "type": "ADD_MONSTER_RANDOM"
-                }
-            ],
-            "abilities": "Chiến đấu với 5 quái vật",
-            "optimizeDescribe": [],
-            "optimizeDescribeIdx": [],
-            "nextProccess": "ROUND_START"
+            "detail": {
+                "name": "CHẠM TRÁN QUÁI VẬT V",
+                "type": "Chiến đấu",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }
+                ],
+                "abilities": "Cùng với những tiếng kêu gào rợn người, năm con quái vật với vẻ khát máu xuất hiện ở phía trước, có vẻ chúng vẫn chưa phát hiện ra ...",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_START"
+            }
         },
         "006": {
             "url": "https://i.pinimg.com/564x/1d/7e/ba/1d7ebac426b405c427cf8362ccb02d39.jpg",
-            "name": "BẪY: BẪY GẤU",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "DEAL_DAMAGE",
-                    "payload": {
-                        "id": ["player"],
-                        "basic": 3,
-                        "lvPowerUp": 2,
-                        "value": 5
+            "detail": {
+                "name": "ĐOẠN ĐƯỜNG KHÓ KHĂN",
+                "type": "Bẫy",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "DEAL_DAMAGE",
+                        "payload": {
+                            "id": ["player"],
+                            "basic": 3,
+                            "lvPowerUp": 2,
+                            "value": 5
+                        }
                     }
-                }
-            ],
-            "optimizeDescribe": [
-                "Gây ", 1, " sát thương lên người chơi"
-            ],
-            "optimizeDescribeIdx": [
-                1
-            ],
-            "nextProccess": "ROUND_END"
+                ],
+                "optimizeDescribe": [
+                    "Đoạn đường phía trước đã được giăng bẫy khắp nơi, mặt dù đã biết trước nhưng vẫn rất khó tránh được. Nhưng chịu đựng vượt qua đoạn đường này hẳn là sẽ an toàn hơn ... ",
+                    "(Gây ", 1, " sát thương lên người chơi)"
+                ],
+                "optimizeDescribeIdx": [
+                    2
+                ],
+                "nextProccess": "ROUND_END"
+            }
         },
         "007": {
             "url": "https://i.pinimg.com/564x/6f/69/07/6f6907e80da36790cd52969dbc7822a7.jpg",
-            "name": "PHÒNG HỒI SỨC",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "HEAL_HP",
-                    "payload": {
-                        "id": ["player"],
-                        "basic": 3,
-                        "lvPowerUp": 2,
-                        "value": 5
+            "detail": {
+                "name": "PHÒNG HỒI SỨC",
+                "type": "Phần thưởng",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "HEAL_HP",
+                        "payload": {
+                            "user": ["player"],
+                            "basic": 3,
+                            "lvPowerUp": 2,
+                            "value": 5
+                        }
                     }
-                }
-            ],
-            "optimizeDescribe": [
-                "Hồi ", 1, " sinh lực TỐI ĐA cho người chơi"
-            ],
-            "optimizeDescribeIdx": [
-                1
-            ],
-            "nextProccess": "ROUND_END"
+                ],
+                "optimizeDescribe": [
+                    "Một căn phòng có hồ nước nhỏ với một cây sự sống đang tỏa sáng nhè nhẹ. Nước của hồ này này có khả năng hồi phục mạnh mẽ. ",
+                    "(Hồi ", 1, " sinh lực cho người chơi)"
+                ],
+                "optimizeDescribeIdx": [
+                    2
+                ],
+                "nextProccess": "ROUND_END"
+            }
         },
         "008": {
             "url": "https://i.pinimg.com/564x/df/7c/f2/df7cf236ae9823f2107ae89535a2e08a.jpg",
-            "name": "LỐI ĐI AN TOÀN",
-            "Lv": 1,
-            "action": [
-            ],
-            "abilities": "Đến khu vực tiếp theo.",
-            "optimizeDescribe": [],
-            "optimizeDescribeIdx": [],
-            "nextProccess": "ROUND_END"
+            "detail": {
+                "name": "LỐI ĐI TỐI TĂM",
+                "type": "???",
+                "Lv": 1,
+                "action": [
+                ],
+                "abilities": "Một đoạn đường tối tăm, không nhìn rõ phía trước. Nhìn có vẻ an toàn ... Nhưng liệu có an toàn ...",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_END"
+            }
+        },
+        "009": {
+            "url": "https://i.pinimg.com/564x/df/7c/f2/df7cf236ae9823f2107ae89535a2e08a.jpg",
+            "detail": {
+                "name": "LỐI ĐI TỐI TĂM",
+                "type": "???",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM",
+                        "payload": {
+                            "addLv": 1
+                        }
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }, {
+                        "type": "ADD_MONSTER_RANDOM"
+                    }
+                ],
+                "abilities": "Một đoạn đường tối tăm, không nhìn rõ phía trước. Nhìn có vẻ an toàn ... Nhưng liệu có an toàn ...",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_START"
+            }
         }
     },
     "9": {
@@ -822,20 +1170,52 @@
         "MaxMP": "Năng lượng tối đa dùng để sử dụng các bài phép. Hồi đầy vào đầu lượt đấu.",
         "ATK": "Lượng sát thương có thể gây ra.",
         "DEF": "Lượng giáp tạo ra ở đầu trận đấu. 10 điểm phòng thủ giảm 1 sát thương nhận vào.",
+        "PDMG": "Lượng phòng thủ và giáp bị bỏ qua khi gây sát thương.",
         "ATKSPD": "Số lượng lá bài có thể rút ở đầu lượt đấu.",
         "SPD": "Thời gian đợi cho đến lượt tiếp theo.",
-        "STR": "Biểu thị khả năng sử dụng các trang bị. Lượng bài tối đa trên tay khi kết thúc lượt."
+        "STR": "Biểu thị khả năng sử dụng các trang bị và số lượng bài tối đa trên tay khi kết thúc lượt.",
+        "TOUCH": "Số lần sử dụng còn lại của vũ khí. Giảm 1 khi bắt đầu trận đấu.",
+        "MaxHP_M": "Sinh lực tối đa của quái vật. Sẽ bị đánh bại nếu về 0.",
+        "MaxMP_M": "Năng lượng tối đa dùng để sử dụng các kỹ năng. Hồi đầy vào đầu lượt đấu.",
+        "ATK_M": "Lượng sát thương có thể gây ra.",
+        "DEF_M": "Lượng giáp tạo ra ở đầu trận đấu. 10 điểm phòng thủ giảm 1 sát thương nhận vào.",
+        "PDMG_M": "Lượng phòng thủ và giáp bị bỏ qua khi gây sát thương.",
+        "ATKSPD_M": "Số lượng hành động có thể thực hiện trong 1 lượt.",
+        "SPD_M": "Thời gian đợi cho đến lượt tiếp theo."
+    },
+    "STAT_NAME": {
+        "MaxHP": "SINH LỰC TỐI ĐA",
+        "MaxMP": "NĂNG LƯỢNG TỐI ĐA",
+        "ATK": "TẤN CÔNG",
+        "DEF": "PHÒNG THỦ",
+        "PDMG": "XUYÊN GIÁP",
+        "ATKSPD": "TỐC ĐỘ ĐÁNH",
+        "SPD": "THỜI GIAN CHỜ",
+        "STR": "SỨC MẠNH",
+        "TOUCH": "ĐỘ BỀN"
     },
     "ID_NAME": {
-        "ROLE": 0,
-        "WEAPON": 1,
-        "ACTION": 2,
-        "SPELL": 3,
-        "ITEM": 4,
-        "BUFF": 5,
-        "MONSTER": 6,
-        "DEBUFF": 7,
-        "EVENT": 8,
-        "BOSS": 9
+        "role": 0,
+        "weapon": 1,
+        "action": 2,
+        "spell": 3,
+        "item": 4,
+        "buff": 5,
+        "monster": 6,
+        "debuff": 7,
+        "event": 8,
+        "boss": 9
+    },
+    "ID_TYPE": {
+        "role": "Chức Nghiệp",
+        "weapon": "Trang Bị",
+        "action": "Hành Động",
+        "spell": "Phép Thuật",
+        "item": "Vật Phẩm",
+        "buff": "Chúc Phúc",
+        "monster": "Quái Vật",
+        "debuff": "Nguyền Rủa",
+        "event": "Sự Kiện",
+        "boss": "Quái Khủng"
     }
 }

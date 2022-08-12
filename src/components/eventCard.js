@@ -6,7 +6,7 @@ const EventCard = (props) => {
   return (
     <div className="card eventCard"
       onClick={() => {
-        props.handle(props.CardDetail.nextProccess);
+        props.handle(props.CardDetail.detail.nextProccess);
         props.init(props.CardDetail);
       }}>
         <div className='backgroundEffect' style={{height: "130%", width: "130%"}}>

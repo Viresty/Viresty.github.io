@@ -1,33 +1,17 @@
 import React, { useReducer, useState, useEffect } from "react";
-import { playerReducer, deckReducer, objectListReducer } from "../reducers/playReducer";
-import { optimizeCard,
-    createMonster,
-    powerUpByLv,
-    powerUpByPoint,
-    initPlayer,
-    optimizePlayer
-} from "../function/playFuction";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquare as farFaSquare,
-         faCircle as farFaCircle,
-         
-        } from '@fortawesome/free-regular-svg-icons';
-import { faSquare as fasFaSquare,
-        faCircle as fasFaCircle,
-        faCircleInfo,
-        faPlus, faMinus,
-        faCaretLeft, faCaretRight, 
-        } from '@fortawesome/free-solid-svg-icons';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { EffectCards, Navigation, Pagination } from "swiper";
 
+import "../css/playerBox.scss";
 import Card from "../components/card";
-import MonsterCard from "../components/monsterCard";
-import EventCard from "../components/eventCard";
 import StatusBox from "./statusBox";
 
 import data from '../data/test-data.json'
-import deckIcon from './../img/icon/card-game.png';
-import cardIcon from '../img/icon/card.png';
 
 const InitPlayerBox = (props) => {
 
@@ -58,26 +42,32 @@ const InitPlayerBox = (props) => {
             <div className='blocker'></div>
             <div className="notificationBox">
                 <h1 className="notificationTitle">INIT PLAYER</h1>
-                <div className="contentBox" style={{height: "41em"}}>
+                <div className="contentBox" style={{height: "45em"}}>
                     <div className="contentBoxColumn" id="ttStep_1">
                         {/* step 1 */}
                         <div className="contentBoxRow">
                             <div className="contentBoxItem">
                                 <h1 className="contentBoxTitle">Chọn nghề nghiệp</h1>
                                 <div className="contentBoxRow" id="initJobBox">
-                                    <div onClick={() => {
-                                                if (jobIdx>0) setJobIdx(jobIdx - 1);
-                                                else setJobIdx(cardJob.length - 1);
-                                            }}>
-                                        <Card CardDetail={jobIdx>0?cardJob[jobIdx-1]:cardJob[cardJob.length-1]}/>
-                                    </div>
-                                    <Card CardDetail={cardJob[jobIdx]}/>
-                                    <div onClick={() => {
-                                            if (jobIdx+1<cardJob.length) setJobIdx(jobIdx + 1);
-                                            else setJobIdx(0);
-                                        }}>
-                                        <Card CardDetail={jobIdx+1<cardJob.length?cardJob[jobIdx+1]:cardJob[0]}/>
-                                    </div>
+                                    <Swiper
+                                        effect={"cards"}
+                                        modules={[EffectCards, Navigation, Pagination]}
+                                        slidesPerView={1}
+                                        grabCursor={false}
+                                        navigation={true}
+                                        pagination={{
+                                            clickable: true,
+                                          }}
+                                        onSlideChange={(swiper) => {
+                                            setJobIdx(swiper.realIndex)
+                                        }}
+                                    >
+                                        {
+                                            cardJob.map((cardDetail, idx) => {
+                                                return <SwiperSlide key={idx}><Card CardDetail={cardDetail} cardPreview={true} /></SwiperSlide>
+                                            })
+                                        }
+                                    </Swiper>
                                 </div>
                             </div>
                             <div className="contentBoxItem">
@@ -86,9 +76,9 @@ const InitPlayerBox = (props) => {
                             </div>
                         </div>
                         {/* step 2 */}
-                        <div className="contentBoxColumn" id="ttStep_2">
+                        <div className="contentBoxColumn hidden" id="ttStep_2">
                             {
-                                
+                                <Card CardDetail={beginWeapon[0]}/>
                             }
                         </div>
                         <div className="contentBoxRow" style={{flexGrow: "0"}}>

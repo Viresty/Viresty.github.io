@@ -21,7 +21,6 @@ import { faSquare as fasFaSquare,
         } from '@fortawesome/free-solid-svg-icons';
 
 import Card from "../components/card";
-import MonsterCard from "../components/monsterCard";
 import EventCard from "../components/eventCard";
 
 import data from '../data/test-data.json'
@@ -38,6 +37,7 @@ const StatusBox = (props) => {
         "MaxMP": 0,
         "ATK": 0,
         "DEF": 0,
+        "PDMG": 0,
         "ATKSPD": 0,
         "SPD": 0,
         "STR": 0
@@ -50,6 +50,7 @@ const StatusBox = (props) => {
         "MaxMP": "#3caeff",
         "ATK": "orange",
         "DEF": "#555",
+        "PDMG": "#D2691E",
         "ATKSPD": "purple",
         "SPD": "green",
         "STR": "rgb(200, 200, 0)"
@@ -91,14 +92,14 @@ const StatusBox = (props) => {
             </div>
             {
                 Object.keys(playerStatus.detail.stat).map((key, idx) => {
-                    if (idx >= 7) return;
+                    if (idx >= 8) return;
                     return (
                         <div className="statusBoxItem" key={idx}
                             style={gameProccess === "OUT_COMBAT"?
                             {borderColor: color[key]}:
                             {borderColor: color[key], gridTemplateColumns: "3fr 3fr 3fr"}}>
                             <div className="statName" style={{backgroundColor: color[key]}}>
-                                <p>{playerStatus.detail.stat[key].name}</p>
+                                <p>{data['STAT_NAME'][key]}</p>
                             </div>
                             <p>{key}</p>
                             <p>{Math.round((playerStatus.detail.stat[key].value + (playerStatus.detail.stat[key].pointPowerUp * statusPoint[key]))*10)/10}</p>
@@ -145,6 +146,7 @@ const StatusBox = (props) => {
                             "MaxHP": 0,
                             "MaxMP": 0,
                             "ATK": 0,
+                            "PGMD": 0,
                             "DEF": 0,
                             "ATKSPD": 0,
                             "SPD": 0,
@@ -157,6 +159,7 @@ const StatusBox = (props) => {
                             "MaxHP": 0,
                             "MaxMP": 0,
                             "ATK": 0,
+                            "PGMD": 0,
                             "DEF": 0,
                             "ATKSPD": 0,
                             "SPD": 0,

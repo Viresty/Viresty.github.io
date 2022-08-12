@@ -29,6 +29,7 @@ export const playerReducer = (states = initPlayer(data['0']['001']), action) => 
             const newEXP = state.detail.stat['EXP'].value - state.detail.stat['MaxEXP'].value;
             state.detail.stat['EXP'].value = newEXP;
             state.detail.stat['MaxEXP'].value = data['LEVEL'][state.detail.stat['Lv']]['max'];
+            state.detail.stat['POINT'].value += 5;
             return state;
 
         case 'INIT_JOB': // payload.job
@@ -36,11 +37,11 @@ export const playerReducer = (states = initPlayer(data['0']['001']), action) => 
             return state;
 
         case 'ADD_POINTS': // item
-            console.log(payload.item);
+            // console.log(payload.item);
             Object.keys(payload.item).forEach((key) => {
                 state.detail.stat[key].point += payload.item[key];
                 state.detail.stat[key] = powerUpByPoint(state.detail.stat[key]);
-                console.log(state.detail.stat[key]);
+                // console.log(state.detail.stat[key]);
             })
             state.detail.stat['MaxHP'].value = state.detail.stat['HP'].value;
             state.detail.stat['MaxMP'].value = state.detail.stat['MP'].value;
@@ -58,7 +59,7 @@ export const objectListReducer = (states, action) => {
     switch (action.type) {
         // COMBAT
         case 'CHANGE_STAT': // id, stat, value
-            console.log(payload.value);
+            // console.log(payload.value);
             state[payload.id].detail.stat[payload.stat].value += payload.value;
             return state;
 
@@ -80,9 +81,9 @@ export const objectListReducer = (states, action) => {
             return state;
 
         case 'HEAL_HP': // id, value
-            state[payload.id].detail.stat['HP'].value += payload.value;
-            if (state[payload.id].detail.stat['HP'].value > state[payload.id].detail.stat['MaxHP'].value)
-                state[payload.id].detail.stat['HP'].value = state[payload.id].detail.stat['MaxHP'].value;
+            state[payload.user].detail.stat['HP'].value += payload.value;
+            if (state[payload.user].detail.stat['HP'].value > state[payload.user].detail.stat['MaxHP'].value)
+                state[payload.user].detail.stat['HP'].value = state[payload.user].detail.stat['MaxHP'].value;
             return state;    
 
         // CARD
@@ -131,19 +132,16 @@ export const objectListReducer = (states, action) => {
             return state;
 
         // ROUND
-        case 'UPDATE_DECK': // item
-            state['player'].deck = [...state['player'].deck, ...payload.item];
-            return state;
 
         case 'OPTIMIZE_PLAYER': //item
             return {...state, 'player': optimizePlayer(payload.item)}
 
         case 'ADD_MONSTER': // id, monster
-            console.log("Monster Added!");
+            // console.log("Monster Added!");
             return {...state, [payload.actionId]: payload.item}
 
         case 'ADD_MONSTER_RANDOM': // actionId, lv
-            console.log("Monsters Added!");
+            // console.log("Monster Added!");
             const values = Object.values(data["6"]);
             const monster = values[Math.floor(Math.random() * values.length)];
             const lvl = payload.lv + (payload.addLv!==undefined?payload.addLv:0);
@@ -184,6 +182,7 @@ export const deckReducer = (states, action) => {
 export const cardTargetReducer = (states = {targets: [], limit: 0}, action) => {
     var state = {...states};
     const payload = action.payload;
+    // console.log(payload);
     switch (action.type) {
         case "SET_LIMIT":
             state.limit = payload.value;
@@ -204,7 +203,8 @@ export const cardTargetReducer = (states = {targets: [], limit: 0}, action) => {
 
         case 'CLEAR_TARGET':
             while (state.targets.length > 0) {
-                state.targets.pop();
+                const key = state.targets.pop();
+                document.getElementById(key).checked = false;
             }
             return state;
 

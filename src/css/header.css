@@ -2,7 +2,7 @@
   position: fixed;
   width: 100%;
   z-index: 10;
-  font-size: calc(0.85rem + 0.01vw);
+  font-size: 0.85rem;
   flex-direction: column;
   background-color: #282c34;
 }

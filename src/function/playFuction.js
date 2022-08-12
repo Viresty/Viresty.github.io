@@ -15,7 +15,7 @@ export const powerUpByPoint = (status) => {
     return {...newStat, value: (Math.round((newStat.basic + (newStat.pointPowerUp * newStat.point)) * 10) / 10)};
 }
 
-export const initPlayer = (initialStatus, Lv = 1) => {
+export const initPlayer = (initialStatus, Lv = 1, EXP=0) => {
     // clone detail
     var newStatus = {...initialStatus, detail: Object.assign({}, initialStatus.detail)};
     // clone status
@@ -40,9 +40,9 @@ export const initPlayer = (initialStatus, Lv = 1) => {
         value: newStatus.detail.stat['MaxMP'].value
     };
     newStatus.detail.stat['Lv'] = Lv;
-    newStatus.detail.stat['EXP'] = {value: 0};
+    newStatus.detail.stat['EXP'] = {value: EXP};
     newStatus.detail.stat['MaxEXP'] = {value: data['LEVEL'][Lv]['max']};
-    newStatus.detail.stat['POINT'] = {value: 10};
+    newStatus.detail.stat['POINT'] = {value: 5};
     newStatus.weapon = [data['1']['001']];
     newStatus.buff = [];
     // console.log(initialStatus);

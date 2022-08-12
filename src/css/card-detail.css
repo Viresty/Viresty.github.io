@@ -1,5 +1,11 @@
 .card-detail {
     position: relative;
+    flex-direction: column;
+}
+
+.card-detail-info {
+    position: relative;
+    display: flex;
     flex-direction: row;
     gap: 2em;
 }
@@ -39,17 +45,22 @@
 
 .card-detail-content h1 {
     margin: 0.2em 0.2em 0.2em 1em;
-    font-size: calc(1.3rem + 0.1vw);
+    font-size: 1.35em;
 }
 
 .card-detail-content h2 {
-    font-size: calc(1.2rem + 0.1vw);
+    font-size: 1.2em;
 }
 
 .card-detail-content p {
     margin: auto 1.5em;
     justify-content: center;
-    font-size: calc(1.2rem + 0.1vw);
+    font-size: 1.1em;
+}
+
+.card-detail-content h6 {
+    flex-grow: 1;
+    margin: 0;
 }
 
 #card-detail-stat {
@@ -59,6 +70,7 @@
 #card-detail-stat-table {
     margin: 0.5em 2em;
     display: grid;
+    gap: 0.8em;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column: 1/ span 2;
 }
@@ -66,21 +78,47 @@
 #card-detail-stat-table li {
     text-align: center;
     margin: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #card-detail-stat-table li p {
     margin: auto;
     text-align: center;
-    font-size: calc(2rem + 0.1vw);
+    font-size: 2em;
 }
 
 #card-detail-abilities {
-    grid-column: 1/ span 2;
+    width: 100%;
 }
 
-#card-detail-abilities + p {
-    grid-column: 1/ span 2;
-    margin: auto 3em;
+#card-detail-abilities h1 {
+    font-size: 2em;
+    margin: 0.2em;
+}
+
+#card-detail-abilities p {
+    font-size: 1em;
+    margin-left: 2em;
+}
+
+@media screen and (max-width: 1300px){
+    #card-detail-stat-table {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .card-detail-content {
+        grid-template-columns: 2fr 3fr;
+    }
+
+    #card-detail-abilities + p {
+        margin: auto 2em;
+    }
+
+    .card-detail {
+        gap: 1.5em;
+    }
 }
 
 /*Ipad ngang(1024 x 768)*/
@@ -106,9 +144,12 @@
 /*Ipad dọc(768 x 1024)*/
 @media screen and (max-width: 768px){
     .card-detail {
-        flex-direction: column;
         gap: 3em;
         padding-bottom: 10em;
+    }
+
+    .card-detail-info {
+        flex-direction: column;
     }
 
     .card-detail-content {
@@ -126,17 +167,30 @@
     }
 }
 
+@media screen and (max-width: 400px){
+    #card-detail-stat-table {
+        grid-template-columns: 1fr;
+    }
+}
+
 .expand-img {
     position: fixed;
     top: 0; bottom: 0; right: 0; left: 0;
-    z-index: 15;
-    height: 80vh;
+    z-index: 9;
+    height: 100vh;
 }
 
 .expand-img img {
+    object-fit: contain;
+    border-radius: 1em;
+    margin: auto;
     width: 100%;
     height: 100%;
-    border-radius: 1em;
+}
+
+.full-img-wrapper {
+    width: 100%;
+    height: 80vh;
 }
 
 .expand-img .content {

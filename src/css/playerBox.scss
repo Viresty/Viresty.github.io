@@ -1,0 +1,28 @@
+#initJobBox {
+    z-index: 3;
+
+    > * {
+        width: 23em;
+        height: 100%;
+    };
+
+    .card {
+        margin-top: 1em;
+
+        + .swiper-slide-shadow {
+            display: none;
+        }
+    }
+
+    .swiper-slide {
+        overflow: unset;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        &:after {
+            font-size: 4em;
+            color: #3caeff;
+        }
+    }
+
+}
