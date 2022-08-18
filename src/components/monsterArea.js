@@ -41,8 +41,12 @@ const MonsterArea = (props) => {
                     const monster = monsterList[key];
                     const stats = monster.detail.stat;
                     return (
-                        <div className="Monster" key={idx}
+                        <div className={monster.detail.stat['DEATH']?"Monster Monster-Death":"Monster Monster-Alive"} key={idx}
                         onClick={(e) => {
+                            if (monster.detail.stat['DEATH']) {
+                                document.getElementById(key).checked = false;
+                                return;
+                            };
                             if (monsterChosing.targets.length >= monsterChosing.limit)
                                 document.getElementById(key).checked = false;
                             if (monsterChosing.targets.includes(key)) {
@@ -63,13 +67,25 @@ const MonsterArea = (props) => {
                             }
                             console.log(monsterChosing);
                         }}>
+                            <div className="sfxArea">
+                                <svg
+                                    className=""
+                                    xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    style={{width: "100%"}}
+                                    viewBox="0 0 100 150" xmlSpace="preserve">
+                                    <path id="slashSFX" d="M 0 0 L 100 150"/>
+                                </svg>
+                            </div>
                             <input type="checkbox" name="monster" id={key}></input>
                             <label htmlFor={key}
                             onClick={(e) => {
                                 e.stopPropagation();
                             }}>
-                                <Card CardDetail={monster} id={key+"_card"} backgroundEffect={backgroundEffect} />
-
+                                <Card CardDetail={monster}
+                                    id={key+"_card"}
+                                    backgroundEffect={backgroundEffect}
+                                />
+                                <div className="shader"></div>
                             </label>
                             <div className="Monster_Info">
                                 <div className="MaxHPBar">

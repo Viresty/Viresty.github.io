@@ -23,13 +23,14 @@ const EventArea = (props) => {
                     Object.keys(event).map((key, idx) => {
                         return (
                             <div className="eventCard"
+                            key={idx}
                             onClick={() => {
                                 console.log(props);
                                 props.setGameProccess(event[key].detail.nextProccess);
                                 props.initRound(event[key]);
                               }}
                             >
-                                <Card key={idx}
+                                <Card
                                 CardDetail={event[key]}
                                 backgroundEffect={backgroundEffect}
                                 cAOS={'flip-left'} />

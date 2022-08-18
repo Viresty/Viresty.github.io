@@ -1,4 +1,6 @@
-điều chỉnh font-sỉze: ok
 dùng redux cho login
-điều chỉnh list card: ok
-chỉnh stat info hiện sang ngang : in proccess
+điều chỉnh cơ chế combat
+thêm component handCard dùng để xử lý combat (sử dụng reducer, onclick function)
+thay thế handCard trong play.js
+xây lại banner cho home
+thêm cái hàm xử lý get API và localstorage

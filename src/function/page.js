@@ -14,13 +14,10 @@ export const addEventListenerClass = (qS, F) => {
     })
 }
 
-export const reloadAnimation = () => {
+export const reloadPage = () => {
     window.scrollTo(0, 0);
     addAnimationInView('.fade-in', 'FadeInAnimation');
     addAnimationInView('.open-img', 'openImgAnimation');
-    document.getElementById('header-container').style.backgroundColor = '#282c34';
-    document.getElementById('header-container').classList.remove('hidden');
-    document.getElementById('footer-container').classList.remove('hidden');
 
     let items = document.querySelectorAll('.closed');
 
@@ -50,6 +47,24 @@ export const scrollTowhenInterect = (qS) => {
             return [currenttop];
         }
     }
+
+    let contents = document.querySelectorAll(qS);
+
+    contents.forEach(content => {
+        observer.observe(content);
+    })
+}
+
+export const LoadMoreInView = (qS, data) => {
+    const observer = new IntersectionObserver(entries => {
+        // Loop over the entries
+        entries.forEach(entry => {
+          // If the element is visible
+          if (entry.isIntersecting) {
+
+          }
+        });
+    });
 
     let contents = document.querySelectorAll(qS);
 

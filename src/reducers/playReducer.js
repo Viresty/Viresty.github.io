@@ -3,10 +3,12 @@ import { optimizeCard,
         powerUpByLv,
         powerUpByPoint,
         initPlayer,
-        optimizePlayer
+        optimizePlayer,
     } from "../function/playFuction";
+import { initCharacter } from "../actions/user";
 
 import data from '../data/test-data.json'
+import { startTransition } from "react";
 
 
 export const playerReducer = (states = initPlayer(data['0']['001']), action) => {
@@ -14,21 +16,25 @@ export const playerReducer = (states = initPlayer(data['0']['001']), action) => 
     const payload = action.payload;
     // console.log(action);
     switch (action.type) {
+        case 'SET_PLAYER':
+            state = initCharacter(payload.item);
+            return state;
+
         case 'GAIN_EXP': // exp
             state.detail.stat['EXP'].value += payload.exp;
             return state;
 
         case 'LEVEL_UP':
-            state.detail.stat['Lv'] += 1;
+            state.detail.stat['Lv'].value += 1;
             Object.keys(state.detail.stat).forEach((key) => {
                 if (state.detail.stat[key].lvPowerUp !== undefined)
-                state.detail.stat[key] = powerUpByLv(state.detail.stat[key], state.detail.stat['Lv']);
+                state.detail.stat[key] = powerUpByLv(state.detail.stat[key], state.detail.stat['Lv'].value);
             })
             state.detail.stat['MaxHP'].value += state.detail.stat['HP'].lvPowerUp;
             state.detail.stat['MaxMP'].value += state.detail.stat['HP'].lvPowerUp;
             const newEXP = state.detail.stat['EXP'].value - state.detail.stat['MaxEXP'].value;
             state.detail.stat['EXP'].value = newEXP;
-            state.detail.stat['MaxEXP'].value = data['LEVEL'][state.detail.stat['Lv']]['max'];
+            state.detail.stat['MaxEXP'].value = data['LEVEL'][state.detail.stat['Lv'].value]['max'];
             state.detail.stat['POINT'].value += 5;
             return state;
 
@@ -43,8 +49,6 @@ export const playerReducer = (states = initPlayer(data['0']['001']), action) => 
                 state.detail.stat[key] = powerUpByPoint(state.detail.stat[key]);
                 // console.log(state.detail.stat[key]);
             })
-            state.detail.stat['MaxHP'].value = state.detail.stat['HP'].value;
-            state.detail.stat['MaxMP'].value = state.detail.stat['MP'].value;
             state.detail.stat['POINT'].value = payload.pointLeft;
             return state;
     
@@ -58,6 +62,9 @@ export const objectListReducer = (states, action) => {
     const payload = action.payload;
     switch (action.type) {
         // COMBAT
+        // id là mục tiêu của hành động
+        // user là đối tượng thực hiện hành động
+
         case 'CHANGE_STAT': // id, stat, value
             // console.log(payload.value);
             state[payload.id].detail.stat[payload.stat].value += payload.value;
@@ -67,25 +74,77 @@ export const objectListReducer = (states, action) => {
             state[payload.id].detail.stat[payload.stat].value = payload.value;
             return state;
 
-        case 'DEAL_DAMAGE': // id, value
+        case 'KILL_OBJECT':
+            state[payload.id].detail.stat['DEATH'] = true;
+            return state;
+
+        case 'DEAL_DAMAGE': // id, user, value
             // console.log(action);
             payload.id.forEach((id) => {
-                let damage = payload.value - state[id].detail.stat['SHIELD'].value - Math.round(state[payload.id].detail.stat['DEF'].value / 10);
+                let def = state[id].detail.stat['SHIELD'].value + Math.round(state[id].detail.stat['DEF'].value / 10);
+                // Xuyên giáp
+                let pdamage = 0;
+                if (payload.user)
+                    pdamage = Math.round(state[payload.user].detail.stat['PDMG'].value);
+                if (pdamage - def >= 0) {
+                    state[id].detail.stat['HP'].value -= def;
+                    pdamage = def;
+                }
+                else state[id].detail.stat['HP'].value -= pdamage;
+                // Sát thương
+                let damage = payload.value - def;
                 if (damage > 0) {
                     state[id].detail.stat['SHIELD'].value = 0;
-                    state[id].detail.stat['HP'].value -= damage;
+                    if (state[id].detail.stat['HP'].value - damage <= 0)
+                        state[id].detail.stat['HP'].value = 0;
+                    else state[id].detail.stat['HP'].value -= damage;
                 } else {
                     state[id].detail.stat['SHIELD'].value -= payload.value;
                 }
+                // Sát thương chuẩn
+                let tdamage = payload.tdamage;
+                if (tdamage!==undefined) state[id].detail.stat['HP'].value -= tdamage;
             })
             return state;
 
-        case 'HEAL_HP': // id, value
-            state[payload.user].detail.stat['HP'].value += payload.value;
-            if (state[payload.user].detail.stat['HP'].value > state[payload.user].detail.stat['MaxHP'].value)
-                state[payload.user].detail.stat['HP'].value = state[payload.user].detail.stat['MaxHP'].value;
+        case 'SELF_DEAL_DAMAGE':
+            let def = state[payload.user].detail.stat['SHIELD'].value + Math.round(state[payload.user].detail.stat['DEF'].value / 10);
+            // Xuyên giáp
+            let pdamage = 0;
+            if (payload.user)
+                pdamage = Math.round(state[payload.user].detail.stat['PDMG'].value);
+            if (pdamage - def >= 0) {
+                state[payload.user].detail.stat['HP'].value -= def;
+                pdamage = def;
+            }
+            else state[payload.user].detail.stat['HP'].value -= pdamage;
+            // Sát thương
+            let damage = payload.value - def;
+            if (damage > 0) {
+                state[payload.user].detail.stat['SHIELD'].value = 0;
+                if (state[payload.user].detail.stat['HP'].value - damage <= 0)
+                    state[payload.user].detail.stat['HP'].value = 0;
+                else state[payload.user].detail.stat['HP'].value -= damage;
+                
+            } else {
+                state[payload.user].detail.stat['SHIELD'].value -= payload.value;
+            }
+            // Sát thương chuẩn
+            let tdamage = payload.tdamage;
+            if (tdamage!==undefined) state[payload.user].detail.stat['HP'].value -= tdamage;
+            return state;
+
+        case 'HEAL_HP': // id, user, value
+            let target = payload.user
+            if (payload.id !== undefined && payload.id.length > 0) target = payload.id
+            target.forEach(id => {
+                state[id].detail.stat['HP'].value += payload.value;
+                if (state[id].detail.stat['HP'].value > state[payload.user].detail.stat['MaxHP'].value)
+                    state[id].detail.stat['HP'].value = state[payload.user].detail.stat['MaxHP'].value;
+            })
             return state;    
 
+        // ------------------------------------------------------------------------------------------------------
         // CARD
         case 'ADD_ITEMS_TO': // id, target, item
             for (let i = 0; i < payload.amount; i++) {
@@ -125,6 +184,10 @@ export const objectListReducer = (states, action) => {
             state['player'][payload.from] = resources;
             return state;
 
+        case 'UPDATE_DECK':
+            while (payload.item.length>0) state['player']['deck'].push(payload.item.pop());
+            return state;
+
         case 'CLEAR':
             while (state['player'][payload.target].length > 0) {
                 state['player'][payload.target].pop();
@@ -136,6 +199,13 @@ export const objectListReducer = (states, action) => {
         case 'OPTIMIZE_PLAYER': //item
             return {...state, 'player': optimizePlayer(payload.item)}
 
+        case 'RESET_STATUS':
+            Object.keys(state[payload.id].detail.stat).map((key) => {
+                if (state[payload.id].detail.stat[key].origin === undefined) return;
+                state[payload.id].detail.stat[key].value = state[payload.id].detail.stat[key].origin + state[payload.id].detail.stat[key].statChange;
+            })
+            return state;
+
         case 'ADD_MONSTER': // id, monster
             // console.log("Monster Added!");
             return {...state, [payload.actionId]: payload.item}
@@ -145,11 +215,14 @@ export const objectListReducer = (states, action) => {
             const values = Object.values(data["6"]);
             const monster = values[Math.floor(Math.random() * values.length)];
             const lvl = payload.lv + (payload.addLv!==undefined?payload.addLv:0);
-            const item = createMonster(lvl, monster)
+            const item = createMonster(lvl, monster);
             return {...state, ["monster"+payload.actionId]: item}
 
         case 'REMOVE_MONSTER': // id
             delete state[payload.id];
+            return state;
+
+        case 'CLEAR_MONSTER':
             return state;
         
         default:
@@ -202,6 +275,7 @@ export const cardTargetReducer = (states = {targets: [], limit: 0}, action) => {
             return state;
 
         case 'CLEAR_TARGET':
+            state.limit = 0;
             while (state.targets.length > 0) {
                 const key = state.targets.pop();
                 document.getElementById(key).checked = false;

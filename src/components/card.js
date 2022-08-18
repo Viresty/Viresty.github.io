@@ -47,7 +47,7 @@ class Card extends Component {
       let initialStatKeys = [];
       if (this.props.CardDetail.detail.stat)
         initialStatKeys = Object.keys(this.props.CardDetail.detail.stat);
-      const hideStat = ['HP', 'MP', 'Lv', 'SHIELD'];
+      const hideStat = ['HP', 'MP', 'Lv', 'SHIELD', 'DEATH'];
       if (!this.props.cardPreview) hideStat.push('MaxHP', 'MaxMP');
       const statKeys = initialStatKeys.filter(key => !hideStat.includes(key));
 
@@ -64,12 +64,14 @@ class Card extends Component {
           {this.props.backgroundEffect}
 
             <div className={this.props.cardPreview?'cardPreview cardMoreInfo':'cardMoreInfo'}>
-              <div className='cardInfo'>
-                <img className='cardImg' src= {this.props.CardDetail.url} alt={this.props.CardDetail.alt}></img>
+              <div className={'cardInfo '+this.props.CardDetail.typeCard+'Card'}>
+                <img className='cardImg'
+                  src= {this.props.CardDetail.url} alt={this.props.CardDetail.alt}></img>
                 {this.props.CardDetail.detail.cost != "" || this.props.CardDetail.detail.cost &&
                   <div className='cardCost'>
-                  <h2>{this.props.CardDetail.detail.cost}</h2>
-                </div>}
+                    <h2>{this.props.CardDetail.detail.cost}</h2>
+                  </div>
+                }
                 <div className='cardName'>
                   <h1>{this.props.CardDetail.detail.name}</h1>
                 </div>
@@ -84,6 +86,7 @@ class Card extends Component {
                     if (this.props.cardPreview) statWidth+=this.props.CardDetail.detail.stat[key].point;
                     return (
                       <div className='cardStatContent'
+                        key={idx}
                         style={{
                           backgroundColor: color[key], 
                           width: statWidth + "em"
@@ -105,12 +108,13 @@ class Card extends Component {
                 {this.props.CardDetail.detail.stat &&
                   <div className='cardStat-right'>
                 {
-                  statKeys.map((key) => {
+                  statKeys.map((key, idx) => {
                     if (key === undefined || hideStat.includes(key)) return;
                     var statWidth = 2;
                     if (this.props.cardPreview) statWidth+=this.props.CardDetail.detail.stat[key].point;
                     return (
                       <div className='cardStatContent'
+                        key={idx}
                         style={{
                           backgroundColor: color[key],
                           width: statWidth + "em"

@@ -1,0 +1,96 @@
+{
+    "00000001": {
+        "accountInfo": {
+            "UID": "00000001",
+            "email": "demo@viresty.com",
+            "avatarUrl": "https://i.pinimg.com/originals/60/69/58/6069580ee995d574614e4a5915029fa3.jpg",
+            "nickname": "Viresty"
+        },
+        "inventory": [],
+        "money": {
+            "gold": 0,
+            "silver": 0,
+            "copper": 0
+        },
+        "chosingCharacter": 0,
+        "characterInfo": [
+            {
+                "url": "https://i.pinimg.com/564x/3c/67/79/3c67798459911cc7aa9dbc72a0b7574a.jpg",
+                "alt": "satthu",
+                "fullview-url": "",
+                "avt-url": "",
+                "name": "",
+                "detail": {
+                    "name": "SÁT THỦ",
+                    "type": "Chức Nghiệp",
+                    "stat": {
+                        "MaxHP": {
+                            "basic": 10,
+                            "point": 3,
+                            "pointPowerUp": 2,
+                            "value": 16
+                        }, 
+                        "MaxMP": {
+                            "basic": 0,
+                            "point": 2,
+                            "pointPowerUp": 1,
+                            "value": 2
+                        }, 
+                        "ATK": {
+                            "basic": 1,
+                            "point": 3,
+                            "pointPowerUp": 1,
+                            "value": 4
+                        },
+                        "DEF": {
+                            "basic": 0,
+                            "point": 0,
+                            "pointPowerUp": 1,
+                            "value": 0
+                        },
+                        "PDMG": {
+                            "basic": 0,
+                            "point": 3,
+                            "pointPowerUp": 0.2,
+                            "value": 0.6
+                        },
+                        "ATKSPD": {
+                            "basic": 0.6,
+                            "point": 2,
+                            "pointPowerUp": 0.2,
+                            "value": 1
+                        },
+                        "SPD": {
+                            "basic": 10.2,
+                            "point": 2,
+                            "pointPowerUp": -0.2,
+                            "value": 9.8
+                        },
+                        "STR": {
+                            "basic": 5,
+                            "point": 0,
+                            "pointPowerUp": 0.5,
+                            "value": 5
+                        },
+                        "Lv": {
+                            "value": 1
+                        },
+                        "EXP": {
+                            "value": 0
+                        },
+                        "MaxEXP": {
+                            "value": 10
+                        },
+                        "POINT": {
+                            "value": 5
+                        }
+                    }
+                },
+                "deck": [],
+                "buff": [],
+                "weapon": [],
+                "bag": []
+            }
+        ]
+    }
+}

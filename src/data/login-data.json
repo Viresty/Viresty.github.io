@@ -1,6 +1,15 @@
 [
     {
         "username": "demo",
-        "password": "123456789"
+        "password": "123456",
+        "UID": "00000001"
+    }, {
+        "username": "viresty",
+        "password": "1234567809az",
+        "UID": "00000000"
+    }, {
+        "username": "demo2",
+        "password": "123456",
+        "UID": "00000000"
     }
 ]

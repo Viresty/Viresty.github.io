@@ -21,7 +21,6 @@ import { faSquare as fasFaSquare,
         } from '@fortawesome/free-solid-svg-icons';
 
 import Card from "../components/card";
-import EventCard from "../components/eventCard";
 
 import data from '../data/test-data.json'
 import deckIcon from './../img/icon/card-game.png';
@@ -30,7 +29,7 @@ import cardIcon from '../img/icon/card.png';
 const StatusBox = (props) => {
     const originStatus = props.origin;
     const player = props.target;
-    const gameProccess = props.proccess;
+    const gameProccess = (props.proccess!==undefined?props.proccess:'OUT_COMBAT');
 
     const [statusPoint, setStatusPoint] = useState({
         "MaxHP": 0,
@@ -42,6 +41,7 @@ const StatusBox = (props) => {
         "SPD": 0,
         "STR": 0
     })
+    
     const [totalPoint, setTotalPoint] = useState(player.detail.stat['POINT'].value);
     const playerStatus = {...player};
     
@@ -146,7 +146,7 @@ const StatusBox = (props) => {
                             "MaxHP": 0,
                             "MaxMP": 0,
                             "ATK": 0,
-                            "PGMD": 0,
+                            "PDMG": 0,
                             "DEF": 0,
                             "ATKSPD": 0,
                             "SPD": 0,
@@ -159,7 +159,7 @@ const StatusBox = (props) => {
                             "MaxHP": 0,
                             "MaxMP": 0,
                             "ATK": 0,
-                            "PGMD": 0,
+                            "PDMG": 0,
                             "DEF": 0,
                             "ATKSPD": 0,
                             "SPD": 0,

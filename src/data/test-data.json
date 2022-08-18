@@ -1,6 +1,6 @@
 {
     "0": {
-        "001": {
+        "0001": {
             "url": "https://i.pinimg.com/564x/3c/67/79/3c67798459911cc7aa9dbc72a0b7574a.jpg",
             "fullview-url": "",
             "avt-url": "",
@@ -65,7 +65,7 @@
                 "abilities" : ""
             }
         },
-        "002": {
+        "0002": {
             "url": "https://i.pinimg.com/564x/ec/30/76/ec30764f6f19767e8ae9e787c04c73fd.jpg",
             "fullview-url": "",
             "avt-url": "",
@@ -130,7 +130,7 @@
                 "abilities" : ""
             }
         },
-        "003": {
+        "0003": {
             "url": "https://i.pinimg.com/564x/d9/1c/59/d91c596dd3c54db8dd935c0b4f2ac129.jpg",
             "fullview-url": "",
             "avt-url": "",
@@ -195,7 +195,7 @@
                 "abilities" : ""
             }
         },
-        "004": {
+        "0004": {
             "url": "https://cdnb.artstation.com/p/assets/images/images/019/502/481/large/anato-finnstark-anato-finnstark-the-tiger-s-gate-by-anatofinnstark-dcx21ul-fullview.jpg?1563800651",
             "alt": "viresty1",
             "itemID": "0004",
@@ -258,7 +258,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "005": {
+        "0005": {
             "url": "https://cdna.artstation.com/p/assets/images/images/001/676/916/large/g-host-lee-breaking-of-rock-2.jpg?1450668794",
             "alt": "viresty1",
             "itemID": "0005",
@@ -321,7 +321,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "006": {
+        "0006": {
             "url": "https://cdnb.artstation.com/p/assets/images/images/027/707/981/large/m-z-.jpg?1592320233",
             "alt": "viresty1",
             "itemID": "0006",
@@ -384,7 +384,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "007": {
+        "0007": {
             "url": "https://cdnb.artstation.com/p/assets/images/images/012/440/677/4k/li-hh-ssssss.jpg?1534829525",
             "alt": "viresty1",
             "itemID": "0007",
@@ -447,7 +447,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "008": {
+        "0008": {
             "url": "https://cdna.artstation.com/p/assets/images/images/008/446/004/large/zezhou-chen-web.jpg?1512834759",
             "alt": "viresty1",
             "itemID": "0008",
@@ -510,7 +510,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "009": {
+        "0009": {
             "url": "https://cdnb.artstation.com/p/assets/images/images/047/921/011/4k/sandra-duchiewicz-mountain-encounter-fin-by-sandra-duchiewicz-telthona.jpg?1648756410",
             "alt": "viresty1",
             "itemID": "0009",
@@ -573,7 +573,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "010": {
+        "0010": {
             "url": "https://cdnb.artstation.com/p/assets/images/images/009/175/541/large/dave-greco-crypt-1.jpg?1517517146",
             "alt": "viresty1",
             "itemID": "0010",
@@ -636,7 +636,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "011": {
+        "0011": {
             "url": "https://cdna.artstation.com/p/assets/images/images/002/987/276/large/yuriy-chemezov-yuriy-chemezov-themark1.jpg?1468165368",
             "alt": "viresty1",
             "itemID": "0011",
@@ -699,7 +699,7 @@
                 "abilities" : "Giảm độ bền trang bị để tăng sức mạnh cho trang bị đó. Hủy diệt một trang bị để chuyển độ bền của trang bị đó sang trang bị khác."
             }
         },
-        "012": {
+        "0012": {
             "url": "https://cdnb.artstation.com/p/assets/images/images/011/182/813/large/xiaoguang-sun-c.jpg?1528260890",
             "alt": "viresty1",
             "itemID": "0012",
@@ -764,7 +764,7 @@
         }
     }, 
     "1": {
-        "001": {
+        "1001": {
             "url": "https://i.ibb.co/xf1NQFz/Swords-Short.png",
             "alt": "viresty1",
             "itemID": "1001",
@@ -803,61 +803,73 @@
         }
     },
     "2": {
-        "001": {
-            "url": "https://cdna.artstation.com/p/assets/images/images/003/402/738/large/-886b20e1d6cd7ec21de43810bc21543eda3c0268159097-pyebmq.jpg?1473325789",
+        "2001": {
+            "url": "https://i.pinimg.com/564x/5e/7a/cf/5e7acff66b8589bfdc4406e87129e3c4.jpg",
             "alt": "viresty1",
             "itemID": "2001",
             "typeCard": "Action",
             "detail": {
-                "name": "Chém đơn",
+                "name": "ĐÁNH THƯỜNG",
                 "type": "Hành động",
                 "cost": "",
                 "rank": "Thường",
-                "abilities" : "Gây 1 sát thương lên kẻ địch",
+                "abilities" : "Gây 1 sát thương lên một kẻ địch. (Sát thương gây ra bằng ATK)",
                 "limit": 1,
-                "action": [
+                "skill": [
                     {
-                        
-                        "type": "SINGLE_ACTION",
-                        "effect": "DEAL_DAMAGE",
-                        "depend_on": "ATK",
-                        "basic": 1,
-                        "value": 1
+                        "type": "COMBAT",
+                        "payload": [
+                            {
+                                "type": "DEAL_DAMAGE",
+                                "payload": {
+                                    "depend_on": "ATK",
+                                    "ratio": 1,
+                                    "basic": 0,
+                                    "value": 1
+                                }
+                            }
+                        ]
                     }
                 ],
+                "moreOption": {},
                 "optimizeDescribe": [
-                    "Gây ", 1, " sát thương lên kẻ địch. (Sát thương gây ra bằng ATK+1)"
+                    "Gây ", 1, " sát thương lên một kẻ địch. (Sát thương gây ra bằng ATK)"
                 ],
                 "optimizeDescribeIdx": [
-                    1
+                    [1, 0, 0]
                 ]
             }
         },
-        "002": {
-            "url": "https://i.ibb.co/xf1NQFz/Swords-Short.png",
+        "2002": {
+            "url": "https://cdna.artstation.com/p/assets/images/images/008/984/546/large/yerbol-bulentayev-clash.jpg?1516476039",
             "alt": "viresty1",
             "itemID": "2002",
             "typeCard": "Action",
             "detail": {
-                "name": "Đỡ đòn",
+                "name": "ĐỠ ĐÒN",
                 "type": "Hành động",
                 "cost": "",
                 "rank": "Thường",
-                "abilities" : "Tăng 1 giáp",
-                "action": [
+                "abilities" : "Tăng 1 giáp. (Lượng giáp tăng lên bằng DEF+1)",
+                "limit": 0,
+                "skill": [
                     {
                         "type": "SINGLE_ACTION",
-                        "effect": "CHANGE_STAT",
-                        "depend_on": "DEF",
-                        "basic": 1,
-                        "value": 1
+                        "payload": {
+                            "effect": "CHANGE_STAT",
+                            "depend_on": "DEF",
+                            "ratio": 1,
+                            "basic": 1,
+                            "value": 1
+                        }
                     }
                 ],
+                "moreOption": {},
                 "optimizeDescribe": [
                     "Tăng ", 1, " giáp. (Lượng giáp tăng lên bằng DEF+1)"
                 ],
                 "optimizeDescribeIdx": [
-                    1
+                    [1, 0, 0]
                 ]
             }
         }
@@ -866,13 +878,13 @@
     "4": {},
     "5": {},
     "6": {
-        "001": {
+        "6001": {
             "url": "https://64.media.tumblr.com/0a5627bdc523aa3800c5e47e46d98c23/tumblr_mm68q04nhZ1qkc1mwo1_1280.jpg",
             "alt": "",
             "itemID": "6001",
             "typeCard": "Action",
             "detail": {
-                "name": "Slime",
+                "name": "SLIME",
                 "type": "Quái vật",
                 "cost": "",
                 "rank": "Thường",
@@ -913,12 +925,43 @@
                         "value": 10.0
                     }
                 },
-                "action": [
+                "skill": [
                     {
-                        "type": "SINGLE_ACTION",
-                        "effect": "DEAL_DAMAGE",
-                        "depend_on": "ATK",
-                        "value": 1
+                        "type": "COMBAT",
+                        "name": "",
+                        "payload": [
+                            {
+                                "type": "DEAL_DAMAGE",
+                                "payload": {
+                                    "depend_on": "ATK",
+                                    "ratio": 1,
+                                    "basic": 0,
+                                    "value": 1
+                                }
+                            }
+                        ]
+                    }, {
+                        "type": "COMBAT",
+                        "name": "",
+                        "payload": [
+                            {
+                                "type": "DEAL_DAMAGE",
+                                "payload": {
+                                    "depend_on": "ATK",
+                                    "ratio": 1,
+                                    "basic": 0,
+                                    "value": 1
+                                }
+                            }, {
+                                "type": "DEAL_DAMAGE",
+                                "payload": {
+                                    "depend_on": "ATK",
+                                    "ratio": 1,
+                                    "basic": 0,
+                                    "value": 1
+                                }
+                            }
+                        ]
                     }
                 ],
                 "buff": []
@@ -927,8 +970,9 @@
     },
     "7": {},
     "8": {
-        "001": {
+        "8001": {
             "url": "https://i.pinimg.com/564x/95/53/b1/9553b1e419703142a0163ba62bfb69bd.jpg",
+            "itemID": "8001",
             "detail": {
                 "name": "CHẠM TRÁN QUÁI VẬT I",
                 "type": "Chiến đấu",
@@ -944,8 +988,9 @@
                 "nextProccess": "ROUND_START"
             }
         },
-        "002": {
+        "8002": {
             "url": "https://i.pinimg.com/564x/37/07/6a/37076aaa767ea7bbf268e2dac7d979a3.jpg",
+            "itemID": "8002",
             "detail": {
                 "name": "CHẠM TRÁN QUÁI VẬT II",
                 "type": "Chiến đấu",
@@ -963,8 +1008,9 @@
                 "nextProccess": "ROUND_START"
             }
         },
-        "003": {
+        "8003": {
             "url": "https://i.pinimg.com/564x/b2/06/6a/b2066ad48146a499bf2ef87a7fc56952.jpg",
+            "itemID": "8003",
             "detail": {
                 "name": "CHẠM TRÁN QUÁI VẬT III",
                 "type": "Chiến đấu",
@@ -984,8 +1030,9 @@
                 "nextProccess": "ROUND_START"
             }
         },
-        "004": {
+        "8004": {
             "url": "https://i.pinimg.com/564x/6c/e9/79/6ce979a98f6a27463ae35110b1c23617.jpg",
+            "itemID": "8004",
             "detail": {
                 "name": "CHẠM TRÁN QUÁI VẬT IV",
                 "type": "Chiến đấu",
@@ -1007,8 +1054,9 @@
                 "nextProccess": "ROUND_START"
             }
         },
-        "005": {
+        "8005": {
             "url": "https://i.pinimg.com/564x/87/92/ef/8792ef6a71988c5f4692887473e8f749.jpg",
+            "itemID": "8005",
             "detail": {
                 "name": "CHẠM TRÁN QUÁI VẬT V",
                 "type": "Chiến đấu",
@@ -1032,8 +1080,9 @@
                 "nextProccess": "ROUND_START"
             }
         },
-        "006": {
+        "8006": {
             "url": "https://i.pinimg.com/564x/1d/7e/ba/1d7ebac426b405c427cf8362ccb02d39.jpg",
+            "itemID": "8006",
             "detail": {
                 "name": "ĐOẠN ĐƯỜNG KHÓ KHĂN",
                 "type": "Bẫy",
@@ -1049,8 +1098,9 @@
                         }
                     }
                 ],
+                "abilities": "Đây là đoạn đường đầy những cái bẫy nguy hiểm. Hãy cẩn thận ... (Gây 5 sát thương lên người chơi)",
                 "optimizeDescribe": [
-                    "Đoạn đường phía trước đã được giăng bẫy khắp nơi, mặt dù đã biết trước nhưng vẫn rất khó tránh được. Nhưng chịu đựng vượt qua đoạn đường này hẳn là sẽ an toàn hơn ... ",
+                    "Đây là đoạn đường đầy những cái bẫy nguy hiểm. Hãy cẩn thận ... ",
                     "(Gây ", 1, " sát thương lên người chơi)"
                 ],
                 "optimizeDescribeIdx": [
@@ -1059,8 +1109,9 @@
                 "nextProccess": "ROUND_END"
             }
         },
-        "007": {
+        "8007": {
             "url": "https://i.pinimg.com/564x/6f/69/07/6f6907e80da36790cd52969dbc7822a7.jpg",
+            "itemID": "8007",
             "detail": {
                 "name": "PHÒNG HỒI SỨC",
                 "type": "Phần thưởng",
@@ -1076,8 +1127,9 @@
                         }
                     }
                 ],
+                "abilities": "Đây là đoạn đường đầy những cái bẫy nguy hiểm. Hãy cẩn thận ... (Hồi 5 sinh lực cho người chơi)",
                 "optimizeDescribe": [
-                    "Một căn phòng có hồ nước nhỏ với một cây sự sống đang tỏa sáng nhè nhẹ. Nước của hồ này này có khả năng hồi phục mạnh mẽ. ",
+                    "Cây sinh lực trong căn phòng phía trước đang phát ra ánh sáng nhè nhẹ. Trên cây có một quả hồi phục đã chín. ",
                     "(Hồi ", 1, " sinh lực cho người chơi)"
                 ],
                 "optimizeDescribeIdx": [
@@ -1086,8 +1138,9 @@
                 "nextProccess": "ROUND_END"
             }
         },
-        "008": {
+        "8008": {
             "url": "https://i.pinimg.com/564x/df/7c/f2/df7cf236ae9823f2107ae89535a2e08a.jpg",
+            "itemID": "8008",
             "detail": {
                 "name": "LỐI ĐI TỐI TĂM",
                 "type": "???",
@@ -1100,8 +1153,9 @@
                 "nextProccess": "ROUND_END"
             }
         },
-        "009": {
+        "8009": {
             "url": "https://i.pinimg.com/564x/df/7c/f2/df7cf236ae9823f2107ae89535a2e08a.jpg",
+            "itemID": "8009",
             "detail": {
                 "name": "LỐI ĐI TỐI TĂM",
                 "type": "???",
@@ -1130,21 +1184,25 @@
         }
     },
     "9": {
-        "MINIBOSS": {
-            "name": "QUÁI TRÙM PHỤ",
-            "Lv": 1,
-            "action": [
-                {
-                    "type": "ADD_MONSTER_RANDOM",
-                    "payload": {
-                        "addLv": 1
+        "9001": {
+            "url": "",
+            "itemID": "9001",
+            "detail": {
+                "name": "QUÁI TRÙM PHỤ",
+                "Lv": 1,
+                "action": [
+                    {
+                        "type": "ADD_MONSTER_RANDOM",
+                        "payload": {
+                            "addLv": 1
+                        }
                     }
-                }
-            ],
-            "abilities": "Chiến đấu với quái trùm phụ",
-            "optimizeDescribe": [],
-            "optimizeDescribeIdx": [],
-            "nextProccess": "ROUND_START"
+                ],
+                "abilities": "Chiến đấu với quái trùm phụ",
+                "optimizeDescribe": [],
+                "optimizeDescribeIdx": [],
+                "nextProccess": "ROUND_START"
+            }
         }
     },
     "LEVEL": [

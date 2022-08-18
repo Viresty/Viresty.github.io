@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import logo from './../logo.svg';
 import './../css/header.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquare as farFaSquare,
+         faCircle as farFaCircle,
+         
+        } from '@fortawesome/free-regular-svg-icons';
+import { faHome,
+         faGamepad,
+         faBook
+        } from '@fortawesome/free-solid-svg-icons';
 
 class Header extends Component {
     constructor(props) {
@@ -13,14 +24,32 @@ class Header extends Component {
         NavItems: [
             {name: 'TRANG CHỦ',
              id: 'Home',
+             icon: faHome,
              link: '/'},
             {name: 'CHƠI',
              id: 'Play',
+             icon: faGamepad,
              link: '/play'},
             {name: 'THƯ VIỆN',
              id: 'Library',
+             icon: faBook,
              link: '/library'},
           ],
+        NavItems2: [
+            {name: 'CHINH PHẠT',
+             id: 'Play',
+             icon: faGamepad,
+             link: '/play'},
+            {name: 'CHỢ',
+             id: 'Shop',
+             icon: '',
+             link: '/shop'
+            },
+            {name: 'THƯ VIỆN',
+             id: 'Library',
+             icon: faBook,
+             link: '/library'},
+        ],
         MoreItems: [
             {name: 'LUẬT CHƠI',
              id: 'rule',
@@ -63,9 +92,9 @@ class Header extends Component {
       } else {
         if (document.getElementById('MoreNavBar-Collapsed').classList.contains('hidden')) {
           document.getElementById('MoreNavBar-Collapsed').classList.remove('hidden');
-          document.getElementById('MoreNavBar-Collapsed').style.animation = 'openNavBar 0.3s';
+          document.getElementById('MoreNavBar-Collapsed').style.animation = 'openNavBar 0.2s';
         } else {
-          document.getElementById('MoreNavBar-Collapsed').style.animation = 'closeNavBar 0.3s';
+          document.getElementById('MoreNavBar-Collapsed').style.animation = 'closeNavBar 0.2s';
           setTimeout(function() {document.getElementById('MoreNavBar-Collapsed').classList.add('hidden')}, 250);
         }
       }
@@ -74,9 +103,9 @@ class Header extends Component {
     toggleUserBar() {
       if (document.getElementById('userBar').classList.contains('hidden')) {
         document.getElementById('userBar').classList.remove('hidden');
-        document.getElementById('userBar').style.animation = 'openUserBar 0.3s';
+        document.getElementById('userBar').style.animation = 'openUserBar 0.2s';
       } else {
-        document.getElementById('userBar').style.animation = 'closeUserBar 0.3s';
+        document.getElementById('userBar').style.animation = 'closeUserBar 0.2s';
         setTimeout(function() {document.getElementById('userBar').classList.add('hidden')}, 250);
       }
     }
@@ -86,6 +115,7 @@ class Header extends Component {
         return (
           <li id={item.id+'NavLinkItem'} key={idx}>
             <NavLink to={item.link}>
+              <FontAwesomeIcon icon={item.icon} />
               {item.name}
             </NavLink>
           </li>)
@@ -94,13 +124,20 @@ class Header extends Component {
       const userAvatar = (
         <div id='userAvatar'>
           <button onClick={this.toggleUserBar}>
-            <img id='userAvatar-img' src='https://i.pinimg.com/originals/60/69/58/6069580ee995d574614e4a5915029fa3.jpg' alt='user-avatar'></img>
+            <img id='userAvatar-img' src={this.props.user.accountInfo.avatarUrl} alt='user-avatar'></img>
           </button>
-          <div id='userBar' className='closed'>
+          <div id='userBar' className='closed hidden'>
             <div className='blocker' onClick={this.toggleUserBar}></div>
             <ul className='NavBarUl'>
                 <li>
-                  <NavLink to={'/profile'}>
+                  <div id="userBarInfo">
+                    <p><u>UID</u>: #{this.props.user.accountInfo.UID}</p>
+                    <h1>{this.props.user.accountInfo.nickname}</h1>
+                    <h3>{this.props.user.accountInfo.email}</h3>
+                  </div>
+                </li>
+                <li>
+                  <NavLink to={'/profile/'+this.props.user.accountInfo.UID+'/'}>
                     <i className="fa fa-user" aria-hidden="true"></i>HỒ SƠ
                   </NavLink>
                 </li>
@@ -175,4 +212,30 @@ class Header extends Component {
     }
   }
 
-export default Header;
+const mapStateToProps = state => {
+    return {
+      user: state.user
+    }
+}
+  
+const mapDispatchToProps = dispatch => {
+    return {
+        action: {
+            getUserInfo: () => {
+                dispatch({
+                    
+                })
+            },
+            updateCharacter: (item) => {
+                dispatch({
+                    type: "UPDATE_CHARACTER",
+                    payload: {
+                        item: item
+                    }
+                })
+            }
+        }
+    }
+}
+  
+export default connect( mapStateToProps, mapDispatchToProps )(Header);

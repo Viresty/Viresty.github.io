@@ -11,25 +11,38 @@ import './../css/home-layout.css';
 
 import { Mousewheel, Pagination } from "swiper";
 
-import { reloadAnimation } from '../function/page'
+import { reloadPage } from '../function/page'
 import data from '../data/test-data.json';
 
 const img = {url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627bc589-b21e-47b2-8cf2-7617185ee1ac/d4n4zuk-f6474775-f789-459c-833e-89ffd068b654.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYyN2JjNTg5LWIyMWUtNDdiMi04Y2YyLTc2MTcxODVlZTFhY1wvZDRuNHp1ay1mNjQ3NDc3NS1mNzg5LTQ1OWMtODMzZS04OWZmZDA2OGI2NTQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9XxbT2tBslr_SHGEAA4u_5QCwhppgUj6K-BiJsHo4ms',
                 alt: 'viresty'}
 
 const Home = () => {
-    
+
+    const homeMenu = [
+        {
+            name: "CHƠI NGAY!!!"
+        }, {
+            name: "LUẬT CHƠI"
+        }, {
+            name: ""
+        }, {
+            name: "CHỨC NGHIỆP"
+        }, {
+            name: "CHƠI NGAY!!!"
+        }, {
+            name: "ĐĂNG KÝ"
+        }
+    ];    
     
     useEffect(() => {
         
         document.getElementById('footer-container').classList.add("closed");
-        reloadAnimation();
-        document.getElementById('header-container').style.backgroundColor = 'transparent';
+        reloadPage();
         
         return () => {
             document.getElementById('footer-container').classList.remove("closed");
             document.getElementById('footer-container').classList.remove("hidden");
-            document.getElementById('header-container').style.backgroundColor = '#282c34';
         };
     
     }, [])
@@ -42,6 +55,7 @@ const Home = () => {
             <div className='container' id="body-container">
                 <Swiper
                     direction={"vertical"}
+                    preventClicks={false}
                     slidesPerView={1}
                     mousewheel={{
                         enable: false,
@@ -49,11 +63,14 @@ const Home = () => {
                     }}
                     pagination={{
                         clickable: true,
+                        renderBullet: function (index, className) {
+                            return '<span class="' + className + '">' +
+                                        '<p>' + homeMenu[index].name + '</p>' +
+                                    
+                                    '</span>';
+                        }
                     }}
                     onSlideChange={(swiper) => {
-                        if (swiper.isBeginning)
-                            document.getElementById('header-container').style.backgroundColor = '#00000000';
-                        else document.getElementById('header-container').style.backgroundColor = '#282c34';
                         if (swiper.isEnd) {
                             document.getElementById('footer-container').classList.remove("hidden");
                             document.getElementById("footer-container").scrollIntoView();
@@ -77,7 +94,7 @@ const Home = () => {
                     <SwiperSlide>
                         <div className="content fade-in">
                             <h1 className="content-title">Khám phá hầm ngục vô tận.</h1>
-                            <p className="content-detail">Rút bài, trang bị những vũ khí huyền thoại, sử dụng các là bài phép hùng mạnh để chinh phục hầm ngục sâu thẳm.</p>
+                            <p className="content-detail">Hãy cùng đánh bại vô số chủng quái vật hùng mạnh, truy tìm các vật phẩm quý hiếm và những thử thách khó khăn không thể lường trước.</p>
                             <img className='open-img content-img content-main' src={img.url}
                                 alt="viresty"></img>
                             <Link to={'/rule'} className='content-link'>LUẬT CHƠI <i className="fa fa-chevron-right" aria-hidden="true"></i></Link>
@@ -86,7 +103,7 @@ const Home = () => {
                     <SwiperSlide>
                     <div className="content fade-in">
                         <h1 className="content-title">Lập kế hoạch, chuẩn bị hành trang</h1>
-                        <p className="content-detail">Tận dụng kho báu tìm được để tăng chiến lực, lựa chọn nâng cấp phù hợp giúp đối phó các kẻ địch mạnh mẽ.</p>
+                        <p className="content-detail">Tận dụng kho báu tìm được để tăng chiến lực hoặc mua bán các vật phẩm để chuẩn bị cho hành trình sắp tới.</p>
                         <img className='open-img content-img content-main' src=''
                             alt="viresty"></img>
                         <Link to={'/library'} className='content-link'>XEM THÊM <i className="fa fa-chevron-right" aria-hidden="true"></i></Link>
@@ -121,7 +138,6 @@ const Home = () => {
                         </div>
                     </div>
                     </SwiperSlide>
-                    <SwiperSlide></SwiperSlide>
                 </Swiper>
             </div>
         </div>

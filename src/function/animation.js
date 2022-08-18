@@ -7,6 +7,7 @@ export const addAnimationInView = (qS, A) => {
             // Add the animation class
             entry.target.classList.add(A);
           }
+          else entry.target.classList.remove(A);
         });
     });
 

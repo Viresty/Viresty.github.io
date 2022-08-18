@@ -1,0 +1,48 @@
+.sfxArea {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+
+    #slashSFX {
+        stroke-dashoffset: 181;
+        stroke-dasharray: 181;
+    }
+}
+
+@keyframes slashAnimation {
+    0% {
+        stroke-width: 0;
+        stroke-dashoffset: 181;
+        stroke: transparent;
+    }
+    50% {
+        stroke-width: 1;
+        stroke-dashoffset: 0;
+        stroke: white;
+    }
+    100% {
+        stroke-width: 0;
+        stroke-dashoffset: 0;
+        stroke: transparent;
+    }
+}
+
+@keyframes takeDamageAnimation {
+    50% {
+        transform: scale(0.7);
+        box-shadow: 0 0 0.3em 0.2em red;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .sfxActive #slashSFX {
+        animation: slashAnimation 0.3s linear forwards;
+    }
+
+    .Monster .takeDamage {
+        animation: takeDamageAnimation 0.4s linear forwards;
+    }
+}

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import './../css/login.css';
 import logo from './../logo.svg';
 
-import { reloadAnimation } from '../function/page';
+import { reloadPage } from '../function/page';
 import {useEffect} from 'react';
+
+import logindata from '../data/login-data.json'
   
 const Login = (props) => {
 
@@ -15,19 +18,8 @@ const Login = (props) => {
     pass: "",
     rpass: ""
   });
-  const [errorMessages, setErrorMessages] = useState({});
 
-  // User Login info
-  const database = [
-    {
-      username: "demo",
-      password: "123456"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
+  const [errorMessages, setErrorMessages] = useState({});
 
   const errors = {
     uname: "Tài khoản không tồn tại",
@@ -45,7 +37,7 @@ const Login = (props) => {
     event.preventDefault();
 
     // Find user login info
-    const userData = database.find((user) => user.username === loginInfo.uname);
+    const userData = logindata.find((user) => user.username === loginInfo.uname);
     console.log(loginInfo);
 
     // 
@@ -57,7 +49,15 @@ const Login = (props) => {
           setErrorMessages({ name: "pass", message: errors.pass });
         } else {
           props.setLogin(true);
-          localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+          props.loginAction({username: loginInfo.uname, password: loginInfo.pass, UID: userData.UID});
+          localStorage.setItem('loginInfo', JSON.stringify(
+            {
+              username: loginInfo.uname,
+              password: loginInfo.pass,
+              UID: userData.UID
+            }
+          ));
+          props.getUserInfo(userData.UID);
           window.location = '/#';
         }
       } else {
@@ -203,9 +203,7 @@ const Login = (props) => {
   );
 
   useEffect(() => {
-
-    reloadAnimation();
-
+    reloadPage();
   }, [])
 
   return (
@@ -215,4 +213,27 @@ const Login = (props) => {
   );
 };
   
-export default Login;
+const mapStateToProps = state => {
+    return {
+      user: state.user
+    }
+}
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      loginAction: (info) => dispatch({
+        type: "USER_LOGIN",
+        payload: info
+      }),
+      getUserInfo: (uid) => {
+        dispatch({
+            type: "GET_USER_INFO",
+            payload: {
+                UID: uid
+            }
+        })
+    }
+    }
+}
+  
+export default connect( mapStateToProps, mapDispatchToProps )(Login);

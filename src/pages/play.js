@@ -1,4 +1,5 @@
 import React, { useReducer, useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { playerReducer, deckReducer, objectListReducer, cardTargetReducer } from "../reducers/playReducer";
 import { optimizeCard,
     createMonster,
@@ -20,22 +21,22 @@ import { faSquare as fasFaSquare,
         faCaretLeft, faCaretRight, 
         } from '@fortawesome/free-solid-svg-icons';
 
-import { reloadAnimation } from '../function/page';
+import { reloadPage } from '../function/page';
 import Card from "../components/card";
 import MonsterArea from "../components/monsterArea";
 import EventArea from "../components/eventArea";
-import EventCard from "../components/eventCard";
 import StatusBox from "../components/statusBox";
 import InitPlayerBox from "../components/initPlayerBox";
 
 import './../css/play-layout.css';
+import '../css/sfx.scss';
 
 import data from '../data/test-data.json'
 import deckIcon from './../img/icon/card-game.png';
 import cardIcon from '../img/icon/card.png';
 
 const initialObjects = {
-    'player': initPlayer(data['0']['001'])
+    'player': initPlayer(data['0']['0001'])
 }
 
 // CardDeck
@@ -43,13 +44,14 @@ const initialDeck = []
 
 // Game
 const Play = (props) => {
-    const [player, handlePlayer] = useReducer(playerReducer, initPlayer(data['0']['001']));
+    const [player, handlePlayer] = useReducer(playerReducer, initPlayer(props.user.characterInfo[0]));
     const [objectList, handleObjectList] = useReducer(objectListReducer, initialObjects);
     const [cardDeck, handleCardDeck] = useReducer(deckReducer, initialDeck);
     const [floor, setFloor] = useState(1);
     const [round, setRound] = useState(1);
     const [events, setEvents] = useState([]);
     const [gameProccess, setGameProccess] = useState('OUT_COMBAT');
+    const [turnEvent, setTurnEvent] = useState('NONE');
     const [turn, setTurn] = useState(0);
     const [cardTarget, handleCardTarget] = useReducer(cardTargetReducer, {targets: [], limit: 0})
     const [cardChosing, setCardChosing] = useState("");
@@ -112,11 +114,10 @@ const Play = (props) => {
         Object.keys(objects).map((key) => {
             let added = false;
             for (var i = 0; i < TL.length; i++) {
-                if (added) {
+                if (added && TL[i].value - TL[i-1].value < 1) {
                     TL[i].value += 1;
                     continue;
-                }
-                // console.log("VALUE", objects[key].detail.stat['SPD'].value);
+                } else if (added) continue;
                 if (objects[key].detail.stat['SPD'].value < TL[i].value) {
                     TL.splice(i, 0, {
                         id: key,
@@ -132,7 +133,7 @@ const Play = (props) => {
                     });
                     added = true;
                 }
-              }
+            }
             if (!added) TL.push({
                 id: key,
                 value: objects[key].detail.stat['SPD'].value
@@ -153,7 +154,7 @@ const Play = (props) => {
         switch (action.type) {
             case 'CREATE':
                 let cardType = action.cardID[0];
-                let cardID = action.cardID.slice(1);
+                let cardID = action.cardID;
                 let card = data[cardType][cardID];
                 handleObjectList({
                     type: 'ADD_ITEMS_TO',
@@ -166,12 +167,23 @@ const Play = (props) => {
                 });
                 break;
             
-            case 'SINGLE_ACTION':
-                console.log(action);
-                handleObjectList({
-                    type: action.payload.effect,
-                    payload: action.payload
-                });
+            // COMBAT
+            // id là mục tiêu của hành động
+            // user là đối tượng thực hiện hành động
+            
+            case 'COMBAT':
+                action.payload.steps.map(step => {
+                    // console.log(step);
+                    handleSFX(step.type);
+                    handleObjectList({
+                        type: step.type,
+                        payload: {
+                            ...step.payload,
+                            id: action.payload.id,
+                            user: action.payload.user
+                        }
+                    });
+                })
                 break;
             
             default:
@@ -217,6 +229,12 @@ const Play = (props) => {
     const handlePlayerTurn = e => {
         setTurn(turn + 1);
         handleObjectList({
+            type: "RESET_STATUS",
+            payload: {
+                id: 'player'
+            }
+        })
+        handleObjectList({
             type: 'DRAW_CARDS',
             payload: {
                 id: 'player',
@@ -241,17 +259,22 @@ const Play = (props) => {
     }
 
     const handleMonsterTurn = e => {
+        handleObjectList({
+            type: "RESET_STATUS",
+            payload: {
+                id: turnObject
+            }
+        })
         const monster = objectList[turnObject];
         for (let i = 1; i <= monster.detail.stat['ATKSPD'].value; i++) {
-            const actionID = Math.floor(Math.random()*monster.detail.action.length);
-            const action = monster.detail.action[actionID];
+            const skillID = Math.floor(Math.random()*monster.detail.skill.length);
+            const skill = monster.detail.skill[skillID];
             handleAction({
-                type: action.type,
+                type: skill.type,
                 payload: {
+                    steps: [...skill.payload],
                     id: ['player'],
                     user: turnObject,
-                    effect: action.effect,
-                    value: action.value
                 }
             });
         }
@@ -320,13 +343,54 @@ const Play = (props) => {
         }
     }
 
-    const handleCombat = () => {
+    const handleCombat = ()=> {
+
+    }
+
+    const handleSFX = (event, target = '') => {
+        let delaySFX = 0;
+        switch (event) {
+            case 'DEAL_DAMAGE':
+                delaySFX = 500;
+                if (turnObject === 'player')
+                    cardTarget.targets.forEach((target) => {
+                        console.log(target);
+                        document.getElementById(target+"_card").classList.add('takeDamage');
+                        setTimeout(() => {
+                            document.getElementById(target+"_card").classList.remove('takeDamage');
+                        }, 510);
+                    })
+                setTurnEvent('NONE');
+                setCardChosing("");
+                handleCardTarget({
+                    type: "CLEAR_TARGET"
+                });
+                break;
+            
+            case 'SLAY_MONSTER':
+                setTimeout(() => {
+                    handleCardTarget({
+                        type: "CLEAR_TARGET"
+                    });
+                    handleObjectList({
+                        type: "REMOVE_MONSTER",
+                        payload: {id: target}
+                    });
+                }, 1000);
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    const handleMonsters = () => {
         if (objectList['player'].detail.stat['HP'].value <= 0)
             setGameProccess('GAME_OVER');
         const monsterList = {...objectList};
         delete monsterList['player'];
         Object.keys(monsterList).map((key) => {
-            if (objectList[key].detail.stat['HP'].value <= 0) {
+            if (objectList[key].detail.stat['HP'].value === 0 && !objectList[key].detail.stat['DEATH']) {
                 handleObjectList({
                     type: "CHANGE_STAT",
                     payload: {
@@ -335,20 +399,18 @@ const Play = (props) => {
                         value: data['LEVEL'][objectList[key].detail.stat['Lv']]['gain']
                     }
                 });
+                handleObjectList({
+                    type: "KILL_OBJECT",
+                    payload: {
+                        id: key
+                    }
+                });
                 setTimeline(timeline.filter(item => item.id != key));
                 cardTarget.targets.forEach((target) => {
                     document.getElementById(target).checked = false;
                 })
-                handleCardTarget({
-                    type: "DELETE_TARGET",
-                    payload: {
-                        value: key
-                    }
-                })
-                handleObjectList({
-                    type: "REMOVE_MONSTER",
-                    payload: {id: key}
-                });
+                console.log('EXP GAIN!');
+                handleSFX('SLAY_MONSTER', key);
             }
         })
         if (Object.keys(objectList).length <= 1 && gameProccess!=='ROUND_END' && gameProccess!=='OUT_COMBAT')
@@ -376,10 +438,10 @@ const Play = (props) => {
         return (
             <div id='timelineArea'>
                 {
-                    timeline.map((item) => {
+                    timeline.map((item, idx) => {
                         if (item.id === 'roundStart') return;
                         return (
-                            <div className="timelineItem" style={{top: (item.value*4.15)+6.1+"em"}}>
+                            <div className="timelineItem" key={idx} style={{top: (item.value*4.12)+9+"em"}}>
                                 <img src={objectList[item.id].url} alt={item.id}></img>
                             </div>
                         )
@@ -424,20 +486,16 @@ const Play = (props) => {
                                     })
                                     return;
                                 }
-                                item.detail.action.map((action) => {
+                                item.detail.skill.map((skill) => {
                                     handleAction({
-                                        type: action.type,
+                                        type: skill.type,
                                         payload: {
+                                            steps: [...skill.payload],
                                             id: cardTarget.targets,
-                                            user: 'player',
-                                            effect: action.effect,
-                                            value: action.value
+                                            user: 'player'
                                         }
                                     })
-                                    setCardChosing("");
-                                    handleCardTarget({
-                                        type: "CLEAR_TARGET"
-                                    });
+                                    document.getElementById("handCard"+idx).checked = false;
                                 })
                                 if (item.detail.moreOption['eliminate'] != true)
                                     handleObjectList({
@@ -470,10 +528,7 @@ const Play = (props) => {
             <div className="SFX_Area hidden">
                 <div className="blocker"></div>
             </div>
-            <InitPlayerBox target={objectList['player']} origin={player} proccess={gameProccess} handle={handlePlayer} />
             <div id='gameArea'>
-    
-    
                 <ul id='floorProcess'>
                     <li key='currentFloor' style={{fontSize: '2em'}}>
                         Tầng {floor}
@@ -559,7 +614,7 @@ const Play = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div id='playerLevel'><p>{objectList['player'].detail.stat.Lv}</p></div>
+                        <div id='playerLevel'><p>{objectList['player'].detail.stat['Lv'].value}</p></div>
                         <div id='playerMaxHP' className="MaxHPBar">
                             <div id='playerHP' className="HPBar"
                                 style={{width: (objectList['player'].detail.stat['HP'].value/objectList['player'].detail.stat['MaxHP'].value)*100+'%'}}></div>
@@ -606,9 +661,7 @@ const Play = (props) => {
 
     // UPDATE
     useEffect(() => {
-        // console.log(objectList);
-        reloadAnimation();
-        // handleRoundStart();
+        reloadPage();
     }, []);
 
     useEffect(() => {
@@ -623,35 +676,39 @@ const Play = (props) => {
                 item: player
             }
         })
+        console.log(props.user.characterInfo[props.user.chosingCharacter]);
+        console.log(player);
     }, [player])
 
     useEffect(() => {
         // console.log(objectList);
         // console.log(turnObject);
-        console.log(timeline);
+        // console.log(timeline);
         if (turnObject === '' || gameProccess === 'IN_TURN')
             return;
         else if (turnObject !== 'player')
             setGameProccess('MONSTER_TURN');
         else setGameProccess('PLAYER_TURN');
-        // handleRoundStart();
     }, [timeline]);
     
     useEffect(() => {
-        console.log(gameProccess);
         if (round > 10) {
             setFloor(floor => floor + 1);
             setRound(1);
         }
         handleProccess(gameProccess);
-        handleCombat();
+        handleMonsters();
     }, [gameProccess]);
-    
-    // re-render khi objectList update
+
     useEffect(() => {
-        handleCombat();
-        console.log(objectList);
-        console.log(player);
+        if (cardTarget.targets.length === cardTarget.limit && cardChosing!=="")
+            document.getElementById(cardChosing).click();
+    }, [cardTarget])
+    
+    useEffect(() => {
+        handleMonsters();
+        // console.log(objectList);
+        // console.log(player);
     }, [objectList]);
 
     return (
@@ -665,10 +722,31 @@ const Play = (props) => {
                 <p>Kích thước màn hình: 1320 x 800.</p>
             </div>
             <div className="container" id="body-container">
-                {renderGameBoard}
+                {
+                    props.isLogin?renderGameBoard:(
+                    <div className="content">
+
+                    </div>
+                    )
+                }
             </div>
         </div>
     );
 };
   
-export default Play;
+const mapStateToProps = state => {
+    return {
+      user: state.user
+    }
+}
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+    //   loginAction: (info) => dispatch({
+    //     type: "SET_LOGIN_INFO",
+    //     payload: info
+    //   })
+    }
+}
+  
+export default connect( mapStateToProps, mapDispatchToProps )(Play);

@@ -282,6 +282,7 @@ button i {
   padding-bottom: 20rem !important;
   flex-direction: column;
   background-color: #30343a;
+  min-height: calc(100vh - 5em);
 }
 
 #page-banner {

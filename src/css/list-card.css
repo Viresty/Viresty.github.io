@@ -16,7 +16,7 @@
 .list-card > ul {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-content: flex-start;
   padding-top: 1.2em;
   justify-items: center;
@@ -87,6 +87,7 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  background-color: #222;
   /* border: 0.1em solid white; */
   justify-content: center;
   border-radius: 0.5em;
@@ -157,6 +158,12 @@
 .cardAbiliti p {
   margin: 0;
   font-size: 0.6em;
+}
+
+@media screen and (max-width: 1750px){
+  .list-card > ul {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 }
 
 @media screen and (max-width: 1320px){
@@ -301,7 +308,7 @@
 
 .cardStat-right .cardStatMoreInfo {
   border-radius: 0 0.5em 0.5em 0.5em;
-  left: 98%;
+  left: 85%;
 }
 
 .cardStat-left .cardStatMoreInfo {
@@ -311,16 +318,17 @@
 
 .cardStatContent:hover {
   width: 2.5em;
-  margin-left: -0.5em;
   font-size: 1.1em;
 }
 
 .cardStat-right .cardStatContent:hover {
   border-radius: 1em 0 0 1em;
+  margin-left: 0.35em;
 }
 
 .cardStat-left .cardStatContent:hover {
   border-radius: 0 1em 1em 0;
+  margin-left: -0.5em;
 }
 
 .cardStatContent:hover > .cardStatMoreInfo {
@@ -380,4 +388,13 @@
   top: 12.5%;
   height: 75%;
   width: 75%;
+}
+
+/* typecard */
+.WeaponCard .cardImg {
+  width: 9.5em;
+  height: 9.5em;
+  top: 0.5em;
+  left: 0.5em;
+  border-radius: 50%;
 }

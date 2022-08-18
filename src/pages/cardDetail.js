@@ -7,17 +7,22 @@ import data from '../data/test-data.json';
 const CardDetail = () => {
     
     const cardID = useParams();
-    const cardTarget = data[cardID.itemID[0]][cardID.itemID.slice(1)];
+    const cardTarget = data[cardID.itemID[0]][cardID.itemID];
     if (cardTarget === undefined) {
         window.location = "/not-found"
     }
-    const cardStat = cardTarget.detail.stat
-    const cardInfo = Object.keys(cardStat).map((key, idx) => {
-        if (cardID.itemID[0] === '6') key+='_M';
+    const cardStat = cardTarget.detail.stat;
+    var cardInfo = (<div></div>);
+    if (cardStat !== undefined) cardInfo = Object.keys(cardStat).map((key, idx) => {
+        let iKey = key;
+        if (cardID.itemID[0] === '6') iKey+='_M';
         return (
             <li key={idx}>
                 <h2>{data['STAT_NAME'][key]}</h2>
-                <h6>{data['INFO'][key]}</h6>
+                <h6>{data['INFO'][iKey]}</h6>
+                {cardID.itemID[0] === '6' && <h6>Chỉ số tăng trưởng theo cấp độ: 
+                    {}
+                </h6>}
                 <p>{cardStat[key].value}</p>
             </li>)
     });
@@ -68,7 +73,7 @@ const CardDetail = () => {
                             <p>{cardTarget.detail.name}</p>
                             <h1 id='card-detail-type'><u>LOẠI THẺ:</u></h1>
                             <p>{cardTarget.detail.type}</p>
-                            <h1 id='card-detail-stat'><u>CHỈ SỐ:</u></h1>
+                            {cardStat !== undefined && <h1 id='card-detail-stat'><u>CHỈ SỐ:</u></h1>}
                             <ul id='card-detail-stat-table'>
                                 {cardInfo}
                             </ul>

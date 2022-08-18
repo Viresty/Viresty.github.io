@@ -4,16 +4,18 @@ import { Routes, Route}
     from 'react-router-dom';
 import { HashRouter } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
 import Home from './pages/home';
 import Login from './pages/login';
 import Library from './pages/library';
 import Play from './pages/play';
 import CardDetail from './pages/cardDetail';
+import UserProFile from './pages/userProfile';
 import NotFound from './pages/not-found';
 
 
-import { reloadAnimation } from './function/page';
+import { reloadPage } from './function/page';
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -22,23 +24,24 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 AOS.init();
   
-const App = () => {
+const App = ({user, action}) => {
 
     const [isLogged_in, setLogin] = useState(false);
     let loginAccount = localStorage.getItem('loginInfo');
     loginAccount = JSON.parse(loginAccount);
     
     useEffect (() => {
-        console.log(localStorage);
+        reloadPage();
+        // localStorage.clear();
+        // console.log(user);
         if (loginAccount != "undefined" && loginAccount != null) {
+            action.getUserInfo(loginAccount.UID);
+            console.log('Đăng nhập thành công!!!');
             setLogin(true);
         } else {
-            console.log("!!!");
             setLogin(false);
         }
-        reloadAnimation();
-        console.log(isLogged_in);
-    })
+    }, []);
 
     return (
     // Git-hub deloy
@@ -50,6 +53,9 @@ const App = () => {
                 <Route exact path="register" element={<Login isLoginForm={false} />} />
                 <Route path="library" element={<Library />} />
                 <Route path="card-detail/:itemID" element={<CardDetail />}/>
+                {/* private */}
+                <Route path="profile/:userID/:infotag" element={<UserProFile />} />
+                <Route path="profile/:userID" element={<UserProFile />} />
                 <Route path="play" element={<Play isLogin={isLogged_in} />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
@@ -58,4 +64,25 @@ const App = () => {
   );
 }
   
-export default App;
+const mapStateToProps = state => {
+    return {
+      user: state.user
+    }
+}
+  
+const mapDispatchToProps = dispatch => {
+    return {
+        action: {
+            getUserInfo: (uid) => {
+                dispatch({
+                    type: "GET_USER_INFO",
+                    payload: {
+                        UID: uid
+                    }
+                })
+            }
+        }
+    }
+}
+  
+export default connect( mapStateToProps, mapDispatchToProps )(App);
