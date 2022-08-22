@@ -17,7 +17,7 @@ import { faSquare as fasFaSquare,
         faCircle as fasFaCircle,
         faCircleInfo,
         faPlus, faMinus,
-        faCaretLeft, faCaretRight, 
+        faCaretLeft, faCaretRight, faInfoCircle, 
         } from '@fortawesome/free-solid-svg-icons';
 
 import Card from "../components/card";
@@ -98,10 +98,15 @@ const StatusBox = (props) => {
                             style={gameProccess === "OUT_COMBAT"?
                             {borderColor: color[key]}:
                             {borderColor: color[key], gridTemplateColumns: "3fr 3fr 3fr"}}>
-                            <div className="statName" style={{backgroundColor: color[key]}}>
-                                <p>{data['STAT_NAME'][key]}</p>
-                            </div>
-                            <p>{key}</p>
+                            <p>
+                                {data['STAT_NAME'][key]}
+                                <span className="infoIcon">
+                                    <FontAwesomeIcon icon={faInfoCircle}/>
+                                    <span className="statInfo" style={{backgroundColor: color[key]}}>
+                                        {data['INFO'][key]}
+                                    </span>
+                                </span>
+                            </p>
                             <p>{Math.round((playerStatus.detail.stat[key].value + (playerStatus.detail.stat[key].pointPowerUp * statusPoint[key]))*10)/10}</p>
                             {gameProccess === "OUT_COMBAT"?(<p>{statusPoint[key]}</p>):
                             (
@@ -120,9 +125,6 @@ const StatusBox = (props) => {
                                     () => {subtractStatusPoint(key, 1)}
                                 }>
                                 <FontAwesomeIcon icon={faMinus} /></button>)}
-                            <div className="statInfo" style={{backgroundColor: color[key]}}>
-                                <p>{data['INFO'][key]}</p>
-                            </div>
                         </div>
                         )
                     })

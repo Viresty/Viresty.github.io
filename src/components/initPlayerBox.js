@@ -7,14 +7,19 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { EffectCards, Navigation, Pagination } from "swiper";
 
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+
 import "../css/playerBox.scss";
 import Card from "../components/card";
 import StatusBox from "./statusBox";
 
-import data from '../data/test-data.json'
+import data from '../data/test-data.json';
+
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const InitPlayerBox = (props) => {
-
     const originStatus = props.origin;
     const player = props.target;
     const gameProccess = props.proccess;
@@ -23,10 +28,6 @@ const InitPlayerBox = (props) => {
     const beginWeapon = Object.values(data['1']);
     const [jobIdx, setJobIdx] = useState(0);
     const [ttStep, setTTStep] = useState(0);
-
-    const nextStep = () => {
-
-    }
 
     useEffect(() => {
         props.handle({
@@ -39,12 +40,12 @@ const InitPlayerBox = (props) => {
 
     return (
         <div className="content">
-            <div className="contentBoxColumn">
+            <div className="flexColGrow">
                 {/* step 1 */}
-                <div className="contentBoxRow" id="ttStep_1">
+                <div className="flexRowGrow" id="ttStep_1">
                     <div className="contentBoxItem">
                         <h1 className="contentBoxTitle">CHỌN NGHỀ NGHIỆP</h1>
-                        <div className="contentBoxRow" id="initJobBox">
+                        <div className="flexRowGrow" id="initJobBox">
                             <Swiper
                                 effect={"cards"}
                                 modules={[EffectCards, Navigation, Pagination]}
@@ -66,8 +67,8 @@ const InitPlayerBox = (props) => {
                             </Swiper>
                         </div>
                     </div>
-                    <div className="contentBoxItem">
-                        <h1 className="contentBoxTitle">Thiết lập chỉ số cơ bản</h1>
+                    <div className="contentBoxItem" id="initStatus">
+                        <h1 className="contentBoxTitle">THIẾT LẬP CHỈ SỐ CƠ BẢN</h1>
                         <StatusBox target={player} handle={props.handle} proccess={gameProccess} origin={originStatus} />
                     </div>
                 </div>

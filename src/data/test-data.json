@@ -780,9 +780,6 @@
                     },
                     "ATKSPD": {
                         "value": 1.0
-                    },
-                    "TOUCH": {
-                        "value": 100
                     }
                 },
                 "statChange": {

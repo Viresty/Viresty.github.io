@@ -253,7 +253,7 @@
     display: flex;
     position: absolute;
     margin: 1em;
-    max-width: 25em;
+    max-width: 39em;
     height: 0;
     padding: 0;
     opacity: 0;
@@ -266,7 +266,7 @@
 
 .openWideUp {
     display: flex;
-    width: 30em;
+    width: 39em;
     height: 30em !important;
     left: 0.2em !important;
     padding: 0.5em !important;
@@ -282,6 +282,7 @@
     display: flex;
     flex-grow: 1;
     width: 100%;
+    min-width: 35em;
     justify-content: space-between;
     flex-direction: column;
     text-align: left;
@@ -303,7 +304,7 @@
     display: grid;
     padding: 0.2em 1em;
     border-color: white;
-    grid-template-columns: 3fr 3fr 3fr 1fr 1fr;
+    grid-template-columns: 5fr 2fr 2fr 1fr 1fr;
     border: 0;
     justify-items: center;
     align-items: center;
@@ -321,22 +322,42 @@
     transition: all 0.2s linear;
 }
 
- .statusBoxItem:not(:last-child, :first-child):hover {
-    margin-top: 0.8em;
+.statusBoxItem:not(:last-child, :first-child):hover {
     z-index: 2;
 }
 
-.statusBoxItem:not(:last-child, :first-child):hover .statName {
-    opacity: 1;
-    z-index: 2;
+.infoIcon {
+    position: relative;
+    margin: 0 0.3em;
+    width: 0.75em;
+    font-size: 0.75em;
 }
 
+.statInfo {
+    width: 0;
+    padding: 0;
+    padding-top: 1em;
+    background-color: #3caeff;
+    position: absolute;
+    top: 100%;
+    left: 0.5em;
+    height: 100%;
+    border-radius: 0;
+    overflow: hidden;
+    z-index: -10;
+    transition: all 0.1s linear;
+    border-radius: 0.5em;
+}
 
-.statusBoxItem:not(:last-child, :first-child):hover .statInfo {
+.statInfo p {
+    font-size: 0.8em;
+}
+
+.infoIcon:hover .statInfo {
     width: 10em;
+    left: -4.5em;
     height: fit-content;
     padding: 0.4em 1em;
-    border-radius: 0 0.4em 0.4em 0.4em;
 }
 
 .statusBoxItem:not(:last-child, :first-child):hover::before{
@@ -357,7 +378,7 @@
 }
 
 .statusBoxItem:not(:last-child, :first-child):hover > p {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .statusBoxItem > * {
@@ -368,11 +389,11 @@
     text-align: center;
 }
 
-.statusBoxItem button:nth-child(5):hover {
+.statusBoxItem button:nth-child(4):hover {
     color: rgb(109, 255, 109);
 }
 
-.statusBoxItem button:nth-child(6):hover {
+.statusBoxItem button:nth-child(5):hover {
     color: red;
 }
 
@@ -943,21 +964,3 @@
 @media screen and (max-width: 240px){
 
 }
-
-.statInfo {
-    width: 0;
-    padding: 0;
-    background-color: #3caeff;
-    position: absolute;
-    left: 100%;
-    height: 100%;
-    border-radius: 0;
-    top: 0;
-    overflow: hidden;
-    z-index: -10;
-    transition: all 0.1s linear;
-  }
-  
-  .statInfo p {
-    font-size: 0.7em;
-  }

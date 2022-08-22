@@ -11,7 +11,7 @@ import data from '../data/test-data.json'
 import { startTransition } from "react";
 
 
-export const playerReducer = (states = initPlayer(data['0']['001']), action) => {
+export const playerReducer = (states, action) => {
     var state = {...states}
     const payload = action.payload;
     // console.log(action);
@@ -38,12 +38,11 @@ export const playerReducer = (states = initPlayer(data['0']['001']), action) => 
             state.detail.stat['POINT'].value += 5;
             return state;
 
-        case 'INIT_JOB': // payload.job
+        case 'INIT_JOB': // payload.jo
             state = initPlayer(payload.job);
             return state;
 
         case 'ADD_POINTS': // item
-            // console.log(payload.item);
             Object.keys(payload.item).forEach((key) => {
                 state.detail.stat[key].point += payload.item[key];
                 state.detail.stat[key] = powerUpByPoint(state.detail.stat[key]);

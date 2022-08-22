@@ -24,7 +24,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 AOS.init();
   
-const App = ({user, action}) => {
+const App = ({payload, action}) => {
 
     const [isLogged_in, setLogin] = useState(false);
     let loginAccount = localStorage.getItem('loginInfo');
@@ -37,11 +37,17 @@ const App = ({user, action}) => {
         if (loginAccount != "undefined" && loginAccount != null) {
             action.getUserInfo(loginAccount.UID);
             console.log('Đăng nhập thành công!!!');
+            action.UserLogin();
             setLogin(true);
         } else {
             setLogin(false);
         }
     }, []);
+
+    useEffect (() => {
+        if (payload.login !== true) return;
+        action.SaveData();
+    }, [payload.user])
 
     return (
     // Git-hub deloy
@@ -66,7 +72,10 @@ const App = ({user, action}) => {
   
 const mapStateToProps = state => {
     return {
-      user: state.user
+        payload: {
+            user: state.user,
+            login: state.login
+        }
     }
 }
   
@@ -80,6 +89,16 @@ const mapDispatchToProps = dispatch => {
                         UID: uid
                     }
                 })
+            },
+            UserLogin: () => {
+                dispatch({
+                    type: "LOGIN"
+                })
+            },
+            SaveData: () => {
+                dispatch({
+                    type: "SAVE_USER"
+                });
             }
         }
     }

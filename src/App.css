@@ -179,6 +179,7 @@ a {
 
 a:hover, button:hover {
   color: lightblue;
+  border-color: lightblue;
   text-shadow: 0 0 1em rgba(173, 216, 230, 0.453);
 }
 

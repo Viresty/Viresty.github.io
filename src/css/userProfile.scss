@@ -31,6 +31,14 @@
             color: #ccc
         }
 
+        .userTitle {
+            margin: 0.5em 0 0 0;
+            padding: 0.1em 1em;
+            border: 0.05em solid white;
+            border-radius: 1em;
+            width: fit-content;
+        }
+
         #userNickName {
             font-size: 3em;
             margin: 0;
@@ -53,16 +61,172 @@
 
 .profileContent {
     max-width: 1400px !important;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
 
-    .character {
+    #allCharacters {
         width: 100%;
-        height: 40em;
 
-        img {
+        #allCharactersList {
             width: 100%;
-            height: 40em;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 0.5em;
+            
+            .character {
+                position: relative;
+                width: 100%;
+                height: 40em;
+                
+                .characterImg {
+                    overflow: hidden;
+                    width: 100%;
+                    height: 40em;
+
+                    img {
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        transform: scale(1);
+                        transition: all 0.3s linear;
+                    }
+                }
+
+                .shader {
+                    flex-direction: column;
+                    text-align: center;
+                    justify-content: center;
+                    align-items: center;
+                    height: fit-content;
+                    
+                    h1, p {
+                        margin: 0;
+                    }
+
+                    p:last-of-type {
+                        padding-bottom: 1em;
+                    }
+                    
+                    .moreCharacterInfo-btn {
+                        width: 100%;
+                        padding: 0;
+                        font-size: 0;
+                        background-color: rgba(34, 34, 34, 0.5);
+                        border: 0.1em solid transparent;
+                        transition: all 0.1s linear;
+                    }
+                }
+
+                &:hover {
+
+                    .characterImg {
+                        img {
+                            transform: scale(1.2);
+                        }
+                    }
+
+                    .moreCharacterInfo-btn {
+                        width: 100%;
+                        padding: 0.5em;
+                        font-size: 1.5em;
+                        background-color: rgba(34, 34, 34, 0.5);
+                        border: 0.1em solid white;
+                        
+                        &:hover {
+                            border: 0.1em solid lightblue;
+                        }
+                    }
+                }
+            }
+            
+            #newCharacter-btn {
+                height: 40em;
+                width: 100%;
+                background-color: rgba(34, 34, 34, 0.5);
+                border: 0.1em dashed white;
+                font-size: 1em;
+
+                svg {
+                    font-size: 6em;
+                }
+                
+                &:hover {
+                    border-color: lightblue;
+                    font-size: 1.1em;
+                    height: 100%;
+                }
+            }
+        }
+
+        #createCharacterBox {
+            display: flex;
+            flex-grow: 1;
+            width: 100%;
+
+            .content {
+                align-items: unset;
+            }
+            
+            #ttStep_1 {
+                height: 38em;
+                gap: 1em;
+                
+                .contentBoxTitle {
+                    text-align: center;
+                }
+
+                #initStatus {
+                    min-width: 60%;
+                }
+            }
+        }
+
+        #characterInfo {
+            .flexRowGrow {
+                gap: 1em;
+            }
+
+            #statsRadarChart {
+                max-height: 30em;
+                max-width: 35em;
+                min-width: 35em;
+                min-height: 30em;
+                background-color: white;
+                border-radius: 0.5em;
+            }
         }
     }
+    
+    
+    #userOverview {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
+
+        .overviewItem {
+            padding: 1em 3em;
+            border-radius: 1em;
+            background-color: #222;
+            height: fit-content;
+
+            .monsterKillChart {
+                &-innertext {
+                    &-label {
+                        fill: white;
+                    }
+                    &-value {
+                        fill: white;
+                    }
+                }
+
+                &-legend {
+                    &-item {
+                        &-label {
+                            fill: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

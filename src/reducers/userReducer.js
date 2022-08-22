@@ -20,6 +20,12 @@ const initialUser = {
         avatarUrl: '',
         nickname: '',
     },
+    "inventory": [],
+    "money": {
+        "gold": 0,
+        "silver": 0,
+        "copper": 0
+    },
     chosingCharacter: 0,
     characterInfo: [
         {
@@ -99,7 +105,19 @@ const initialUser = {
             weapon: [],
             bag: []
         }
-    ]
+    ],
+    "achievement": {
+        "totalMonsterKill": 0,
+        "monsterKill": 0,
+        "miniBossKill": 0,
+        "bossKill": 0,
+        "floorClear": 0,
+        "highestFloor": 0,
+        "playCount": 0,
+        "deathCount": 0,
+        "moneyGain": 0
+    },
+    "trophies": ["TÂN BINH"]
 }
 
 export default(states = initialUser, action) => {
@@ -139,10 +157,11 @@ export default(states = initialUser, action) => {
                 state.characterInfo[state.chosingCharacter].detail.stat[key] = Object.assign({}, payload.item.detail.stat[key]);
                 state.characterInfo[state.chosingCharacter].detail.stat[key] = powerUpByPoint(payload.item.detail.stat[key]);
             })
-            state.characterInfo[state.chosingCharacter].deck = [...payload.item.deck]
-            state.characterInfo[state.chosingCharacter].buff = [...payload.item.buff]
-            state.characterInfo[state.chosingCharacter].weapon = [...payload.item.weapon]
-            state.characterInfo[state.chosingCharacter].bag = [...payload.item.bag]
+            console.log(payload);
+            state.characterInfo[state.chosingCharacter].deck = [...payload.item.deck];
+            state.characterInfo[state.chosingCharacter].buff = [...payload.item.buff];
+            state.characterInfo[state.chosingCharacter].weapon = [...payload.item.weapon];
+            state.characterInfo[state.chosingCharacter].bag = [...payload.item.bag];
             return state;
 
         case "SAVE_USER":
@@ -150,8 +169,30 @@ export default(states = initialUser, action) => {
             console.log('Đã lưu trữ dữ liệu người dùng '+state.accountInfo.UID);
             console.log(JSON.parse(localStorage.getItem('userInfo'+state.accountInfo.UID)));
             return state;
+
+        case "ADD_CHARACTER":
+            state.characterInfo.push(payload.item);
+            return state;
         
         default:
             return state;
     }
 };
+
+export const login = (states = false, action) => {
+    var state = {...states}
+    const payload = action.payload;
+
+    switch (action.type) {
+        case "LOGIN":
+            state = true;
+            return state;
+
+        case "LOGOUT":
+            state = false;
+            return state;
+        
+        default:
+            return state;
+    }
+}

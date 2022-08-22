@@ -17,6 +17,7 @@
             {
                 "url": "https://i.pinimg.com/564x/3c/67/79/3c67798459911cc7aa9dbc72a0b7574a.jpg",
                 "alt": "satthu",
+                "nickname": "Viresty",
                 "fullview-url": "",
                 "avt-url": "",
                 "name": "",
@@ -91,6 +92,18 @@
                 "weapon": [],
                 "bag": []
             }
-        ]
+        ],
+        "achievement": {
+            "totalMonsterKill": 0,
+            "monsterKill": 0,
+            "miniBossKill": 0,
+            "bossKill": 0,
+            "floorClear": 0,
+            "highestFloor": 0,
+            "playCount": 0,
+            "deathCount": 0,
+            "moneyGain": 0
+        },
+        "trophies": ["TÂN BINH"]
     }
 }

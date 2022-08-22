@@ -43,6 +43,8 @@ export const initPlayer = (initialStatus, Lv = 1, EXP=0, POINT = 5, weapon = [da
     newStatus.detail['DEATH'] = false;
     newStatus.weapon = weapon;
     newStatus.buff = buff;
+    newStatus.deck = [];
+    newStatus.bag = [];
     // console.log(initialStatus);
     return newStatus;
 }

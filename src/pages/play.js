@@ -59,6 +59,10 @@ const Play = (props) => {
     const [turnObject, setTurnObject] = useState("");
 
     // Init
+    const initGame = () => {
+        
+    }
+
     const initEvents = (Lvl, round) => {
         const values = Object.values(data['8']);
         const nextEv = [];
